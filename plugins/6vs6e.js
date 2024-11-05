@@ -3,7 +3,7 @@ if (!(isAdmin || isOwner)) {
 global.dfail('admin', m, conn)
 throw false
 }
-
+//hiiiiii
 var texto = '⏱️ Hora : Hasta que llenen' 
 var texto2 = '⏱️ HORA :' 
 var texto3 = ' '
