@@ -13,6 +13,7 @@ texto = texto2
 texto3='*!'
 texto4='!*'
 }
+  //node js
 let pesan = args.join` `
 //let oi = `ღ ${lenguajeGB['smsAddB5']()} ${pesan}`
 let teks = '*🌸 6 vs 6 🌸*\n\n' 
