@@ -4,8 +4,8 @@ global.dfail('admin', m, conn)
 throw false
 }
 
-var texto = '🐈‍⬛🎃 Holis :3' 
-var texto2 = '🐈‍⬛🎃 AVISO :' 
+var texto = '🐈‍⬛ Holis :3'
+var texto2 = '🐈‍⬛ AVISO :'
 var texto3 = ' '
 var texto4 = ' '
 if(text.length>1){ 
