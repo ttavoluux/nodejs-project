@@ -31,70 +31,30 @@ const yt = await await await youtubedl(v).catch(async _ => await youtubedlv2(v))
 const dl_url = await await await yt.audio[q].download()
 const ttl = await await await yt.title
 const size = await await await yt.audio[q].fileSizeH
-await conn.sendMessage(m.chat, { audio: { url: dl_url }, mimetype: 'audioMessage', contextInfo: {
-externalAdReply: {
-title: ttl,
-body: "",
-thumbnailUrl: yt_play[0].thumbnail, 
-mediaType: 1,
-showAdAttribution: true,
-renderLargerThumbnail: true
-}}} , { quoted: m })   
+    await conn.sendMessage(m.chat, { audio: { url: dataRET.mp3[1].url }, fileName: `${ttl}.mp3`, mimetype: 'audio/mpeg' }, { quoted: m })
 } catch {
 try {
 const dataRE = await await await fetch(`https://api.akuari.my.id/downloader/youtube?link=${yt_play[0].url}`)
 const dataRET = await await await dataRE.json()
-await await await conn.sendMessage(m.chat, { audio: { url: dataRET.mp3[1].url }, mimetype: 'audioMessage', contextInfo: {
-externalAdReply: {
-title: yt_play[0].title,
-body: "",
-thumbnailUrl: yt_play[0].thumbnail, 
-mediaType: 1,
-showAdAttribution: true,
-renderLargerThumbnail: true
-}}} , { quoted: m })   
+    await conn.sendMessage(m.chat, { audio: { url: dataRET.mp3[1].url }, fileName: `${ttl}.mp3`, mimetype: 'audio/mpeg' }, { quoted: m })
 } catch {
 try {
 let humanLol = await await await fetch(`https://api.lolhuman.xyz/api/ytplay?apikey=${lolkeysapi}&query=${yt_play[0].title}`)
 let humanRET = await await await humanLol.json()
-await await await conn.sendMessage(m.chat, { audio: { url: humanRET.result.audio.link }, mimetype: 'audioMessage', contextInfo: {
-externalAdReply: {
-title: yt_play[0].title,
-body: "",
-thumbnailUrl: yt_play[0].thumbnail, 
-mediaType: 1,
-showAdAttribution: true,
-renderLargerThumbnail: true
-}}} , { quoted: m })       
+    await conn.sendMessage(m.chat, { audio: { url: dataRET.mp3[1].url }, fileName: `${ttl}.mp3`, mimetype: 'audio/mpeg' }, { quoted: m })
 } catch {     
 try {
 let lolhuman = await await await fetch(`https://api.lolhuman.xyz/api/ytaudio2?apikey=${lolkeysapi}&url=${yt_play[0].url}`)    
 let lolh = await await await lolhuman.json()
 let n = lolh.result.title || 'error'
-await await await conn.sendMessage(m.chat, { audio: { url: lolh.result.link}, mimetype: 'audioMessage', contextInfo: {
-externalAdReply: {
-title: n,
-body: "",
-thumbnailUrl: yt_play[0].thumbnail, 
-mediaType: 1,
-showAdAttribution: true,
-renderLargerThumbnail: true
-}}} , { quoted: m })   
+    await conn.sendMessage(m.chat, { audio: { url: dataRET.mp3[1].url }, fileName: `${ttl}.mp3`, mimetype: 'audio/mpeg' }, { quoted: m })
 } catch {   
 try {
 let searchh = await await await yts(yt_play[0].url)
 let __res = searchh.all.map(v => v).filter(v => v.type == "video")
 let infoo = await await await ytdl.getInfo('https://youtu.be/' + __res[0].videoId)
 let ress = await await await ytdl.chooseFormat(infoo.formats, { filter: 'audioonly' })
-await await await conn.sendMessage(m.chat, { audio: { url: ress.url }, mimetype: 'audioMessage', contextInfo: {
-externalAdReply: {
-title: __res[0].title,
-body: "",
-thumbnailUrl: yt_play[0].thumbnail, 
-mediaType: 1,
-showAdAttribution: true,
-renderLargerThumbnail: true
-}}} , { quoted: m })   
+    await conn.sendMessage(m.chat, { audio: { url: dataRET.mp3[1].url }, fileName: `${ttl}.mp3`, mimetype: 'audio/mpeg' }, { quoted: m })
 //conn.sendMessage(m.chat, { audio: { url: ress.url }, fileName: __res[0].title + '.mp3', mimetype: 'audio/mp4' }, { quoted: m })  
 } catch {
 }}}}}
