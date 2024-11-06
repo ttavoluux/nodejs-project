@@ -17,13 +17,6 @@ let handler = async (m, { conn, command, args, text, usedPrefix }) => {
         throw 'Error al buscar el video.';
     }
 
-    let additionalText = '';
-    if (command === 'play') {
-        additionalText = '𝘼𝙐𝘿𝙄𝙊 🔊';
-    } else if (command === 'play2') {
-        additionalText = '𝙑𝙄𝘿𝙀𝙊 🎥';
-    }
-
     let captionvid = `*Descargando . . . .*
 
   ${mid.smsYT1}
@@ -35,83 +28,87 @@ let handler = async (m, { conn, command, args, text, usedPrefix }) => {
   ${mid.smsYT4}
   » ${yt_play[0].url}`;
 
+    // Comando para enviar solo audio
     if (command === 'play') {
         try {
-            const q = '128kbps';
+            const q = '128kbps';  // Definir calidad de audio
             const v = yt_play[0].url;
-            const yt = await youtubedl(v).catch(async (_) => await youtubedlv2(v));
-            const dl_url = yt.audio[q].download();
-            const ttl = yt.title;
-            const size = yt.audio[q].fileSizeH;
+            const yt = await youtubedl(v).catch(async (_) => await youtubedlv2(v)); // Intentar usar `youtubedl` o `youtubedlv2`
+            const dl_url = yt.audio[q].download(); // Obtener la URL de descarga del audio
+            const ttl = yt.title; // Título del video
+            const size = yt.audio[q].fileSizeH; // Tamaño del archivo
+
+            // Enviar el archivo de audio al chat
             await conn.sendMessage(m.chat, {
                 audio: { url: dl_url },
                 fileName: `${ttl}.mp3`,
                 mimetype: 'audio/mpeg'
             }, { quoted: m });
+
         } catch (error) {
             console.error('Error en la descarga de audio:', error);
+
+            // Si no se puede descargar desde `youtubedl`, intentar usar otro servicio
             try {
                 const dataRE = await fetch(`https://api.akuari.my.id/downloader/youtube?link=${yt_play[0].url}`);
                 const dataRET = await dataRE.json();
-                await conn.sendMessage(m.chat, {
-                    audio: { url: dataRET.mp3[1].url },
-                    fileName: `${yt_play[0].title}.mp3`,
-                    mimetype: 'audio/mpeg'
-                }, { quoted: m });
+
+                if (dataRET.mp3 && dataRET.mp3[1] && dataRET.mp3[1].url) {
+                    // Si el servicio de Akuari retorna un enlace de audio válido
+                    await conn.sendMessage(m.chat, {
+                        audio: { url: dataRET.mp3[1].url },
+                        fileName: `${yt_play[0].title}.mp3`,
+                        mimetype: 'audio/mpeg'
+                    }, { quoted: m });
+                } else {
+                    throw 'No se encontró audio disponible en Akuari.';
+                }
             } catch (error) {
-                console.error('Error en el API de Akuari:', error);
-            }
-        }
-    } else if (command === 'play2') {
-        try {
-            const q = '360p';
-            const v = yt_play[0].url;
-            const yt = await youtubedl(v).catch(async (_) => await youtubedlv2(v));
-            const dl_url = yt.video[q].download();
-            const ttl = yt.title;
-            await conn.sendMessage(m.chat, {
-                video: { url: dl_url },
-                fileName: `${ttl}.mp4`,
-                mimetype: 'video/mp4',
-                caption: `╭━❰ ${wm} ❱━⬣\n┃ 💜 ${mid.smsYT1}\n┃ ${ttl}\n╰━━━━━❰ *𓃠 ${vs}* ❱━━━━⬣`,
-                thumbnail: await fetch(yt.thumbnail)
-            }, { quoted: m });
-        } catch (error) {
-            console.error('Error al descargar el video:', error);
-            try {
-                const mediaa = await ytMp4(yt_play[0].url);
-                await conn.sendMessage(m.chat, {
-                    video: { url: mediaa.result },
-                    fileName: `${mediaa.title}.mp4`,
-                    caption: `_${wm}_`,
-                    thumbnail: mediaa.thumb,
-                    mimetype: 'video/mp4'
-                }, { quoted: m });
-            } catch (error) {
-                console.error('Error en el API de LolHuman para video:', error);
+                console.error('Error al obtener el enlace desde Akuari:', error);
+
+                // Intentar una tercera opción usando LolHuman
+                try {
+                    let lolhuman = await fetch(`https://api.lolhuman.xyz/api/ytplay?apikey=YOUR_API_KEY&query=${yt_play[0].title}`);
+                    let lolh = await lolhuman.json();
+
+                    if (lolh.result && lolh.result.link) {
+                        await conn.sendMessage(m.chat, {
+                            audio: { url: lolh.result.link },
+                            fileName: `${yt_play[0].title}.mp3`,
+                            mimetype: 'audio/mpeg'
+                        }, { quoted: m });
+                    } else {
+                        throw 'No se pudo obtener el audio de LolHuman.';
+                    }
+                } catch (error) {
+                    console.error('Error al obtener el enlace desde LolHuman:', error);
+                    throw 'Error al obtener el audio, intente nuevamente más tarde.';
+                }
             }
         }
     }
 };
 
-handler.command = ['play', 'play2'];
-handler.exp = 500;
+handler.command = ['play']; // El comando que activará este script
+handler.exp = 500;  // La experiencia que se ganará al usar este comando
 
 export default handler;
 
+// Función de búsqueda de YouTube
 async function search(query, options = {}) {
     const search = await yts.search({ query, hl: "es", gl: "ES", ...options });
     return search.videos;
 }
 
-function MilesNumber(number) {
-    const exp = /(\d)(?=(\d{3})+(?!\d))/g;
-    const rep = "$1.";
-    let arr = number.toString().split(".");
-    arr[0] = arr[0].replace(exp, rep);
-    return arr[1] ? arr.join(".") : arr[0];
+// Función para convertir bytes a tamaño legible
+function bytesToSize(bytes) {
+    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+    if (bytes === 0) return 'n/a';
+    const i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)), 10);
+    return `${(bytes / (1024 ** i)).toFixed(1)} ${sizes[i]}`;
 }
 
+// Función para convertir segundos en formato de tiempo
 function secondString(seconds) {
     seconds = Number(seconds);
     var d = Math.floor(seconds / (3600 * 24));
@@ -123,60 +120,5 @@ function secondString(seconds) {
     var mDisplay = m > 0 ? m + (m == 1 ? " minuto, " : " minutos, ") : "";
     var sDisplay = s > 0 ? s + (s == 1 ? " segundo" : " segundos") : "";
     return dDisplay + hDisplay + mDisplay + sDisplay;
-}
-
-function bytesToSize(bytes) {
-    return new Promise((resolve, reject) => {
-        const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
-        if (bytes === 0) return resolve('n/a');
-        const i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)), 10);
-        resolve(`${(bytes / (1024 ** i)).toFixed(1)} ${sizes[i]}`);
-    });
-}
-
-async function ytMp3(url) {
-    return new Promise((resolve, reject) => {
-        ytdl.getInfo(url).then(async (getUrl) => {
-            let result = [];
-            for (let i = 0; i < getUrl.formats.length; i++) {
-                let item = getUrl.formats[i];
-                if (item.mimeType === 'audio/webm; codecs="opus"') {
-                    let { contentLength } = item;
-                    let bytes = await bytesToSize(contentLength);
-                    result[i] = { audio: item.url, size: bytes };
-                }
-            }
-            let resultFix = result.filter((x) => x.audio != undefined && x.size != undefined);
-            let tiny = await axios.get(`https://tinyurl.com/api-create.php?url=${resultFix[0].audio}`);
-            let tinyUrl = tiny.data;
-            let title = getUrl.videoDetails.title;
-            let thumb = getUrl.player_response.microformat.playerMicroformatRenderer.thumbnail.thumbnails[0].url;
-            resolve({ title, result: tinyUrl, result2: resultFix, thumb });
-        }).catch(reject);
-    });
-}
-
-async function ytMp4(url) {
-    return new Promise(async (resolve, reject) => {
-        ytdl.getInfo(url).then(async (getUrl) => {
-            let result = [];
-            for (let i = 0; i < getUrl.formats.length; i++) {
-                let item = getUrl.formats[i];
-                if (item.container === 'mp4' && item.hasVideo && item.hasAudio) {
-                    let { qualityLabel, contentLength } = item;
-                    let bytes = await bytesToSize(contentLength);
-                    result[i] = { video: item.url, quality: qualityLabel, size: bytes };
-                }
-            }
-            let resultFix = result.filter(
-                (x) => x.video != undefined && x.size != undefined && x.quality != undefined
-            );
-            let tiny = await axios.get(`https://tinyurl.com/api-create.php?url=${resultFix[0].video}`);
-            let tinyUrl = tiny.data;
-            let title = getUrl.videoDetails.title;
-            let thumb = getUrl.player_response.microformat.playerMicroformatRenderer.thumbnail.thumbnails[0].url;
-            resolve({ title, result: tinyUrl, rersult2: resultFix[0].video, thumb });
-        }).catch(reject);
-    });
 }
 
