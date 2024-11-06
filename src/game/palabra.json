@@ -63,10 +63,26 @@
 {"question": "Ordena la palabra: LARCLUE", "response": "CELULAR" },
 {"question": "Ordena la palabra: PUTDAOCOMRA", "response": "COMPUTADORA" },
 {"question": "Ordena la palabra: TERNEF", "response": "FERNET" },
-{"question": "Ordena la palabra: ULCICHLO", "response": "CUCHILLO" }
-
-
-
-
-
+{"question": "Ordena la palabra: ULCICHLO", "response": "CUCHILLO" },
+  {"question": "Ordena la palabra: HAWIEU", "response": "HUAWEI"},
+  {"question": "Ordena la palabra: MOIXAI", "response": "XIAOMI"},
+  {"question": "Ordena la palabra: SMUGASN", "response": "SAMSUNG"},
+  {"question": "Ordena la palabra: OPOP", "response": "OPPO"},
+  {"question": "Ordena la palabra: OINAK", "response": "NOKIA"},
+  {"question": "Ordena la palabra: MRTOLAO", "response": "MOTOROLA"},
+  {"question": "Ordena la palabra: GLEGOO", "response": "GOOGLE"},
+  {"question": "Ordena la palabra: VIOV", "response": "VIVO"},
+  {"question": "Ordena la palabra: GL", "response": "LG"},
+  {"question": "Ordena la palabra: NEOVOL", "response": "LENOVO"},
+  {"question": "Ordena la palabra: SIPHLOI", "response": "PHILIPS"},
+  {"question": "Ordena la palabra: ZET", "response": "ZTE"},
+  {"question": "Ordena la palabra: HCT", "response": "HTC"},
+  {"question": "Ordena la palabra: CATLEAL", "response": "ALCATEL"},
+  {"question": "Ordena la palabra: OYANS", "response": "SANYO"},
+  {"question": "Ordena la palabra: NHREOY", "response": "HYNIX"},
+  {"question": "Ordena la palabra: YNOS", "response": "SONY"},
+  {"question": "Ordena la palabra: REOBK", "response": "REEBOK"},
+  {"question": "Ordena la palabra: ACRE", "response": "ACER"},
+  {"question": "Ordena la palabra: RONIK", "response": "NIKON"},
+  {"question": "Ordena la palabra: ELLD", "response": "DELL"}
 ]
