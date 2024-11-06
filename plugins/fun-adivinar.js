@@ -2,7 +2,7 @@ import fs from 'fs'
 import fetch from 'node-fetch';
 import axios from 'axios';
 
-let timeout = 30000
+let timeout = 50000
 let poin = 500 
  
 let handler = async (m, { conn, command, usedPrefix }) => {
