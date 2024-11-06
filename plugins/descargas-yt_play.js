@@ -6,85 +6,54 @@ import { youtubedl, youtubedlv2 } from '@bochilteam/scraper'
 let handler = async (m, { conn, command, args, text, usedPrefix }) => {
 let q, v, yt, dl_url, ttl, size, lolhuman, lolh, n, n2, n3, n4, cap, qu, currentQuality   
 if (!text) throw `${lenguajeGB['smsAvisoMG']()}${mid.smsMalused4}\n*${usedPrefix + command} Billie Eilish - Bellyache*`
-try {
-const yt_play = await await await search(args.join(" "))
-let additionalText = ''
-if (command === 'play') { 
-additionalText = '𝘼𝙐𝘿𝙄𝙊 🔊'
-} else if (command === 'play2') {
-additionalText = '𝙑𝙄𝘿𝙀𝙊 🎥'}
-let captionvid = `*Descargando . . . .*
+    try {
+        const yt_play = await search(args.join(" "));
+        let additionalText = '';
+        if (command === 'play') {
+            additionalText = '𝘼𝙐𝘿𝙄𝙊 🔊';
+        } else if (command === 'play2') {
+            additionalText = '𝙑𝙄𝘿𝙀𝙊 🎥';
+        }
 
-${mid.smsYT1}
-${yt_play[0].title}
+        let captionvid = `*Descargando . . . .*
 
-${mid.smsYT5}
-» ${secondString(yt_play[0].duration.seconds)}
+  ${mid.smsYT1}
+  ${yt_play[0].title}
 
-${mid.smsYT4}
-» ${yt_play[0].url}`  
-if (command == 'play') {	
-try {
-let q = '128kbps'
-let v = yt_play[0].url
-const yt = await await await youtubedl(v).catch(async _ => await youtubedlv2(v))
-const dl_url = await await await yt.audio[q].download()
-const ttl = await await await yt.title
-const size = await await await yt.audio[q].fileSizeH
-    await conn.sendMessage(m.chat, { audio: { url: dataRET.mp3[1].url }, fileName: `${ttl}.mp3`, mimetype: 'audio/mpeg' }, { quoted: m })
-} catch {
-try {
-const dataRE = await await await fetch(`https://api.akuari.my.id/downloader/youtube?link=${yt_play[0].url}`)
-const dataRET = await await await dataRE.json()
-    await conn.sendMessage(m.chat, { audio: { url: dataRET.mp3[1].url }, fileName: `${ttl}.mp3`, mimetype: 'audio/mpeg' }, { quoted: m })
-} catch {
-try {
-let humanLol = await await await fetch(`https://api.lolhuman.xyz/api/ytplay?apikey=${lolkeysapi}&query=${yt_play[0].title}`)
-let humanRET = await await await humanLol.json()
-    await conn.sendMessage(m.chat, { audio: { url: dataRET.mp3[1].url }, fileName: `${ttl}.mp3`, mimetype: 'audio/mpeg' }, { quoted: m })
-} catch {     
-try {
-let lolhuman = await await await fetch(`https://api.lolhuman.xyz/api/ytaudio2?apikey=${lolkeysapi}&url=${yt_play[0].url}`)    
-let lolh = await await await lolhuman.json()
-let n = lolh.result.title || 'error'
-    await conn.sendMessage(m.chat, { audio: { url: dataRET.mp3[1].url }, fileName: `${ttl}.mp3`, mimetype: 'audio/mpeg' }, { quoted: m })
-} catch {   
-try {
-let searchh = await await await yts(yt_play[0].url)
-let __res = searchh.all.map(v => v).filter(v => v.type == "video")
-let infoo = await await await ytdl.getInfo('https://youtu.be/' + __res[0].videoId)
-let ress = await await await ytdl.chooseFormat(infoo.formats, { filter: 'audioonly' })
-    await conn.sendMessage(m.chat, { audio: { url: dataRET.mp3[1].url }, fileName: `${ttl}.mp3`, mimetype: 'audio/mpeg' }, { quoted: m })
-//conn.sendMessage(m.chat, { audio: { url: ress.url }, fileName: __res[0].title + '.mp3', mimetype: 'audio/mp4' }, { quoted: m })  
-} catch {
-}}}}}
-}  
-if (command == 'play2') {
-try {
-let qu = '360'
-let q = qu + 'p'
-let v = yt_play[0].url
-const yt = await youtubedl(v).catch(async _ => await youtubedlv2(v))
-const dl_url = await yt.video[q].download()
-const ttl = await yt.title
-const size = await yt.video[q].fileSizeH
-await await conn.sendMessage(m.chat, { video: { url: dl_url }, fileName: `${ttl}.mp4`, mimetype: 'video/mp4', caption: `╭━❰  ${wm}  ❱━⬣\n┃ 💜 ${mid.smsYT1}\n┃ ${ttl}\n╰━━━━━❰ *𓃠 ${vs}* ❱━━━━⬣`, thumbnail: await fetch(yt.thumbnail) }, { quoted: m })
-} catch {   
-try {  
-let mediaa = await ytMp4(yt_play[0].url)
-await conn.sendMessage(m.chat, { video: { url: mediaa.result }, fileName: `error.mp4`, caption: `_${wm}_`, thumbnail: mediaa.thumb, mimetype: 'video/mp4' }, { quoted: m })     
-} catch {  
-try {
-let lolhuman = await fetch(`https://api.lolhuman.xyz/api/ytvideo2?apikey=${lolkeysapi}&url=${yt_play[0].url}`)    
-let lolh = await lolhuman.json()
-let n = lolh.result.title || 'error'
-let n2 = lolh.result.link
-let n3 = lolh.result.size
-let n4 = lolh.result.thumbnail
-await conn.sendMessage(m.chat, { video: { url: n2 }, fileName: `${n}.mp4`, mimetype: 'video/mp4', caption: `╭━❰  ${wm}  ❱━⬣\n┃ 💜 ${mid.smsYT1}\n┃ ${n}\n╰━━━━━❰ *𓃠 ${vs}* ❱━━━━⬣`, thumbnail: await fetch(n4) }, { quoted: m })
-} catch {
-}}}    
-}} catch {
+  ${mid.smsYT5}
+  » ${secondString(yt_play[0].duration.seconds)}
+
+  ${mid.smsYT4}
+  » ${yt_play[0].url}`;
+
+        if (command == 'play') {
+            try {
+                const q = '128kbps';
+                const v = yt_play[0].url;
+                const yt = await youtubedl(v).catch(async _ => await youtubedlv2(v));
+                const dl_url = yt.audio[q].download();
+                const ttl = yt.title;
+                const size = yt.audio[q].fileSizeH;
+                await conn.sendMessage(m.chat, {
+                    audio: { url: dl_url },
+                    fileName: `${ttl}.mp3`,
+                    mimetype: 'audio/mpeg'
+                }, { quoted: m });
+            } catch {
+                try {
+                    const dataRE = await fetch(`https://api.akuari.my.id/downloader/youtube?link=${yt_play[0].url}`);
+                    const dataRET = await dataRE.json();
+                    await conn.sendMessage(m.chat, {
+                        audio: { url: dataRET.mp3[1].url },
+                        fileName: `${ttl}.mp3`,
+                        mimetype: 'audio/mpeg'
+                    }, { quoted: m });
+                } catch {
+                    // Continuar con más bloques catch si es necesario.
+                }
+            }
+        }
+    } catch {
 
 }}
 handler.command = ['play', 'play2']
