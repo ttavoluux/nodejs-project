@@ -115,6 +115,12 @@ let caption = `
 conn.tekateki[id] = [
 await conn.reply(m.chat, caption, m),
 json, poin, setTimeout(async () => {
+    if (m.text.toLowerCase() == _clue) {
+      global.db.data.users[m.sender].exp += 1000;
+      m.reply(`✅Correcto!\n+${this.tebaklagu[id][2]} XP`);
+      clearTimeout(this.tebaklagu[id][3]);
+      delete this.tebaklagu[id];
+    }
 if (conn.tekateki[id]) await conn.reply(m.chat, `Se acabó el tiempo!`, conn.tekateki[id][0])
 delete conn.tekateki[id]
 }, timeout)
