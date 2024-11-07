@@ -61,7 +61,6 @@ if (!text) return m.reply(`${lenguajeGB['smsAvisoMG']()}𝙀𝙎𝘾𝙍𝙄𝘽
  
 m.reply(`*Caracola Magica* *${text}?*
 
- 
 🐚: *${['Si',
  'Tal vez sí',
  'Tal vez no',
