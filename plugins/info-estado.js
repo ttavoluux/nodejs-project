@@ -18,6 +18,17 @@ let uptime = clockString(_uptime)
 let estado = `💗 *¡Hola!* ${name}
 
 *Versión:* ${vs}
+
+*Registro de cambios!💗*
+
+> .play funcionando
+> .trivia2 add +300
+> .chiste add +200
+> .piropo add +300
+> .peliculas add +150
+> new .clima
+> new .horoscopo
+
 *Ig: arlenny.mx*
 *Contacto: wa.me/5614236722*
 *Tiempo Activo:* ${uptime}

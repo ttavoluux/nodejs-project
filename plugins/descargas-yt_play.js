@@ -103,6 +103,7 @@ let handler = async (m, { conn, command, args, text, usedPrefix }) => {
 handler.command = ['play'];  // Aquí puedes agregar más comandos o alias
 handler.exp = 500;  // Establece la experiencia que se ganará al usar el comando
 
+handler.limit = 1;
 export default handler;
 
 // Función de búsqueda de YouTube
