@@ -40,7 +40,7 @@ let handler = async (m, { conn, command, args, text, usedPrefix }) => {
     const imageBuffer = fs.readFileSync(imagePath);  // Leemos la imagen
 
     // Enviar la imagen con la información de la canción
-    await conn.sendFile(m.chat, imageBuffer, 'imagen6', infocancion, m);
+    await conn.sendFile(m.chat, imageBuffer, 'imagen10', infocancion, m);
 
     // Comando para enviar solo audio
     if (command === 'play') {
