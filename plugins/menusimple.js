@@ -17,6 +17,16 @@ let fkontak = { "key": { "participants":"0@s.whatsapp.net", "remoteJid": "status
 let uptime = clockString(_uptime)
 let estado = `💗 *¡Hola!* ${name} ✨
 
+💬 𝑼𝑷𝑫𝑨𝑻𝑬 🚀
+
+> *.play funcionando*
+> *.trivia2 add +300*
+> *.chiste add +200*
+> *.piropo add +300*
+> *.peliculas add +150*
+> *new .clima*
+> *new .horoscopo*
+
 💬 𝑮𝒓𝒖𝒑𝒐𝒔
 
 > *.todos / .todas*
