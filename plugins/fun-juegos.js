@@ -56,16 +56,33 @@ conn.reply(m.chat, personalidad, m, { mentions: conn.parseMention(personalidad) 
     
 // ------------------------------------------------------------------------------------------------------------------------------------------------
     
-if (command == 'pregunta' || command == 'preguntas' || command == 'apakah') {
+if (command == 'caracolamagica') {
 if (!text) return m.reply(`${lenguajeGB['smsAvisoMG']()}𝙀𝙎𝘾𝙍𝙄𝘽𝘼 𝙎𝙐 𝙋𝙍𝙀𝙂𝙐𝙉𝙏𝘼 𝙋𝘼𝙍𝘼 𝙎𝙀𝙍 𝙍𝙀𝙎𝙋𝙊𝙉𝘿𝙄𝘿𝘼\n𝙀𝙅𝙀𝙈𝙋𝙇𝙊\n*${usedPrefix + command} Hoy va llover?*\n\n𝙒𝙍𝙄𝙏𝙀 𝙔𝙊𝙐𝙍 𝙌𝙐𝙀𝙎𝙏𝙄𝙊𝙉 𝙏𝙊 𝘽𝙀 𝘼𝙉𝙎𝙒𝙀𝙍𝙀𝘿\n𝙀𝙓𝘼𝙈𝙋𝙇𝙀\n*${usedPrefix + command} Hoy va llover?*`) 
  
-m.reply(`╭━〔 𝙋𝙍𝙀𝙂𝙐𝙉𝙏𝘼 | 𝙌𝙐𝙀𝙎𝙏𝙄𝙊𝙉 〕━⬣  
-⁉️ 𝙋𝙍𝙀𝙂𝙐𝙉𝙏𝘼
-🙀 *${text}*
-┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈ 
-✅ 𝙍𝙀𝙎𝙋𝙐𝙀𝙎𝙏𝘼 | 𝙍𝙀𝙎𝙋𝙊𝙉𝙎𝙀 
-😼 *${['Si','Tal vez sí','Tal vez no','Posiblemente','Probablemente no','Probablemente no','Puede ser','No puede ser','No','Imposible','Depende','Creo que si','Creo que no','Claro no lo dudes','Hasta yo lo dudo','No tengo palabras jajaja','Es altamente posible','Es bajamente posible'].getRandom()}*
-╰━━━━━〔 𓃠 *${vs}* 〕━━━━⬣`)
+m.reply(`*Caracola Magica* *${text}?*
+
+ 
+🐚: *${['Si',
+ 'Tal vez sí',
+ 'Tal vez no',
+ 'Posiblemente',
+ 'Probablemente no',
+ 'Probablemente si',
+ 'Puede ser',
+ 'No puede ser',
+ 'No',
+ 'Imposible',
+ 'Depende',
+ 'Creo que si',
+ 'Creo que no',
+ 'Claro no lo dudes',
+ 'Hasta yo lo dudo',
+ 'No tengo palabras jajaja',
+ 'Es altamente posible',
+ 'Es bajamente posible',
+ 'El lunes sin falta'
+
+].getRandom()}* ✨`)
 }
 
 // ------------------------------------------------------------------------------------------------------------------------------------------------
@@ -637,7 +654,7 @@ console.log(`❗❗ ${lenguajeGB['smsMensError2']()} ${usedPrefix + command} ❗
 console.log(e)}}
 handler.help = ['love', 'gay2', 'lesbiana', 'pajero', 'pajera', 'puto', 'puta', 'manco', 'manca', 'rata', 'prostituta', 'prostituto','follar','topinfieles|vs12|scrims'].map(v => v + ' @tag | nombre')
 handler.tags = ['calculator']
-handler.command = /^love|gay2|lesbiana|pajero|pajera|puto|puta|manco|manca|rata|prostituta|prostituto|amigorandom|amistad|regalar|dar|enviar|meter|chupar|metersela|retar|formarpareja|formarparejas|gay|personalidad|pregunta|preguntas|apakah|ship|shippear|topgays|topputos|toplindos|toplind@s|topput@s|toppajer@s|toppajeros|topshipost|topshiposters|toppanafresco|topgrasa|toppanafrescos|toplagrasa|topintegrante|topintegrantes|topotakus|topfamosos|topfamos@s|topsostero|topparejas|top5parejas|Doxxeo|doxxeo|doxxear|Doxxear|doxeo|doxear|doxxeame|doxeame|ruletas|ruleta|suerte|follar|topinfieles|vs12|scrims|top|top1|top3|rnd|mmenu/i
+handler.command = /^love|gay2|lesbiana|pajero|pajera|puto|puta|manco|manca|rata|prostituta|prostituto|amigorandom|amistad|regalar|dar|enviar|meter|chupar|metersela|retar|formarpareja|formarparejas|gay|personalidad|pregunta|preguntas|caracolamagica|ship|shippear|topgays|topputos|toplindos|toplind@s|topput@s|toppajer@s|toppajeros|topshipost|topshiposters|toppanafresco|topgrasa|toppanafrescos|toplagrasa|topintegrante|topintegrantes|topotakus|topfamosos|topfamos@s|topsostero|topparejas|top5parejas|Doxxeo|doxxeo|doxxear|Doxxear|doxeo|doxear|doxxeame|doxeame|ruletas|ruleta|suerte|follar|topinfieles|vs12|scrims|top|top1|top3|rnd|mmenu/i
 handler.exp = 100
 handler.group = true
 export default handler
