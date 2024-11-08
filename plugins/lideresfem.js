@@ -22,59 +22,155 @@ let handler = async (m, { conn, text, participants, args, command }) => {
     // Construcción de las reglas con un formato atractivo
     let reglas = `${inv}✨ 𝐑𝐄𝐆𝐋𝐀𝐒 𝐋𝐈́𝐃𝐄𝐑𝐄𝐒 𝐅𝐄𝐌 (26/08/24) ✨${inv}\n`;
 
-    reglas += `
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-> 🔘 *NEGRO _(P. HOMBRE)_ LADO B*
-> ⚪ *BLANCO _(P. MUJER)_ LADO A* _(PONE PRIMERA SALA)_
+    reglas += `🔸 REGLAS LÍDERES FEM 🔸
 
-📛 ${act}TODAS LAS JUGADORAS DEBEN TENER LOS ASPECTOS DESCARGADOS, SI NO ES ASÍ, NO SE REPETIRÁ LA SALA.${act}
+◼ NEGRO (P. HOMBRE) LADO B
+◻ BLANCO (P. MUJER) LADO A (PONE PRIMERA SALA)
 
-🔴 *REGLAS ESPECIALES*
-> ⛔ *PROHIBIDO EL USO DE FRANCO* Si se utiliza alguna de estas armas para bajar vida o matar, **será punto directo al rival**.
-> 🚫 *NO REVIVIR* en ninguna circunstancia.
-> 🚷 *NO MÁS DE 3 ROTES* por equipo.
-> 🔞 *PROHIBIDA HORIZONALINA* (no usar esa estrategia).
-> 🛑 *SIN SVD, NO VSS*.
-> ✋ *SIN GARITAS, FAROS Y CARTELES*.
-> 💥 *NO EXPLOSIVOS* (incluyendo lanzadoras y ganchos).
-> 🚫 *NO OTHO/SONIA/RAFAEL* en el juego.
-> 🚫 *PISTOLA CURATIVA* está prohibida.
-> 🔴 *NO ACEPTAMOS CUENTAS CON NIVEL -60* (serán eliminadas sin previo aviso).
-> ⚠️ *NO USAR PORTALES NI HABILIDADES EXTRAS* (si se usan, **se repite sala**).
+📛 TODAS LAS JUGADORAS DEBEN CONTAR CON ASPECTOS DESCARGADOS, DE LO CONTRARIO NO SERÁ VÁLIDO REPETIR SALA.
 
-✅ *SE PUEDE MATAR A JUGADORAS QUE INVADEN Y LUTEAN ZONA RIVAL INTENCIONALMENTE.*
+Reglas del Juego:
 
-🏳️‍🌈 *2 GAY/TRANS POR EQUIPO (MÁXIMO)*
-❌ *NO HOMBRES HETEROS* en el juego.
+▪︎ SE MATA RESTRINGIENDO 1RA. ZONA.
+▪︎ SOLO ALOK Y K.
+▪︎ PROHIBIDO EL USO DE CUALQUIER FRANCO.
+- Si se hace uso de estas armas, ya sea para bajar vida o matar, NO SE REPITE SALA, será punto directo al rival.
+▪︎ PROHIBIDO REVIVIR.
+▪︎ NO MÁS DE 3 ROTES.
+▪︎ PROHIBIDA HORIZONALINA.
+▪︎ NO SVD, NO VSS.
+▪︎ SIN GARITAS, FAROS, CARTELES Y CARROS después de marcar primera zona.
+▪︎ NO EXPLOSIVOS.
+▪︎ NO LANZADORAS PORTÁTILES Y GANCHOS.
+▪︎ NO OTHO/SONIA/RAFAEL/LILA.
+▪︎ 🚫 PROHIBIDA PISTOLA CURATIVA.
+▪︎ NO CUENTAS CON NIVEL -60.
+- SE SACARÁN DE SALA SIN PREVIO AVISO.
+▪︎ NO PORTALES Y HABILIDADES EXTRAS.
+- En caso de usar habilidades extra durante el versus, se repite sala, haya o no afectado al equipo rival. De no hacerlo queda en responsabilidad de cada líder.
 
-💻 *2 PC POR EQUIPO VÁLIDOS*:
-- VS de 12: 2 PCs
-- VS de 16: 3 PCs
-**Antes de iniciar, el equipo debe enviar captura de la cantidad de PCs.** Si se detecta que hay más PCs de los acordados, el equipo contrario puede abandonar el vs y **este no será publicado**.
+Incumplimiento de Reglas:
 
-⏰ *TIEMPOS DE ESPERA*
-- ⏳ *10 MINUTOS* a partir de pasar los datos de la 1ra. sala.
-- ⏳ *5 MINUTOS* entre cada sala.
+🔸️ ES VÁLIDO MATAR JUGADORAS QUE INVADEN Y LUTEAN ZONA RIVAL INTENCIONALMENTE.
 
-🌟 *EN CASO DE PONER TODAS LAS SALAS*:
-- 10 minutos a partir de haber pasado los datos y **3 minutos entre cada sala**.
+Requisitos de Participación:
 
-📌 *LIMITES DE ELIMINACIONES POR VERSUS*:
-- Solo **2 eliminaciones válidas por versus**.
-- La **tercera eliminación será punto para el rival**.
-- Si la sala está **bugueada** y un jugador se revive, tendrán **35 segundos** para eliminar al menos **5 jugadoras** para que la eliminación sea válida.
+▪︎ 🏳️‍🌈 2 GAY / BISEXUAL (MÁXIMO)
+- Las transgéneros serán consideradas como MUJERES y no necesitarán ficha para participar en versus FEMENINOS, siempre que tengan la documentación que lo acredite. Si no la tienen o no quieren mostrarla por privacidad, serán contadas como GAY.
+▪︎ ❌ NO HOMBRES HETEROSEXUALES.
+▪︎ 💻 VÁLIDAS 2 PC POR EQUIPO.
+- VS DE 12 (2PC), VS DE 16 (3PC).
+- Al equipo que le toque hacer salas debe mandar captura de la cantidad ANTES DE INICIAR PRIMERA SALA.
+- Si hay pruebas de que se meten más PC de lo acordado, pueden abandonar el versus y NO SERÁ PUBLICADO POR NINGÚN EQUIPO.
 
-🛑 *NO SE PODRÁ ABANDONAR EL VERSUS DESPUÉS DE JUGAR LA PRIMERA SALA*. Si se abandona, el rival **puede ganar 2-1** por abandono. Si el rival está usando hacks o jugando con heteros, esto puede ser anulado si se prueba con clips.
+⏰ TIEMPO DE ESPERA:
 
-⚠️ *MOTIVOS PARA ROLAR LOGO*:
-- **USO DE HACK**, **ROBO DE LOGOS**, o **JUGAR CON PERSONAS VETADAS** en lo FEM.
-  - **Rolar el logo** de las personas involucradas en el robo de logos.
+    10 min a partir de pasar datos de 1ra. sala.
+    5 min entre cada sala.
+    En caso de poner todas las salas:
+        10 min a partir de haber pasado datos y 3 min entre cada sala.
 
-💬 *Si necesitan resolver alguna situación, pueden contactar con cualquier líder, siempre y cuando sus versus hayan sido agendados con estas reglas.*
+Eliminaciones y Abandonos:
 
---------------------------------------------------
-📲 *Gracias por leer las reglas. ¡Suerte a todas!*
-                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ
+▪︎ SOLO SE PERMITEN 2 ELIMINACIONES POR VERSUS.
+- La tercera será PUNTO PARA EL RIVAL.
+- Esto incluye versus al mejor de 5.
+- PODRÁ SER ANULADO SOLO SI LA SALA ESTÁ BUGUEADA.
+- Si el rival se revive, tendrán 35 segundos para eliminar al menos 5 jugadoras, de lo contrario no será válido. Recuerden siempre sacar clip para comprobarlo.
+▪︎ NO PODRÁN ABANDONAR EL VERSUS DESPUÉS DE HABER JUGADO LA PRIMERA SALA.
+- De lo contrario, el versus SERÁ PUBLICADO 2-1 POR EL RIVAL.
+- Este punto podrá ser anulado si el rival está haciendo uso de hacks o jugando con heteros.
+- Esto deberá ser comprobado con clips y enviados a cualquiera de las líderes de Norte.
+
+⚠️ Motivos Válidos para Rolar Logo:
+
+    Uso de hacks.
+    Robo de logos.
+    Jugar con personas vetadas en lo FEM.
+        Se rolará el logo de la o las personas involucradas en el robo de logos.
+
+Resolución de Situaciones:
+
+Para resolver alguna situación, pueden hacer llegar los detalles a cualquiera de las líderes, siempre y cuando sus versus hayan sido agendados con estas reglas.
+
+⚠️ Chip de Gloo Prohibido:
+
+Solo se puede utilizar el chip amarillo.
+Se repite sala al tener prueba del uso de otros chips (verde, azul, rojo).
+
+Este formato es más estructurado y legible para WhatsApp, con encabezados claros y separación por temas para facilitar la lectura.
+Dijiste:
+pero no agreges nada te texto adicional
+ChatGPT dijo:
+ChatGPT
+
+Aquí tienes el texto tal como lo pediste, con el formato mejorado y sin agregar ninguna palabra adicional:
+
+🔸 LÍDERES FEM 🔸
+
+◼ NEGRO (P. HOMBRE) LADO B
+◻ BLANCO (P. MUJER) LADO A (PONE PRIMERA SALA)
+
+📛 TODAS LAS JUGADORAS DEBEN CONTAR CON ASPECTOS DESCARGADOS, DE LO CONTRARIO NO SERÁ VÁLIDO REPETIR SALA.
+
+▪︎ SE MATA RESTRINGIENDO 1RA. ZONA.
+▪︎ SOLO ALOK Y K.
+▪︎ PROHIBIDO EL USO DE CUALQUIER FRANCO
+
+    Si llegan a hacer uso de estas armas, ya sea bajar vida o matar, no se va a repetir sala, no será necesario eliminarse, SERÁ PUNTO DIRECTO AL RIVAL.
+    ▪︎ PROHIBIDO REVIVIR.
+    ▪︎ NO MÁS DE 3 ROTES.
+    ▪︎ PROHIBIDA HORIZONALINA.
+    ▪︎ NO SVD, NO VSS.
+    ▪︎ SIN GARITAS, FAROS, CARTELES Y CARROS después de marcar primera zona.
+    ▪︎ NO EXPLOSIVOS.
+    ▪︎ NO LANZADORAS PORTÁTILES Y GANCHOS.
+    ▪︎ NO OTHO/SONIA/RAFAEL/LILA.
+    ▪︎ 🚫 PROHIBIDA PISTOLA CURATIVA.
+    ▪︎ NO CUENTAS CON NIVEL -60.
+    SE SACARÁN DE SALA SIN PREVIO AVISO.
+    ▪︎ NO PORTALES Y HABILIDADES EXTRAS.
+    En caso de usar habilidades extra durante el versus, se repite sala, haya o no afectado al equipo rival, de no hacerlo queda en responsabilidad de cada líder.
+
+Incumplimiento de Reglas:
+
+🔸️ ES VÁLIDO MATAR JUGADORAS QUE INVADEN Y LUTEAN ZONA RIVAL INTENCIONALMENTE.
+
+▪︎ 🏳️‍🌈 2 GAY / BISEXUAL (MÁXIMO)
+
+    Las transgéneros serán consideradas como MUJERES y no necesitarán de una ficha para participar en versus FEMENINOS, siempre que tengan la documentación que lo acredite, si no la tiene o no quiere mostrarla por privacidad SI SERÁ CONTADO COMO GAY.
+    ▪︎ ❌ NO HOMBRES HETEROSEXUALES.
+    ▪︎ 💻 VÁLIDAS 2 PC POR EQUIPO.
+    VS DE 12 (2PC), VS DE 16 (3PC).
+    Al equipo que le toque hacer salas debe mandar captura de la cantidad ANTES DE INICIAR PRIMERA SALA.
+    Si hay alguna prueba de que el equipo mete más PC de lo acordado, pueden abandonar el vs y este NO PODRÁ SER PUBLICADO POR NINGÚN EQUIPO.
+
+⏰ TIEMPO DE ESPERA:
+
+    10MIN. A PARTIR DE PASAR DATOS DE 1RA. SALA.
+    5 MIN ENTRE CADA SALA.
+    EN CASO DE PONER TODAS LAS SALAS:
+    10MIN A PARTIR DE HABER PASADO DATOS Y 3MIN ENTRE CADA SALA.
+
+▪︎ SERÁN VÁLIDAS SOLO 2 ELIMINACIONES POR VERSUS, LA TERCERA SERÁ PUNTO PARA EL RIVAL, ESTO INCLUYE VERSUS AL MEJOR DE 5.
+
+    (PODRÁ SER ANULADO SOLO SI LA SALA ESTÁ BUGUEADA, EN DADO CASO QUE EL RIVAL SE REVIVA TENDRÁN 35 SEGUNDOS PARA ELIMINARSE AL MENOS 5 JUGADORAS, DE LO CONTRARIO NO SERÁ VÁLIDO, RECUERDEN SIEMPRE SACAR CLIP PARA PODER COMPROBARLO.)
+
+▪︎ NO PODRÁN ABANDONAR VERSUS DESPUÉS DE HABER JUGADO PRIMER SALA DE LO CONTRARIO EL VERSUS PODRÁ SER PUBLICADO 2-1 POR EL RIVAL.
+
+    (ESTE PUNTO PODRÁ SER ANULADO SI EL RIVAL ESTÁ HACIENDO USO DE HACKS O JUGANDO CON HETEROS, ESTO TENDRÁ QUE ESTAR COMPROBADO CON CLIPS, MANDARLOS A CUALQUIERA DE LAS LÍDERES DE NORTE PARA ASÍ LLEGAR A UNA SOLUCIÓN.)
+    PUBLICAR VS NO SE INCLUYE CUANDO LA CANTIDAD DE PC HA SIDO SOBREPASADO. CON PRUEBAS.
+
+⚠️ MOTIVOS VÁLIDOS PARA ROLAR LOGO:
+
+    USO DE HACK, ROBO DE LOGOS Y JUGAR CON PERSONAS VETADAS EN LO FEM.
+        (SERÁ ROLADO EL LOGO DE LA O LAS PERSONAS INVOLUCRADAS EN EL ROBO DE LOGOS)
+
+PARA RESOLVER ALGUNA SITUACIÓN, PUEDEN HACERLO LLEGAR A CUALQUIERA DE LAS LÍDERES, SIEMPRE Y CUANDO SUS VERSUS HAYAN SIDO AGENDADOS CON ESTAS REGLAS.
+
+⚠️ CHIP DE GLOO QUEDA PROHIBIDO
+Solo se puede utilizar el amarillo.
+Se repite sala al tener prueba del uso de los otros chips (verde, azul, rojo).
 `;
 
     // Enviar el mensaje con menciones a todos los participantes
