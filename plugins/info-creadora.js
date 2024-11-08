@@ -35,8 +35,7 @@ Requisitos para el Uso del Bot:
         No se permite el envío de mensajes repetitivos o irrelevantes.
         El bot está diseñado para interactuar de forma productiva y no soporta abuso ni spam en los grupos.
 
-    2. Grupo Único:
-        El bot solo puede ser usado en un grupo a la vez. Evita compartir el bot en varios grupos al mismo tiempo para evitar errores de sincronización.
+    2. Grupo Único
 
     3. Versión Beta:
         Ten en cuenta que el bot está en versión beta, por lo que puede tener fallos ocasionales o comportamientos inesperados. Agradecemos tu comprensión mientras seguimos mejorando y optimizando el bot.
@@ -61,12 +60,8 @@ Contáctame y sugiéreme comandos que te gustaría ver en el bot.
         let imagePath = './media/menus/img1.jpg'; // Asegúrate de que esta ruta sea correcta en tu sistema
 
         // Enviar el mensaje con la imagen y el texto
-        await conn.sendMessage(m.chat, {
-            text: cat,
-            image: { url: imagePath }, // Enviar la imagen desde la ruta
-            caption: cat, // Añadir el texto como pie de foto de la imagen
-            mentions: [m.sender] // Mencionar al usuario
-        });
+
+        await conn.sendFile(m.chat, imagen12, 'lp.jpg', cat);
 
         // Enviar solo el contacto con la estructura proporcionada
         await conn.sendContactArray(m.chat, [official[3]], null, { quoted: fkontak });
