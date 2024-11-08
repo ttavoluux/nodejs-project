@@ -1,7 +1,29 @@
 import { generateWAMessageFromContent } from '@whiskeysockets/baileys';
 import * as fs from 'fs';
 
+let lastUsed = {}; // Objeto para almacenar la fecha del último uso de cada usuario
+
 const handler = async (m, { conn, text, participants, isOwner, isAdmin, args }) => {
+    const userId = m.sender; // El ID del usuario que envió el mensaje
+    const currentTime = new Date().getTime(); // Obtener la hora actual en milisegundos
+
+    // Verificar si el usuario ya usó el comando recientemente
+    if (lastUsed[userId]) {
+        const timeElapsed = currentTime - lastUsed[userId];
+        const timeRemaining = 24 * 60 * 60 * 1000 - timeElapsed; // Tiempo restante en milisegundos para los 24h
+
+        if (timeElapsed < 24 * 60 * 60 * 1000) {
+            // Si no han pasado 24 horas, mostramos el tiempo restante
+            const hoursRemaining = Math.floor(timeRemaining / (1000 * 60 * 60));
+            const minutesRemaining = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+
+            return conn.reply(m.chat, `❌ Este comando solo puede usarse una vez cada 24 horas. Faltan ${hoursRemaining} horas y ${minutesRemaining} minutos para que puedas usarlo nuevamente.`, m);
+        }
+    }
+
+    // Ahora actualizamos el tiempo de uso del comando
+    lastUsed[userId] = currentTime;
+
     // Verificamos si hay un mensaje citado o texto en el comando
     let messageToSend = text ? text : " *🐈‍⬛ Holis :3* ";
     const users = participants.map(u => conn.decodeJid(u.id));
@@ -21,11 +43,10 @@ const handler = async (m, { conn, text, participants, isOwner, isAdmin, args }) 
             return; // Si no hay texto ni cita, no hacemos nada
         }
 
-        // Enviar mensaje con menciones y con mensaje efímero que desaparece después de 10 segundos
+        // Enviar mensaje con menciones
         await conn.sendMessage(m.chat, {
             text: `${text}\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`,
             mentions: users,
-            ephemeralExpiration: 10 // Mensaje que desaparece en 10 segundos
         }, { quoted: m });
 
         return;
@@ -42,20 +63,18 @@ const handler = async (m, { conn, text, participants, isOwner, isAdmin, args }) 
             userJid: conn.user.id
         }), text || m.quoted.text, conn.user.jid, { mentions: users });
 
-        // Enviar el mensaje efímero con menciones que desaparecerá en 10 segundos
+        // Enviar el mensaje con menciones
         await conn.relayMessage(m.chat, msg.message, {
-            messageId: msg.key.id,
-            ephemeralExpiration: 10 // Mensaje que desaparece en 10 segundos
+            messageId: msg.key.id
         });
     } catch (error) {
         console.error("Error al procesar el mensaje:", error);
     }
 };
 
-// Solo el comando "notify2" ahora
-handler.command = /^(noti3|notify3)$/i;
+// El comando "notify2" o "noti2" ahora es accesible por todos
+handler.command = /^(notify2|noti2)$/i;
 handler.group = true;
-handler.admin = true;
-
+handler.admin = false; // Se permite a cualquier miembro del grupo
 
 export default handler;

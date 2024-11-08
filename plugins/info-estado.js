@@ -29,7 +29,7 @@ let estado = `💗 *¡Hola!* ${name}
 > new .clima
 > new .horoscopo
 > (beta) new .noti2 "x2 rapido que notify"
-> (beta) new .noti3 "la notificacion desaparece despues de 10s"
+> (beta) new .noti3 "cualquira lo puede usar una cada 24h"
 
 *Ig: arlenny.mx*
 *Contacto: wa.me/5614236722*
