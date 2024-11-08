@@ -28,6 +28,8 @@ let estado = `💗 *¡Hola!* ${name}
 > .peliculas add +150
 > new .clima
 > new .horoscopo
+> (beta) new .noti2 "x2 rapido que notify"
+> (beta) new .noti3 "la notificacion desaparece despues de 10s"
 
 *Ig: arlenny.mx*
 *Contacto: wa.me/5614236722*
