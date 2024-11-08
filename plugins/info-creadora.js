@@ -1,54 +1,82 @@
-import fetch from 'node-fetch'
+let handler = async (m, { conn }) => {
+    try {
+        // Definir el contacto (fkontak) que se enviará
+        let fkontak = {
+            "key": {
+                "participants": "0@s.whatsapp.net",
+                "remoteJid": "status@broadcast",
+                "fromMe": false,
+                "id": "Halo"
+            },
+            "message": {
+                "contactMessage": {
+                    "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`
+                }
+            },
+            "participant": "0@s.whatsapp.net"
+        }
 
-let handler = async (m, { conn, usedPrefix, text, args, command }) => {
-try{
-let contact, number, ofc, nombre, description, correo, lugar, enlace, biog
-let fkontak = { "key": { "participants":"0@s.whatsapp.net", "remoteJid": "status@broadcast", "fromMe": false, "id": "Halo" }, "message": { "contactMessage": { "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD` }}, "participant": "0@s.whatsapp.net" }
-let pp = gataImg.getRandom()
-const cat = `${packname}
-* *Version: ${vs}*
+        // Definir el mensaje que se enviará con el contacto
+        const cat = `${packname} 
+* *Versión: ${vs}*
 
-❤ Holis :3 
+❤ Holis :3
 
-*Arlette-bot es un bot (open source) Gratuito para adquirirlo contacta a mi desarrolladora*
+Arlette-bot es un bot (open source) gratuito. Si deseas adquirirlo, contacta a mi desarrolladora.
 
-*CENTER ARLENNY*
-*arlettebot@gmail.com*
+CENTER ARLENNY
+arlettebot@gmail.com
+Adquirir bot:
+https://wa.me/5614236722
 
-*Adquirir bot :*
-*${asistencia}*
+Requisitos para el Uso del Bot:
 
-> *EL BOT SE MANTENDRÁ ONLINE Y SE LE DARA SOPORTE EL MAYOR TIEMPO POSIBLE EN CASO SE QUERER COLABORAR, CONTACTAME :3*
-`
-let biografiaBot = await conn.fetchStatus(conn.user.jid.split('@')[0] + '@s.whatsapp.net').catch(_ => 'undefined')
-let bioBot = biografiaBot.status?.toString() || `${desc2 == '' ? lenguajeGB.smsContacto1() : desc2}`
+    1. Evitar el Spam:
+        No se permite el envío de mensajes repetitivos o irrelevantes.
+        El bot está diseñado para interactuar de forma productiva y no soporta abuso ni spam en los grupos.
 
-let contacts = global.official.filter(c => c[2] === 1)
-let lista = []
-for (let i = 0; i < contacts.length; i++) {
-contact = contacts[i]
-number = String(contact[0])
-ofc = await conn.getName(number + '@s.whatsapp.net') //String(contact[1])
-let biografia = await conn.fetchStatus(number +'@s.whatsapp.net').catch(_ => 'undefined')
-let bio = biografia.status?.toString() || `${desc2 == '' ? lenguajeGB.smsContacto2() : desc2}`
+    2. Grupo Único:
+        El bot solo puede ser usado en un grupo a la vez. Evita compartir el bot en varios grupos al mismo tiempo para evitar errores de sincronización.
 
-nombre = official[0][0] == String(contact[0]) ? official[0][1] : official[1][0] == String(contact[0]) ? official[1][1] : official[2][0] == String(contact[0]) ? official[2][1] : official[3][0] == String(contact[0]) ? official[3][1] : lenguajeGB.smsContacto3()
-description = official[0][0] == String(contact[0]) ? 'Solo temas de GataBot' : official[1][0] == String(contact[0]) ? lenguajeGB.smsContacto4() : official[2][0] == String(contact[0]) ? lenguajeGB.smsContacto4() : official[3][0] == String(contact[0]) ? lenguajeGB.smsContacto4() : desc === '' ? lenguajeGB.smsContacto5() : desc
-correo = official[0][0] == String(contact[0]) ? 'socialplus.gata@gamil.com' : official[1][0] == String(contact[0]) ? 'thelolibotm@gmail.com' : official[2][0] == String(contact[0]) ? 'alexismaldonado90700@gmail.com' : mail === '' ? lenguajeGB.smsContacto6() : mail
-lugar = official[0][0] == String(contact[0]) ? '馃嚜馃嚚 Ecuador' : official[1][0] == String(contact[0]) ? '馃嚘馃嚪 Argentina' : official[2][0] == String(contact[0]) ? '馃嚥馃嚱 M茅xico' : official[3][0] == String(contact[0]) ? '馃嚙馃嚪 Brazil' : country === '' ? lenguajeGB.smsContacto7() : country
-enlace = official[0][0] == String(contact[0]) ? 'https://github.com/GataNina-Li' : official[1][0] == String(contact[0]) ? 'https://github.com/elrebelde21' : official[2][0] == String(contact[0]) ? 'https://github.com/Azami19' : official[3][0] == String(contact[0]) ? 'https://github.com/Abiguelreyes75' : md
+    3. Versión Beta:
+        Ten en cuenta que el bot está en versión beta, por lo que puede tener fallos ocasionales o comportamientos inesperados. Agradecemos tu comprensión mientras seguimos mejorando y optimizando el bot.
 
-lista.push([number, ofc, nombre, description, official[3][0] == String(contact[0]) ? null : correo, lugar, enlace, bio, official[1][0] == String(contact[0]) ? 'https://www.youtube.com/@elrebelde.21' : null]) }
-lista.push([conn.user.jid.split('@')[0], await conn.getName(conn.user.jid), packname, lenguajeGB.smsContacto8(), mail === '' ? 'centergatabot@gmail.com' : mail, lenguajeGB.smsContacto7(), md, bioBot, yt, ig, fb, paypal, nna])
-await conn.sendFile(m.chat, pp, 'lp.jpg', cat, fkontak, false, { contextInfo: {externalAdReply :{ mediaUrl: null, mediaType: 1, description: null, title: gt, body: ' 馃樆 饾棪饾槀饾椊饾棽饾椏 饾棜饾棶饾榿饾棶饾棔饾椉饾榿-饾棤饾棗 - 饾棯饾椀饾棶饾榿饾榾饾棓饾椊饾椊 ', previewType: 0, thumbnail: imagen4, sourceUrl: accountsgb.getRandom()}}})
-await conn.sendContactArray(m.chat, official[3], null, { quoted: fkontak })
+Soporte y Colaboración:
 
-} catch (e) {
-await m.reply(lenguajeGB['smsMalError3']() + '\n*' + lenguajeGB.smsMensError1() + '*\n*' + usedPrefix + `${lenguajeGB.lenguaje() == 'es' ? 'reporte' : 'report'}` + '* ' + `${lenguajeGB.smsMensError2()} ` + usedPrefix + command)
-console.log(`鉂椻潡 ${lenguajeGB['smsMensError2']()} ${usedPrefix + command} 鉂椻潡`)
-console.log(e)}}
-handler.help = ['owner', 'creator']
-handler.tags = ['info']
-handler.command = /^(owner)$/i
+    El bot se mantendrá online y se dará soporte el mayor tiempo posible. Si deseas colaborar o necesitas ayuda, no dudes en contactarme.
 
-export default handler
+💻 Para adquirir el bot o resolver dudas:
+📧 arlettebot@gmail.com
+📲 Adquirir Bot
+
+Recuerda usar el comando .menu para ver todas las opciones disponibles del bot. 😊
+
+¿Tienes alguna sugerencia de comandos?
+¡Me encantaría escuchar tus ideas! 😄
+Contáctame y sugiéreme comandos que te gustaría ver en el bot.
+
+⚠️ *Recuerda que actualmente es un bot gratuito y está prohibida su venta. Si alguien te ofrece el bot por un costo, no es oficial y podría ser una estafa.*`
+
+        // Ruta de la imagen a adjuntar
+        let imagePath = './media/menus/img1.jpg'; // Asegúrate de que esta ruta sea correcta en tu sistema
+
+        // Enviar el mensaje con la imagen y el texto
+        await conn.sendMessage(m.chat, {
+            text: cat,
+            image: { url: imagePath }, // Enviar la imagen desde la ruta
+            caption: cat, // Añadir el texto como pie de foto de la imagen
+            mentions: [m.sender] // Mencionar al usuario
+        });
+
+        // Enviar solo el contacto con la estructura proporcionada
+        await conn.sendContactArray(m.chat, [official[3]], null, { quoted: fkontak });
+
+    } catch (e) {
+        console.log('Error:', e);
+    }
+}
+
+handler.command = /^(owner)$/i; // Cambia el comando según tu preferencia
+
+export default handler;
+
