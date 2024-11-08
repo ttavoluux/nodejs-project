@@ -1,16 +1,15 @@
 let handler = async (m, { conn, text, participants, args, command }) => {
     // Definir texto base y etiquetas
-    const textoBase = '🌸 Holis 🌸';
-    const textoAviso = '🌸 AVISO :';
+    const textoBase = '🌸 ¡Hola, chicas! 🌸';
+    const textoAviso = '🌸 AVISO IMPORTANTE: 🌸';
     const inv = '```';  // Usado para dar formato a las secciones
-    const act = '`';     // Usado para marcar acciones especiales
+    const act = '⏩';    // Usado para marcar acciones especiales
 
-    // Definir el texto principal según si se pasa un argumento
+    // Si el comando tiene texto adicional, cambiar la estructura
     let texto = textoBase;
     let texto3 = ' ';
     let texto4 = ' ';
 
-    // Si se pasa un texto en el comando, ajustar
     if (text.length > 1) {
         texto = textoAviso;
         texto3 = '*!';
@@ -20,61 +19,71 @@ let handler = async (m, { conn, text, participants, args, command }) => {
     // Unir los argumentos en un solo mensaje
     const pesan = args.join(' ');
 
-    // Construcción de las reglas en el formato adecuado
-    let reglas = `${inv}𝐑𝐄𝐆𝐋𝐀𝐒 𝐋𝐈́𝐃𝐄𝐑𝐄𝐒 𝐅𝐄𝐌 (26/08/24)${inv}\n`;
+    // Construcción de las reglas con un formato atractivo
+    let reglas = `${inv}✨ 𝐑𝐄𝐆𝐋𝐀𝐒 𝐋𝐈́𝐃𝐄𝐑𝐄𝐒 𝐅𝐄𝐌 (26/08/24) ✨${inv}\n`;
 
     reglas += `
-> ◼ *NEGRO _(P. HOMBRE)_ LADO B*
-> ◻ *BLANCO _(P. MUJER)_ LADO A* _(PONE PRIMERA SALA)_
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+> 🔘 *NEGRO _(P. HOMBRE)_ LADO B*
+> ⚪ *BLANCO _(P. MUJER)_ LADO A* _(PONE PRIMERA SALA)_
 
-📛 ${act}TODAS LAS JUGADORAS DEBEN CONTAR CON ASPECTOS DESCARGADOS, DE LO CONTRARIO NO SERÁ VÁLIDO REPETIR SALA.${act}
+📛 ${act}TODAS LAS JUGADORAS DEBEN TENER LOS ASPECTOS DESCARGADOS, SI NO ES ASÍ, NO SE REPETIRÁ LA SALA.${act}
 
-- SE MATA RESTRINGIENDO 1RA. ZONA.
-- SOLO ALOK Y K.
-- *PROHIBIDO EL USO DE CUALQUIER FRANCO* Si llegan a hacer uso de estas armas, ya sea bajar vida o matar, no se va a repetir sala, no será necesario eliminarse, *SERÁ PUNTO DIRECTO AL RIVAL*.
-- ︎PROHIBIDO REVIVIR.
-- ︎NO MAS DE 3 ROTES.
-- ︎PROHIBIDA HORIZONALINA.
-- NO SVD, NO VSS.
-- SIN GARITAS, FAROS Y CARTELES.
-- NO EXPLOSIVOS.
-- NO LANZADORAS PORTÁTILES Y GANCHOS.
-- NO OTHO/SONIA/RAFAEL.
-- 🚫 PROHIBIDA PISTOLA CURATIVA.
-- NO CUENTAS CON NIVEL -60. (*SE SACARAN DE SALA SIN PREVIO AVISO*).
-- NO PORTALES Y HABILIDADES EXTRAS *(en caso de usar habilidades extra durante el versus, se repite sala, haya o no afectado al equipo rival, de no hacerlo queda en responsabilidad de cada líder).*
+🔴 *REGLAS ESPECIALES*
+> ⛔ *PROHIBIDO EL USO DE FRANCO* Si se utiliza alguna de estas armas para bajar vida o matar, **será punto directo al rival**.
+> 🚫 *NO REVIVIR* en ninguna circunstancia.
+> 🚷 *NO MÁS DE 3 ROTES* por equipo.
+> 🔞 *PROHIBIDA HORIZONALINA* (no usar esa estrategia).
+> 🛑 *SIN SVD, NO VSS*.
+> ✋ *SIN GARITAS, FAROS Y CARTELES*.
+> 💥 *NO EXPLOSIVOS* (incluyendo lanzadoras y ganchos).
+> 🚫 *NO OTHO/SONIA/RAFAEL* en el juego.
+> 🚫 *PISTOLA CURATIVA* está prohibida.
+> 🔴 *NO ACEPTAMOS CUENTAS CON NIVEL -60* (serán eliminadas sin previo aviso).
+> ⚠️ *NO USAR PORTALES NI HABILIDADES EXTRAS* (si se usan, **se repite sala**).
 
-> ES VÁLIDO MATAR JUGADORAS QUE INVADEN Y LUTEAN ZONA RIVAL *INTENCIONALMENTE.*
+✅ *SE PUEDE MATAR A JUGADORAS QUE INVADEN Y LUTEAN ZONA RIVAL INTENCIONALMENTE.*
 
-🏳️‍🌈 *2 GAY / TRANS POR EQUIPO* _(MÁXIMO)_
-❌ *NO HOMBRES HETEROS*
-> 💻 *VÁLIDAS 2 PC POR EQUIPO* _VS DE 12 (2PC) VS DE 16 (3PC)._ Al equipo que le toque hacer salas debe mandar captura de la cantidad *ANTES DE INICIAR PRIMER SALA*.
-> Si hay alguna prueba de que el equipo mete más PC de lo acordado, pueden abandonar el vs *y este NO PODRÁ SER PUBLICADO POR NINGÚN EQUIPO.*
+🏳️‍🌈 *2 GAY/TRANS POR EQUIPO (MÁXIMO)*
+❌ *NO HOMBRES HETEROS* en el juego.
 
-⏰ *TIEMPO DE ESPERA*
-- ${act}10MIN. A PARTIR DE PASAR DATOS DE 1RA. SALA.${act}
-- ${act}5 MIN ENTRE CADA SALA.${act}
+💻 *2 PC POR EQUIPO VÁLIDOS*:
+- VS de 12: 2 PCs
+- VS de 16: 3 PCs
+**Antes de iniciar, el equipo debe enviar captura de la cantidad de PCs.** Si se detecta que hay más PCs de los acordados, el equipo contrario puede abandonar el vs y **este no será publicado**.
 
-*EN CASO DE PONER TODAS LAS SALAS:* _10MIN A PARTIR DE HABER PASADO DATOS Y 3MIN ENTRE CADA SALA._
+⏰ *TIEMPOS DE ESPERA*
+- ⏳ *10 MINUTOS* a partir de pasar los datos de la 1ra. sala.
+- ⏳ *5 MINUTOS* entre cada sala.
 
-> 📌 *SERÁN VÁLIDAS SOLO 2 ELIMINACIONES _POR VERSUS_, LA TERCERA SERÁ PUNTO PARA EL RIVAL, ESTO INCLUYE VERSUS AL MEJOR DE 5.* _(PODRÁ SER ANULADO SOLO SI LA SALA ESTA BUGUEADA, EN DADO CASO QUE EL RIVAL SE REVIVA TENDRÁN 35 SEGUNDOS PARA ELIMINARSE AL MENOS 5 JUGADORAS, DE LO CONTRARIO NO SERÁ VÁLIDO, RECUERDEN SIEMPRE SACAR *CLIP* PARA PODER COMPROBARLO.)_
+🌟 *EN CASO DE PONER TODAS LAS SALAS*:
+- 10 minutos a partir de haber pasado los datos y **3 minutos entre cada sala**.
 
-> 📌 *NO PODRÁN ABANDONAR VERSUS DESPUÉS DE HABER JUGADO PRIMER SALA DE LO CONTRARIO EL VERSUS PODRÁ SER PUBLICADO 2-1 POR EL RIVAL.* _(ESTE PUNTO PODRÁ SER ANULADO SI EL RIVAL ESTA HACIENDO USO DE HACKS O JUGANDO CON HETEROS, ESTO TENDRÁ QUE ESTAR COMPROBADO CON CLIPS, MANDARLOS A CUALQUIERA DE LAS LÍDERES DE NORTE PARA ASÍ LLEGAR A UNA SOLUCIÓN.)_
-*_- PUBLICAR VS NO SE INCLUYE CUANDO LA CANTIDAD DE PC HA SIDO SOBREPASADO._ CON PRUEBAS.*
+📌 *LIMITES DE ELIMINACIONES POR VERSUS*:
+- Solo **2 eliminaciones válidas por versus**.
+- La **tercera eliminación será punto para el rival**.
+- Si la sala está **bugueada** y un jugador se revive, tendrán **35 segundos** para eliminar al menos **5 jugadoras** para que la eliminación sea válida.
 
-⚠️ *MOTIVOS VÁLIDOS PARA ROLAR LOGO: USO DE HACK, ROBO DE LOGOS Y JUGAR CON PERSONAS VETADAS EN LO FEM.*  _(SERÁ ROLADO EL LOGO DE LA O LAS PERSONAS INVOLUCRADAS EN EL ROBO DE LOGOS)_ ⚠️
+🛑 *NO SE PODRÁ ABANDONAR EL VERSUS DESPUÉS DE JUGAR LA PRIMERA SALA*. Si se abandona, el rival **puede ganar 2-1** por abandono. Si el rival está usando hacks o jugando con heteros, esto puede ser anulado si se prueba con clips.
 
-*PARA PODER RESOLVER ALGUNA SITUACIÓN, PUEDEN HACERLO LLEGAR A CUALQUIERA DE LAS LÍDERES, SIEMPRE Y CUANDO SUS VERSUS HAYAN SIDO AGENDADOS CON ESTAS REGLAS*
+⚠️ *MOTIVOS PARA ROLAR LOGO*:
+- **USO DE HACK**, **ROBO DE LOGOS**, o **JUGAR CON PERSONAS VETADAS** en lo FEM.
+  - **Rolar el logo** de las personas involucradas en el robo de logos.
+
+💬 *Si necesitan resolver alguna situación, pueden contactar con cualquier líder, siempre y cuando sus versus hayan sido agendados con estas reglas.*
+
+--------------------------------------------------
+📲 *Gracias por leer las reglas. ¡Suerte a todas!*
+                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ
 `;
-
-    // Agregar pie de página
-    reglas += `\n\n\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
 
     // Enviar el mensaje con menciones a todos los participantes
     conn.sendMessage(m.chat, { text: reglas, mentions: participants.map(a => a.id) });
 };
 
 handler.command = /^(reglasfem|lideresfem|reglasvs|lnf|lideresnorte|reglaslideres|llf|nfl)$/i;
+handler.admin = true;
 handler.group = true;
+handler.botAdmin = true;
 
 export default handler;
