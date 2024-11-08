@@ -61,7 +61,7 @@ Contáctame y sugiéreme comandos que te gustaría ver en el bot.
 
         // Enviar el mensaje con la imagen y el texto
 
-        await conn.sendFile(m.chat, imagen12, 'lp.jpg', cat);
+        await conn.sendFile(m.chat, imagen4, 'lp.jpg', cat);
 
         // Enviar solo el contacto con la estructura proporcionada
         await conn.sendContactArray(m.chat, [official[3]], null, { quoted: fkontak });
