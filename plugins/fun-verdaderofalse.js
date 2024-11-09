@@ -2,39 +2,66 @@ let currentQuestion = null; // Variable para almacenar la pregunta actual
 let gameActive = false; // Para saber si el juego está activo
 let gameTimer = null; // Para almacenar el temporizador del juego
 let winner = null; // Para almacenar al ganador (si hay uno)
+let selectedCategory = null; // Almacena la categoría seleccionada por el jugador
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
-    // Preguntas y respuestas del juego (solo verdadero o falso)
-    const preguntas = [
-        {
-            pregunta: "La fotosíntesis es el proceso por el cual las plantas producen su alimento utilizando luz solar.",
-            respuestaCorrecta: "verdadero"
-        },
-        {
-            pregunta: "El 14 de febrero se celebra el Día del Trabajo.",
-            respuestaCorrecta: "falso"
-        },
-        {
-            pregunta: "Gabriel García Márquez fue el autor de 'Cien años de soledad'.",
-            respuestaCorrecta: "verdadero"
-        },
-        {
-            pregunta: "Un agujero negro es una región en el espacio donde la gravedad es tan fuerte que nada puede escapar.",
-            respuestaCorrecta: "verdadero"
-        },
-        {
-            pregunta: "El Internet es solo una red de cables que conecta todos los países del mundo.",
-            respuestaCorrecta: "falso"
-        },
-        {
-            pregunta: "Pablo Picasso fue quien pintó la 'Guernica'.",
-            respuestaCorrecta: "verdadero"
-        },
-        {
-            pregunta: "El fútbol se originó en Francia.",
-            respuestaCorrecta: "falso"
-        },
-    ];
+    // Preguntas organizadas por categorías
+    const preguntas = {
+        matematicas: [
+            {
+                pregunta: "El resultado de 5 + 3 es 8.",
+                respuestaCorrecta: "verdadero"
+            },
+            {
+                pregunta: "El número Pi es aproximadamente 3.4.",
+                respuestaCorrecta: "falso"
+            },
+            {
+                pregunta: "El área de un círculo es igual a pi multiplicado por el radio al cuadrado.",
+                respuestaCorrecta: "verdadero"
+            },
+            {
+                pregunta: "La raíz cuadrada de 16 es 4.",
+                respuestaCorrecta: "verdadero"
+            }
+        ],
+        quimica: [
+            {
+                pregunta: "El agua tiene la fórmula H2O.",
+                respuestaCorrecta: "verdadero"
+            },
+            {
+                pregunta: "El oxígeno es un gas noble.",
+                respuestaCorrecta: "falso"
+            },
+            {
+                pregunta: "El oro es un metal que no se oxida fácilmente.",
+                respuestaCorrecta: "verdadero"
+            },
+            {
+                pregunta: "Los átomos de hidrógeno tienen 2 protones.",
+                respuestaCorrecta: "falso"
+            }
+        ],
+        anime: [
+            {
+                pregunta: "Naruto Uzumaki es el protagonista del anime 'Naruto'.",
+                respuestaCorrecta: "verdadero"
+            },
+            {
+                pregunta: "En el anime 'Dragon Ball Z', Goku tiene una hermana llamada Raditz.",
+                respuestaCorrecta: "falso"
+            },
+            {
+                pregunta: "El personaje de Luffy es el protagonista de 'One Piece'.",
+                respuestaCorrecta: "verdadero"
+            },
+            {
+                pregunta: "En 'Attack on Titan', los titanes son seres humanos.",
+                respuestaCorrecta: "falso"
+            }
+        ]
+    };
 
     // Iniciar la trivia con el comando .verdaderofalso
     if (command === 'verdaderofalso') {
@@ -42,7 +69,33 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
             return conn.reply(m.chat, '¡Ya hay una trivia en curso! Espera a que termine.', m);
         }
 
-        const preguntaAleatoria = preguntas[Math.floor(Math.random() * preguntas.length)];
+        // Crear botones para seleccionar la categoría
+        const buttonMessage = {
+            text: "¡Elige una categoría para comenzar el juego!",
+            footer: "Selecciona una categoría para comenzar:",
+            buttons: [
+                { buttonId: `${usedPrefix}categoria matematicas`, buttonText: { displayText: "Matemáticas" }, type: 1 },
+                { buttonId: `${usedPrefix}categoria quimica`, buttonText: { displayText: "Química" }, type: 1 },
+                { buttonId: `${usedPrefix}categoria anime`, buttonText: { displayText: "Anime" }, type: 1 }
+            ],
+            headerType: 1
+        };
+        return conn.reply(m.chat, buttonMessage, m);
+    }
+
+    // Selección de categoría
+    if (command.startsWith('categoria')) {
+        if (gameActive) {
+            return conn.reply(m.chat, '¡Ya hay una trivia en curso! Espera a que termine.', m);
+        }
+
+        const categoria = command.split(' ')[1];
+        if (!preguntas[categoria]) {
+            return conn.reply(m.chat, 'Categoría no válida. Elige entre: matematicas, quimica, anime.', m);
+        }
+
+        selectedCategory = categoria; // Guardamos la categoría seleccionada
+        const preguntaAleatoria = preguntas[categoria][Math.floor(Math.random() * preguntas[categoria].length)];
         currentQuestion = preguntaAleatoria; // Guardamos la pregunta actual
         winner = null; // Reseteamos el ganador al iniciar un nuevo juego
         gameActive = true; // Marcamos el juego como activo
@@ -106,8 +159,8 @@ Ejemplo: ${usedPrefix}resp verdadero
     }
 };
 
-handler.command = ['verdaderofalso', 'resp']; // Comandos para iniciar la trivia y para responder
-handler.help = ['verdaderofalso', 'resp']; // Ayuda para ambos comandos
+handler.command = ['verdaderofalso', 'resp', 'categoria']; // Comandos para iniciar la trivia y para responder
+handler.help = ['verdaderofalso', 'resp', 'categoria']; // Ayuda para todos los comandos
 handler.tags = ['juegos']; // Etiqueta de juegos
 
 export default handler;

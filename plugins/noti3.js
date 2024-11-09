@@ -73,7 +73,7 @@ const handler = async (m, { conn, text, participants, isOwner, isAdmin, args }) 
 };
 
 // El comando "notify2" o "noti2" ahora es accesible por todos
-handler.command = /^(notify3|noti3|6)$/i;
+handler.command = /^(notify3|noti3)$/i;
 handler.group = true;
 handler.admin = false; // Se permite a cualquier miembro del grupo
 
