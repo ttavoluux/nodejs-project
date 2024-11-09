@@ -129,7 +129,8 @@ Ejemplo: ${usedPrefix}resp verdadero
             return conn.reply(m.chat, `¡No hay una trivia activa! Usa el comando ${usedPrefix}verdaderofalso para comenzar el juego.`, m);
         }
 
-        if (!text) {
+        // Verificar que el texto sea una respuesta válida
+        if (!text || (text.toLowerCase() !== "verdadero" && text.toLowerCase() !== "falso")) {
             return conn.reply(m.chat, `Por favor, responde con "verdadero" o "falso". Ejemplo: ${usedPrefix}resp verdadero`, m);
         }
 
@@ -141,20 +142,16 @@ Ejemplo: ${usedPrefix}resp verdadero
         const respuestaCorrecta = currentQuestion.respuestaCorrecta.toLowerCase();
 
         // Verificamos si la respuesta del usuario es válida (verdadero o falso)
-        if (respuestaUsuario === "verdadero" || respuestaUsuario === "falso") {
-            if (respuestaUsuario === respuestaCorrecta) {
-                winner = m.sender; // El jugador que respondió correctamente es el ganador
-                clearTimeout(gameTimer); // Detenemos el temporizador
-                conn.reply(m.chat, `¡Correcto! La respuesta es ${respuestaCorrecta.charAt(0).toUpperCase() + respuestaCorrecta.slice(1)}. 🎉 ${m.pushName} ha ganado el juego y recibe un diamante. 💎`, m);
-                // Otorgamos el diamante al ganador
-                global.db.data.users[m.sender].limit += 1;
-                gameActive = false; // Terminamos el juego
-                currentQuestion = null; // Limpiamos la pregunta
-            } else {
-                return conn.reply(m.chat, `¡Incorrecto! La respuesta correcta era "${respuestaCorrecta}". 😞`, m);
-            }
+        if (respuestaUsuario === respuestaCorrecta) {
+            winner = m.sender; // El jugador que respondió correctamente es el ganador
+            clearTimeout(gameTimer); // Detenemos el temporizador
+            conn.reply(m.chat, `¡Correcto! La respuesta es ${respuestaCorrecta.charAt(0).toUpperCase() + respuestaCorrecta.slice(1)}. 🎉 ${m.pushName} ha ganado el juego y recibe un diamante. 💎`, m);
+            // Otorgamos el diamante al ganador
+            global.db.data.users[m.sender].limit += 1;
+            gameActive = false; // Terminamos el juego
+            currentQuestion = null; // Limpiamos la pregunta
         } else {
-            return conn.reply(m.chat, `Por favor, responde con "verdadero" o "falso". Ejemplo: ${usedPrefix}resp verdadero`, m);
+            return conn.reply(m.chat, `¡Incorrecto! La respuesta correcta era "${respuestaCorrecta}". 😞`, m);
         }
     }
 };
