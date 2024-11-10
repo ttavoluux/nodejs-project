@@ -74,10 +74,14 @@ const handler = async (m, { conn, text, participants, isOwner, isAdmin, args }) 
             return; // Si no hay texto ni cita, no hacemos nada
         }
         let messageToSend = text ? text : " *🐈‍⬛ Holis :3* ";
-        if (handler.command === '6') {
+        if (command == '6' || command == 6) {
             messageToSend = `+6 ${messageToSend}\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
-        } else if (handler.command === '1') {
+        } else if (command == '1' || command == 1) {
             messageToSend = `+1 ${messageToSend}\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
+        } else if(command == '12' || command == 12){
+            messageToSend = `+12 ${messageToSend}\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
+        }else if(command == '2' || command == 2){
+            messageToSend = `+2 ${messageToSend}\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
         }
         // Enviar mensaje con menciones
         await conn.sendMessage(m.chat, {
@@ -109,7 +113,7 @@ const handler = async (m, { conn, text, participants, isOwner, isAdmin, args }) 
 };
 
 // El comando "notify3" o "noti3" ahora es accesible por todos
-handler.command = /^(notify3|noti3|6|1)$/i;
+handler.command = /^(notify3|noti3|6|1|2|12)$/i;
 handler.group = true;
 handler.admin = false; // Se permite a cualquier miembro del grupo
 
