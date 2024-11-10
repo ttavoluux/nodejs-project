@@ -34,30 +34,24 @@ const writeNotifitime = (data) => {
 
 let lastUsed = readNotifitime(); // Leemos los tiempos almacenados en el archivo
 
+// Función para obtener la fecha actual en formato YYYY-MM-DD
+const getCurrentDate = () => {
+    const date = new Date();
+    return date.toISOString().split('T')[0]; // Devuelve la fecha en formato YYYY-MM-DD
+};
+
 const handler = async (m, { conn, text, participants, isOwner, isAdmin, args }) => {
     const userId = m.sender; // El ID del usuario que envió el mensaje
-    const currentTime = new Date().getTime(); // Obtener la hora actual en milisegundos
+    const currentDate = getCurrentDate(); // Obtener la fecha actual en formato YYYY-MM-DD
 
-    // Verificar si el usuario ya usó el comando recientemente
-    if (lastUsed[userId]) {
-        const expirationTime = lastUsed[userId]; // Fecha hasta la cual el usuario puede usar el comando
-
-        if (currentTime < expirationTime) {
-            const timeRemaining = expirationTime - currentTime; // Tiempo restante en milisegundos
-
-            // Si no han pasado 24 horas, mostramos el tiempo restante
-            const hoursRemaining = Math.floor(timeRemaining / (1000 * 60 * 60));
-            const minutesRemaining = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
-
-            return conn.reply(m.chat, `❌ Este comando solo puede usarse una vez cada 24 horas. Faltan ${hoursRemaining} horas y ${minutesRemaining} minutos para que puedas usarlo nuevamente.`, m);
-        }
+    // Verificar si el usuario ya usó el comando en el día actual
+    if (lastUsed[userId] && lastUsed[userId] === currentDate) {
+        return conn.reply(m.chat, `❌ Este comando solo puede usarse una vez al día. Ya lo usaste hoy.`, m);
     }
 
-    // Si no hay datos del usuario, es porque no ha usado el comando antes. Actualizamos el archivo.
-    if (!lastUsed[userId]) {
-        lastUsed[userId] = currentTime + 24 * 60 * 60 * 1000; // Establecemos la fecha límite para el uso del comando en 24 horas
-        writeNotifitime(lastUsed); // Escribimos el nuevo tiempo en el archivo JSON
-    }
+    // Si no hay datos del usuario o ya pasó un día, actualizamos el archivo con la nueva fecha
+    lastUsed[userId] = currentDate;
+    writeNotifitime(lastUsed); // Escribimos el nuevo día en el archivo JSON
 
     // Verificamos si hay un mensaje citado o texto en el comando
     let messageToSend = text ? text : " *🐈‍⬛ Holis :3* ";
@@ -82,7 +76,7 @@ const handler = async (m, { conn, text, participants, isOwner, isAdmin, args }) 
 
         // Enviar mensaje con menciones
         await conn.sendMessage(m.chat, {
-            text: `${text}\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`,
+            text: `+ ${text}\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`,
             mentions: users,
         }, { quoted: m });
 
@@ -115,3 +109,4 @@ handler.group = true;
 handler.admin = false; // Se permite a cualquier miembro del grupo
 
 export default handler;
+
