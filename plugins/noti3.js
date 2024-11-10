@@ -75,13 +75,13 @@ const handler = async (m, { conn, text, participants, isOwner, isAdmin, args, co
         }
         let messageToSend = text ? text : " *🐈‍⬛ Holis :3* ";
         if (command == '6' || command == 6) {
-            messageToSend = `+6 ${messageToSend}\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
+            messageToSend = `*+6 ${messageToSend}*\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
         } else if (command == '1' || command == 1) {
-            messageToSend = `+1 ${messageToSend}\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
+            messageToSend = `*+1 ${messageToSend}*\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
         } else if(command == '12' || command == 12){
-            messageToSend = `+12 ${messageToSend}\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
+            messageToSend = `*+12 ${messageToSend}*\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
         }else if(command == '2' || command == 2){
-            messageToSend = `+2 ${messageToSend}\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
+            messageToSend = `*+2 ${messageToSend}*\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
         }
         // Enviar mensaje con menciones
         await conn.sendMessage(m.chat, {
