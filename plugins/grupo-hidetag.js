@@ -56,23 +56,6 @@ let c = m.quoted ? await m.getQuotedObj() : m.msg || m.text || m.sender
 let msg = conn.cMod(m.chat, generateWAMessageFromContent(m.chat, { [m.quoted ? q.mtype : 'extendedTextMessage']: m.quoted ? c.message[q.mtype] : { text: '' || c }}, { quoted: m, userJid: conn.user.id }), text || q.text, conn.user.jid, { mentions: users })
 await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id })
 } catch {
-
-/*if (args.length >= 1) {
-text = args.slice(0).join(" ")
-} else if (m.quoted && m.quoted.text) {
-text = m.quoted.text
-} else return   
-
-/*const users = participants.map((u) => conn.decodeJid(u.id))
-const quoted = m.quoted ? m.quoted : m
-const mime = (quoted.msg || quoted).mimetype || ''
-var isMedia = /image|video|sticker|audio/.test(mime)
-const more = String.fromCharCode(8206)
-const masss = more.repeat(850)
-const htextos = `${text ? text : '📣📣📣'}`
-
-await conn.sendMessage(m.chat, { text: text + '\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ', mentions: users }, { quoted: m }) 
-return*/
 }
 
 }

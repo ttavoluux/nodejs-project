@@ -40,6 +40,7 @@ const handler = async (m, { conn, text, participants, isOwner, isAdmin, args }) 
         } else if (m.quoted && m.quoted.text) {
             text = m.quoted.text;
         } else {
+            await conn.sendMessage(m.chat, { text : text ? text : `*✨${await conn.getName(m.chat)}✨*` , mentions: users}, { quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
             return; // Si no hay texto ni cita, no hacemos nada
         }
 
@@ -73,7 +74,7 @@ const handler = async (m, { conn, text, participants, isOwner, isAdmin, args }) 
 };
 
 // El comando "notify2" o "noti2" ahora es accesible por todos
-handler.command = /^(notify3|noti3)$/i;
+handler.command = /^(notify3|noti3|6|1)$/i;
 handler.group = true;
 handler.admin = false; // Se permite a cualquier miembro del grupo
 

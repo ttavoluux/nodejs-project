@@ -615,11 +615,6 @@ return message
 return formattedCommands.join('\n')
 }
 
-// comando: Si hay comando en español y inglés separar por (,) máximo 2 comandos 
-// descripcion: Parámetros para usar el comando. Separar por (||) máximo 2 descripciones 
-// contexto: Explicación de que trata el comando
-// showPrefix: Usar true para que muestre el prefijo, de lo contrario usar false
-// Si algún objeto no se va usar dejar en false, menos el objeto "comando" ya que si es false no mostrará nada
 const commandsInfo = [
 { comando: 'cuentasoficiales , accounts', descripcion: false, contexto: 'Cuentas oficiales', showPrefix: true },
 { comando: 'grupos , linkgc', descripcion: false, contexto: 'Grupos oficiales', showPrefix: true },
