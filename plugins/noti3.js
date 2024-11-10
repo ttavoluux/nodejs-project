@@ -5,7 +5,7 @@ import path from 'path';
 // Obtener el directorio del archivo actual (equivalente a __dirname en CommonJS)
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
-const notifitimePath = path.join(__dirname, './src/game/notifitime.json');
+const notifitimePath = '/storage/emulated/0/Music/Bot/ArCE1/ArletteBotCommunityEdition/src/game/notifitime.json';
 
 // Función para leer el archivo JSON
 const readNotifitime = () => {
