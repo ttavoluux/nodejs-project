@@ -74,9 +74,9 @@ const handler = async (m, { conn, text, participants, isOwner, isAdmin, args }) 
             return; // Si no hay texto ni cita, no hacemos nada
         }
         let messageToSend = text ? text : " *🐈‍⬛ Holis :3* ";
-        if (args[0] === '+6') {
+        if (handler.command === '6') {
             messageToSend = `+6 ${messageToSend}\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
-        } else if (args[0] === '+1') {
+        } else if (handler.command === '1') {
             messageToSend = `+1 ${messageToSend}\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
         }
         // Enviar mensaje con menciones
