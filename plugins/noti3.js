@@ -73,10 +73,15 @@ const handler = async (m, { conn, text, participants, isOwner, isAdmin, args }) 
             await conn.sendMessage(m.chat, { text : text ? text : `*✨${await conn.getName(m.chat)}✨*` , mentions: users}, { quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
             return; // Si no hay texto ni cita, no hacemos nada
         }
-
+        let messageToSend = text ? text : " *🐈‍⬛ Holis :3* ";
+        if (args[0] === '+6') {
+            messageToSend = `+6 ${messageToSend}\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
+        } else if (args[0] === '+1') {
+            messageToSend = `+1 ${messageToSend}\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
+        }
         // Enviar mensaje con menciones
         await conn.sendMessage(m.chat, {
-            text: `+ ${text}\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`,
+            text: messageToSend,
             mentions: users,
         }, { quoted: m });
 
