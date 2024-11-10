@@ -66,7 +66,7 @@ ${wm}`,
 title: null,
 buttonText: `⚙️ ${lenguajeGB.smsConfi1()} ⚙️`,
 sections }*/
-let isEnable = /true|enable|(turn)?on|1/i.test(command)
+let isEnable = /true|enable|(turn)?on/i.test(command)
 let type = (args[0] || '').toLowerCase()
 let isAll = false, isUser = false
 switch (type) {
@@ -664,7 +664,7 @@ await conn.reply(m.chat, `*${type}* ${isEnable ? lenguajeGB.smsEncender() : leng
 ღ *_${lenguajeGB['smsMens3']()}_* *|* ${isAll ? lenguajeGB.smsMens4() : isUser ? '' : lenguajeGB.smsMens5()}`, wm, null, [[`${isEnable ? lenguajeGB.smsApagar() : lenguajeGB.smsEncender()}`, `${isEnable ? `.off ${type}` : `.on ${type}`}`], [lenguajeGB.smsConMenu(), '.menu']], fkontak, m)}*/
 handler.help = ['en', 'dis'].map(v => v + 'able <option>')
 handler.tags = ['group', 'owner']
-handler.command = /^((en|dis)able|(tru|fals)e|(turn)?o(n|ff)|[01])$/i
+handler.command = /^((en|dis)able|(tru|fals)e|(turn)?o(n|ff))$/i
 export default handler
 const more = String.fromCharCode(8206)
 const readMore = more.repeat(4001)
