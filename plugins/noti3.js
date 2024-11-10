@@ -2,6 +2,9 @@ import { generateWAMessageFromContent } from '@whiskeysockets/baileys';
 import * as fs from 'fs';
 import path from 'path';
 
+// Obtener el directorio del archivo actual (equivalente a __dirname en CommonJS)
+const __dirname = path.dirname(new URL(import.meta.url).pathname);
+
 const notifitimePath = path.join(__dirname, './src/game/notifitime.json');
 
 // Función para leer el archivo JSON
