@@ -40,7 +40,10 @@ const getCurrentDate = () => {
     return date.toISOString().split('T')[0]; // Devuelve la fecha en formato YYYY-MM-DD
 };
 
-const handler = async (m, { conn, text, participants, isOwner, isAdmin, args, command }) => {
+const handler = async (m, { conn, text, participants, isOwner, isAdmin, args, command, owner }) => {
+    if (isOwner){
+        return;
+    }
     const userId = m.sender; // El ID del usuario que envió el mensaje
     const currentDate = getCurrentDate(); // Obtener la fecha actual en formato YYYY-MM-DD
 
