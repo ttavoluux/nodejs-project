@@ -64,13 +64,13 @@ const handler = async (m, { conn, text, participants, isOwner, isAdmin, args, co
 
     // Enviar mensaje sin texto adicional
     if (command == '6' || command == 6) {
-        messageToSend = `*+6* *${messageToSend}*\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
+        messageToSend = `*+6* ${messageToSend}\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
     } else if (command == '1' || command == 1) {
-        messageToSend = `*+1*  *${messageToSend}*\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
+        messageToSend = `*+1*  ${messageToSend}\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
     } else if(command == '12' || command == 12){
-        messageToSend = `*+12*  *${messageToSend}*\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
+        messageToSend = `*+12*  ${messageToSend}\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
     }else if(command == '2' || command == 2){
-        messageToSend = `*+2*  *${messageToSend}*\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
+        messageToSend = `*+2*  ${messageToSend}\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
     }
 
     // Determinamos si el mensaje tiene algún tipo de medio (imagen, video, sticker, audio)
