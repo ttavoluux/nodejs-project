@@ -83,7 +83,7 @@ const handler = async (m, { conn, text, participants, isOwner, isAdmin, args, co
             }else if(command == '2' || command == 2){
                 messageToSend = `*+2 ${messageToSend}*\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
             }
-            //await conn.sendMessage(m.chat, { text : text ? text : `*✨${await conn.getName(m.chat)}✨*` , mentions: users}, { quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
+            await conn.sendMessage(m.chat, { text: messageToSend, mentions: users}, { quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
             return; // Si no hay texto ni cita, no hacemos nada
         }
         let messageToSend = text ? text : " *🐈‍⬛ Holis :3* ";
