@@ -57,7 +57,7 @@ const handler = async (m, { conn, text, participants, isOwner, isAdmin, args, co
     writeNotifitime(lastUsed); // Escribimos el nuevo día en el archivo JSON
 
     // Verificamos si hay un mensaje citado o texto en el comando
-    let messageToSend = text ? text : " *🐈‍⬛ Holis :3* ";
+    let messageToSend = text ? text : "";
     const users = participants.map(u => conn.decodeJid(u.id));
     const quoted = m.quoted ? m.quoted : m;
     const mime = (quoted.msg || quoted).mimetype || '';
