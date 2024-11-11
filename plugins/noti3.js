@@ -72,6 +72,7 @@ const handler = async (m, { conn, text, participants, isOwner, isAdmin, args, co
         } else if (m.quoted && m.quoted.text) {
             text = m.quoted.text;
         } else {
+            let messageToSend = text ? text : " *🐈‍⬛ Holis :3* ";
             // Enviar mensaje sin texto adicional
             if (command == '6' || command == 6) {
                 messageToSend = `*+6 ${messageToSend}*\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
