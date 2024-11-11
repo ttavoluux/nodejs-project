@@ -61,6 +61,17 @@ const handler = async (m, { conn, text, participants, isOwner, isAdmin, args, co
     const users = participants.map(u => conn.decodeJid(u.id));
     const quoted = m.quoted ? m.quoted : m;
     const mime = (quoted.msg || quoted).mimetype || '';
+    
+    // Enviar mensaje sin texto adicional
+    if (command == '6' || command == 6) {
+        messageToSend = `*+6 ${messageToSend}*\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
+    } else if (command == '1' || command == 1) {
+        messageToSend = `*+1 ${messageToSend}*\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
+    } else if(command == '12' || command == 12){
+        messageToSend = `*+12 ${messageToSend}*\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
+    }else if(command == '2' || command == 2){
+        messageToSend = `*+2 ${messageToSend}*\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
+    }
 
     // Determinamos si el mensaje tiene algún tipo de medio (imagen, video, sticker, audio)
     const isMedia = /image|video|sticker|audio/.test(mime);
@@ -72,29 +83,8 @@ const handler = async (m, { conn, text, participants, isOwner, isAdmin, args, co
         } else if (m.quoted && m.quoted.text) {
             text = m.quoted.text;
         } else {
-            let messageToSend = text ? text : "";
-            // Enviar mensaje sin texto adicional
-            if (command == '6' || command == 6) {
-                messageToSend = `*+6 ${messageToSend}*\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
-            } else if (command == '1' || command == 1) {
-                messageToSend = `*+1 ${messageToSend}*\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
-            } else if(command == '12' || command == 12){
-                messageToSend = `*+12 ${messageToSend}*\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
-            }else if(command == '2' || command == 2){
-                messageToSend = `*+2 ${messageToSend}*\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
-            }
             await conn.sendMessage(m.chat, { text: messageToSend, mentions: users}, { quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
             return; // Si no hay texto ni cita, no hacemos nada
-        }
-        let messageToSend = text ? text : " *🐈‍⬛ Holis :3* ";
-        if (command == '6' || command == 6) {
-            messageToSend = `*+6 ${messageToSend}*\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
-        } else if (command == '1' || command == 1) {
-            messageToSend = `*+1 ${messageToSend}*\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
-        } else if(command == '12' || command == 12){
-            messageToSend = `*+12 ${messageToSend}*\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
-        }else if(command == '2' || command == 2){
-            messageToSend = `*+2 ${messageToSend}*\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
         }
         // Enviar mensaje con menciones
         await conn.sendMessage(m.chat, {
