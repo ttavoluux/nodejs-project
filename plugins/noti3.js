@@ -48,9 +48,12 @@ const handler = async (m, { conn, text, participants, isOwner, isAdmin, args, co
     const currentDate = getCurrentDate(); // Obtener la fecha actual en formato YYYY-MM-DD
 
     // Verificar si el usuario ya usó el comando en el día actual
-    if (lastUsed[userId] && lastUsed[userId] === currentDate) {
-        return conn.reply(m.chat, `❌ Este comando solo puede usarse una vez al día. Ya lo usaste hoy.`, m);
+    if(isAdmin === false){
+        if (lastUsed[userId] && lastUsed[userId] === currentDate) {
+            return conn.reply(m.chat, `❌ Este comando solo puede usarse una vez al día. Ya lo usaste hoy.`, m);
+        }
     }
+
 
     // Si no hay datos del usuario o ya pasó un día, actualizamos el archivo con la nueva fecha
     lastUsed[userId] = currentDate;
