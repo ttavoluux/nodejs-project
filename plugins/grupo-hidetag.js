@@ -1,4 +1,5 @@
 import {generateWAMessageFromContent} from '@whiskeysockets/baileys'
+import { sticker } from '../lib/sticker.js'
 import * as fs from 'fs';
 const handler = async (m, {conn, text, participants, isOwner, isAdmin, args}) => {
 
@@ -13,6 +14,9 @@ let masss = more.repeat(850)
 let htextos = `${text ? text : " *🐈‍⬛ Holis :3* "}`
 
 await conn.sendMessage(m.chat, { text : text ? text : `*✨${await conn.getName(m.chat)}✨*` , mentions: users}, { quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
+    let stiker = await sticker(imagen12, false, global.packname, global.author)
+    this.sendFile(m.chat, stiker, 'sticker.webp', null, m, false, {
+    })
 return
 } 
 
