@@ -16,7 +16,7 @@ let htextos = `${text ? text : " *🐈‍⬛ Holis :3* "}`
     let stiker = await sticker(imagen13, false, global.packname, global.author)
     await conn.sendFile(m.chat, stiker, 'sticker.webp', null, m, false, {
     })
-await conn.sendMessage(m.chat, { text : text ? text : `*noti :3 ❤️    @ *${await conn.getName(m.chat)}*` , mentions: users}, { quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
+await conn.sendMessage(m.chat, { text : text ? text : `noti :3 ❤️    @ *${await conn.getName(m.chat)}*` , mentions: users}, { quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
 return
 } 
 
