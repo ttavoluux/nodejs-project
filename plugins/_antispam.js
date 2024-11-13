@@ -1,4 +1,4 @@
-/*const userSpamData = {}
+const userSpamData = {}
 let handler = m => m
 handler.before = async function (m, {conn, isAdmin, isBotAdmin, isOwner, isROwner, isPrems}) {
 const chat = global.db.data.chats[m.chat]
@@ -114,4 +114,4 @@ userData.lastMessageTime = currentTime
 }}
 
 export default handler
-*/
+
