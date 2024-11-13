@@ -1,4 +1,4 @@
-const userSpamData = {}
+/*const userSpamData = {}
 let handler = m => m
 handler.before = async function (m, {conn, isAdmin, isBotAdmin, isOwner, isROwner, isPrems}) {
 const chat = global.db.data.chats[m.chat]
@@ -13,9 +13,9 @@ const timeWindow = 5000 // tiempo límite
 const messageLimit = 10 // cantidad de mensajes en dicho tiempo
 
 let time, time2, time3, mensaje, motive
-time = 300000 // 30 seg
-time2 = 600000 // 1 min
-time3 = 1200000 // 2 min
+time = 30000 // 30 seg
+time2 = 60000 // 1 min
+time3 = 120000 // 2 min
 
 if (!(sender in userSpamData)) {
 userSpamData[sender] = {
@@ -114,4 +114,4 @@ userData.lastMessageTime = currentTime
 }}
 
 export default handler
-
+*/
