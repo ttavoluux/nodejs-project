@@ -25,7 +25,7 @@ let estado = `💗 *¡Hola!* ${name} ✨
 > *.peliculas add +150*
 > *new .clima*
 > *new .horoscopo*
-
+> (beta) new +1|2|6|12 "1/24hs"
 > *.play funcionando*
 ❗ *trate de especificar mejor la cancion para que funcione*
 (.play name cantante/genero/etc.)
