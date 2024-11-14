@@ -11,13 +11,11 @@ const handler = async (m, {conn, command, args, text, usedPrefix}) => {
         if (!text) return conn.reply(m.chat, `*🤔Que está buscando? 🤔*\n*Ingrese el nombre de la canción*\n\n*Ejemplo:*\n#play emilia 420`, m, {contextInfo: {externalAdReply :{ mediaUrl: null, mediaType: 1, description: null, title: wm, body: '', previewType: 0, thumbnail: img.getRandom(), sourceUrl: redes.getRandom()}}});
         const yt_play = await search(args.join(' '));
         const ytplay2 = await yts(text);
-        const texto1 = `📌 *Título* : ${yt_play[0].title}
-📆 *Publicado:* ${yt_play[0].ago}
-⌚ *Duración:* ${secondString(yt_play[0].duration.seconds)}
+        const texto1 = `*🎵 Canción: ${yt_play[0].title} 🎵*\n` +
+            `*⏱ Duración: ${secondString(yt_play[0].duration.seconds)}*\n` +
+            `*🔗 Enlace: ${yt_play[0].url}*`.trim();
 
-_*Descargado el audio 🔊, aguarden un momento....*_`.trim();
-
-        await conn.sendFile(m.chat, yt_play[0].thumbnail, 'error.jpg', texto1, m, null);
+        await conn.sendFile(m.chat, imagen4, 'error.jpg', texto1, m, null);
         try {
             const apiUrl = `https://deliriussapi-oficial.vercel.app/download/ytmp3?url=${encodeURIComponent(yt_play[0].url)}`;
             const apiResponse = await fetch(apiUrl);
@@ -58,7 +56,7 @@ _*Descargado sus video, aguarden un momento....*_
 
 > _*Si este comando falla usar de la seguirte manera:*_ #ytmp4 ${yt_play[0].url}`.trim();
 
-        await conn.sendFile(m.chat, yt_play[0].thumbnail, 'error.jpg', texto1, m, null);
+        await conn.sendFile(m.chat, yt_play[0].thumbnail, 'error.jpg', texto1, m, null, fake);
         try {
             const apiUrl = `https://deliriussapi-oficial.vercel.app/download/ytmp4?url=${encodeURIComponent(yt_play[0].url)}`;
             const apiResponse = await fetch(apiUrl);
@@ -146,4 +144,3 @@ async function getFileSize(url) {
         return 0;
     }
 }
-
