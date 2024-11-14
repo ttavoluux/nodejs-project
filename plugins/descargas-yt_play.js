@@ -43,60 +43,41 @@ let handler = async (m, { conn, command, args, text, usedPrefix }) => {
     await conn.sendFile(m.chat, imageBuffer, 'imagen10', infocancion, m);
 
     // Comando para enviar solo audio
-    if (command === 'play') {
+    if (command == 'play' || command == 'musica') {
+        if (!text) return conn.reply(m.chat, `*🤔Que está buscando? 🤔*\n*Ingrese el nombre de la canción*\n\n*Ejemplo:*\n#play emilia 420`, m, {contextInfo: {externalAdReply :{ mediaUrl: null, mediaType: 1, description: null, title: wm, body: '', previewType: 0, thumbnail: img.getRandom(), sourceUrl: redes.getRandom()}}});
+        const yt_play = await search(args.join(' '));
+        const ytplay2 = await yts(text);
+
+        //await conn.sendFile(m.chat, yt_play[0].thumbnail, 'error.jpg', texto1, m, null, fake);
         try {
-            const quality = '128kbps';  // Definir calidad de audio
-
-            // Intentar obtener el audio con @bochilteam/scraper (youtubedl o youtubedlv2)
-            const yt = await youtubedl(videoUrl).catch(async (_) => await youtubedlv2(videoUrl));
-
-            if (yt && yt.audio && yt.audio[quality]) {
-                const dl_url = await yt.audio[quality].download();  // Obtener la URL de descarga del audio
-                const ttl = yt.title;  // Obtener el título del video
-                const size = yt.audio[quality].fileSizeH;  // Obtener el tamaño del archivo
-
-                // Enviar el archivo de audio al chat
-                await conn.sendMessage(m.chat, {
-                    audio: { url: dl_url },
-                    fileName: `${ttl}.mp3`,
-                    mimetype: 'audio/mpeg'
-                }, { quoted: m });
-            } else {
-                throw 'No se encontró el audio de la calidad solicitada.';
-            }
-
-        } catch (error) {
-            console.error('Error al intentar obtener el audio:', error);
-
-            // Si no se puede obtener el audio con @bochilteam/scraper, intentar con ytdl-core
+            const apiUrl = `https://deliriussapi-oficial.vercel.app/download/ytmp3?url=${encodeURIComponent(yt_play[0].url)}`;
+            const apiResponse = await fetch(apiUrl);
+            const delius = await apiResponse.json();
+            if (!delius.status) return m.react("❌");
+            const downloadUrl = delius.data.download.url;
+            const fileSize = await getFileSize(downloadUrl);
+            await conn.sendMessage(m.chat, { audio: { url: downloadUrl }, mimetype: 'audio/mpeg' }, { quoted: m });
+            if (fileSize > LimitAud) return await conn.sendMessage(m.chat, { document: { url: downloadUrl }, mimetype: 'audio/mpeg', fileName: `${yt_play[0].title}.mp3` }, { quoted: m });
+        } catch (e1) {
             try {
-                const info = await ytdl.getInfo(videoUrl);  // Obtener la información del video
+                const res = await fetch(`https://api.zenkey.my.id/api/download/ytmp3?apikey=zenkey&url=${yt_play[0].url}`)
+                const audioData = await res.json()
 
-                // Filtrar solo los formatos de audio
-                const formats = ytdl.filterFormats(info.formats, 'audioonly');
-                const audioUrl = formats.find(format => format.itag === 140)?.url || formats[0]?.url;
-
-                // Verificar si la URL de audio es válida
-                if (!audioUrl) {
-                    throw 'No se pudo encontrar un formato de audio válido.';
+                if (audioData.status && audioData.result?.downloadUrl) {
+                    await conn.sendMessage(m.chat, { audio: { url: audioData.result.downloadUrl }, mimetype: 'audio/mpeg' }, { quoted: m });
                 }
-
-                // Enviar el archivo de audio al chat
-                await conn.sendMessage(m.chat, {
-                    audio: { url: audioUrl },
-                    fileName: `${info.videoDetails.title}.mp3`,
-                    mimetype: 'audio/mpeg'
-                }, { quoted: m });
-
-            } catch (error) {
-                console.error('Error al obtener el audio con ytdl-core:', error);
-                if (error.statusCode === 410) {
-                    throw 'No se pudo acceder al audio de YouTube, el enlace podría haber caducado.';
-                }
-                throw 'No se pudo descargar el audio, intente nuevamente más tarde.';
-            }
-        }
-    }
+            } catch (e2) {
+                try {
+                    let d2 = await fetch(`https://exonity.tech/api/ytdlp2-faster?apikey=adminsepuh&url=${yt_play[0].url}`);
+                    let dp = await d2.json();
+                    const audiop = await getBuffer(dp.result.media.mp3);
+                    const fileSize = await getFileSize(dp.result.media.mp3);
+                    await conn.sendMessage(m.chat, { audio: { url: audiop }, mimetype: 'audio/mpeg' }, { quoted: m });
+                    if (fileSize > LimitAud) return await conn.sendMessage(m.chat, { document: { url: audiop }, mimetype: 'audio/mpeg', fileName: `${yt_play[0].title}.mp3` }, { quoted: m });
+                } catch (e3) {
+                    await m.react('❌');
+                    console.log(e3);
+                }}}}
 };
 
 // Configurar el comando que activará la función
