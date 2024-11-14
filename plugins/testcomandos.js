@@ -1,73 +1,25 @@
-import {generateWAMessageFromContent} from '@whiskeysockets/baileys'
-import { sticker } from '../lib/sticker.js'
-import * as fs from 'fs';
-const handler = async (m, {conn, text, participants, isOwner, isAdmin, args}) => {
+import {sticker} from "../lib/sticker";
 
+const imagesArray = [];
 
-    if (!m.quoted && !text){
-        let users = participants.map(u => conn.decodeJid(u.id))
-        let quoted = m.quoted ? m.quoted : m
-        let mime = (quoted.msg || quoted).mimetype || ''
-        let isMedia = /image|video|sticker|audio/.test(mime)
-        let more = String.fromCharCode(8206)
-        let masss = more.repeat(850)
-        let htextos = `${text ? text : " *🐈‍⬛ Holis :3* "}`
-
-        let stiker = await sticker(imagen13, false, global.packname, global.author)
-        await conn.sendFile(m.chat, stiker, 'sticker.webp', null, m, false, {
-        })
-        //await conn.sendMessage(m.chat, { text : text ? text : `noti :3 ❤️    @ *${await conn.getName(m.chat)}*` , mentions: users}, { quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
-        return
-    }
-
-
-
-
-
-    const users = participants.map((u) => conn.decodeJid(u.id))
-    const quoted = m.quoted ? m.quoted : m
-    const mime = (quoted.msg || quoted).mimetype || ''
-//const isMedia = /image|video|sticker|audio/.test(mime)
-    var isMedia = /image|video|sticker|audio/.test(mime)
-    if(!(isMedia)){
-
-        if (args.length >= 1) {
-            text = args.slice(0).join(" ")
-        } else if (m.quoted && m.quoted.text) {
-            text = m.quoted.text
-        } else return
-
-        const users = participants.map((u) => conn.decodeJid(u.id))
-        const quoted = m.quoted ? m.quoted : m
-        const mime = (quoted.msg || quoted).mimetype || ''
-        isMedia = /image|video|sticker|audio/.test(mime)
-        const more = String.fromCharCode(8206)
-        const masss = more.repeat(850)
-        const htextos = `${text ? text : '📣📣📣'}`
-
-        await conn.sendMessage(m.chat, { text: text + '\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ', mentions: users }, { quoted: m })
-
-
-    }else{
-
-
-
-
-        try {
-            let users = participants.map(u => conn.decodeJid(u.id))
-            let q = m.quoted ? m.quoted : m || m.text || m.sender
-            let c = m.quoted ? await m.getQuotedObj() : m.msg || m.text || m.sender
-            let msg = conn.cMod(m.chat, generateWAMessageFromContent(m.chat, { [m.quoted ? q.mtype : 'extendedTextMessage']: m.quoted ? c.message[q.mtype] : { text: '' || c }}, { quoted: m, userJid: conn.user.id }), text || q.text, conn.user.jid, { mentions: users })
-            await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id })
-        } catch {
-        }
-
-    }
-
-
+for (let i = 1; i <= 5; i++) {
+    imagesArray.push(`./media/imagesloading/resp${i}.jpg`);
 }
 
-handler.command = /^(testtt)$/i
-handler.group = true
-handler.admin = true
-export default handler
+// Función para obtener una ruta aleatoria
+function getRandomImagePath(array) {
+    const randomIndex = Math.floor(Math.random() * array.length); // Selecciona un índice aleatorio
+    return array[randomIndex]; // Retorna la ruta de la imagen seleccionada
+}
+
+// Obtener una ruta aleatoria
+const randomImagePath = getRandomImagePath(imagesArray);
+
+const imagePath = randomImagePath;  // Asegúrate de que la ruta de la imagen sea correcta
+
+
+// Leer la imagen y enviarla junto con la información de la canción
+const imageBuffer = fs.readFileSync(imagePath);  // Leemos la imagen
+
+let stiker = await sticker(imageBuffer);
+await conn.sendFile(m.chat, stiker, 'sticker.webp', null, m, false)
