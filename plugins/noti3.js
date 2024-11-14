@@ -50,7 +50,8 @@ const handler = async (m, { conn, text, participants, isOwner, isAdmin, args, co
     // Verificar si el usuario ya usó el comando en el día actual
     if(isAdmin === false){
         if (lastUsed[userId] && lastUsed[userId] === currentDate) {
-            return conn.reply(m.chat, `❌ Este comando solo puede usarse una vez al día. Ya lo usaste hoy.`, m);
+            return m.react("❌");
+            //conn.reply(m.chat, `❌ Este comando solo puede usarse una vez al día. Ya lo usaste hoy.`, m);
         }
     }
 
