@@ -29,9 +29,9 @@ const handler = async (m, {conn, usedPrefix, command}) => {
 
 
 // Leer la imagen y enviarla junto con la información de la canción
-     const imageBuffer = fs.readFileSync(imagePath);  // Leemos la imagen
+     //const imageBuffer = fs.readFileSync(imagePath);  // Leemos la imagen
 
-     let stiker = await sticker(imageBuffer);
+     let stiker = await sticker(imagePath);
      await conn.sendFile(m.chat, stiker, 'sticker.webp', null, m, false)
 
 
