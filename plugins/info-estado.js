@@ -21,15 +21,10 @@ let estado = `💗 *¡Hola!* ${name}
 
 *Registro de cambios!💗*
 
-> .play funcionando
-> .trivia2 add +300
-> .chiste add +200
-> .piropo add +300
-> .peliculas add +150
-> new .clima
-> new .horoscopo
-> (beta) new .noti2 "x2 rapido que notify"
-> (beta) new .noti3 "cualquiera lo puede usar una vez cada 24hs"
+> (beta) new +1|2|6|12 "1/24hs"
+> *.play funcionando*
+❗ *trate de especificar mejor la cancion para que funcione*
+(.play name cantante/genero/etc.)
 
 *Ig: arlenny.mx*
 *Contacto: wa.me/5614236722*

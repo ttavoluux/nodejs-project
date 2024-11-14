@@ -19,13 +19,16 @@ let estado = `💗 *¡Hola!* ${name} ✨
 
 💬 𝑼𝑷𝑫𝑨𝑻𝑬 🚀
 
-> *.play funcionando*
 > *.trivia2 add +300*
 > *.chiste add +200*
 > *.piropo add +300*
 > *.peliculas add +150*
 > *new .clima*
 > *new .horoscopo*
+
+> *.play funcionando*
+❗ *trate de especificar mejor la cancion para que funcione*
+(.play name cantante/genero/etc.)
 
 💬 𝑮𝒓𝒖𝒑𝒐𝒔
 
