@@ -58,7 +58,7 @@ _*Descargado sus video, aguarden un momento....*_
 
 > _*Si este comando falla usar de la seguirte manera:*_ #ytmp4 ${yt_play[0].url}`.trim();
 
-        await conn.sendFile(m.chat, yt_play[0].thumbnail, 'error.jpg', texto1, m, null, fake);
+        await conn.sendFile(m.chat, yt_play[0].thumbnail, 'error.jpg', texto1, m, null);
         try {
             const apiUrl = `https://deliriussapi-oficial.vercel.app/download/ytmp4?url=${encodeURIComponent(yt_play[0].url)}`;
             const apiResponse = await fetch(apiUrl);
