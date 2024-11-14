@@ -178,7 +178,7 @@ await conn.sendFile(m.chat, pp, 'gata.mp4', menu)
 handler.help = ['infomenu'].map(v => v + 'able <option>')
 handler.tags = ['group', 'owner']
 handler.command = /^(rol|rango|roles|rangos)$/i
-handler.register = true
+handler.register = false
 handler.exp = 50
 export default handler
 

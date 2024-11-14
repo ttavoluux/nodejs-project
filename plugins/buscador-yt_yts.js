@@ -34,7 +34,7 @@ handler.limit = 0
 handler.help = ['', 'earch'].map(v => 'yts' + v + ' <pencarian>')
 handler.tags = ['tools']
 handler.command = /^playlist|ytbuscar|yts(earch)?$/i
-handler.register = true
+handler.register = false
 handler.limit = 1
 handler.level = 3
 export default handler

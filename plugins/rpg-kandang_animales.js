@@ -49,7 +49,7 @@ let handler = async (m, { conn, usedPrefix}) => {
 handler.help = ['kandang']
 handler.tags = ['rpg']
 handler.command = /^(kandang|animales|animals)$/i
-handler.register = true
+handler.register = false
 export default handler
 
 const more = String.fromCharCode(8206)

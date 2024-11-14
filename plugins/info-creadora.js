@@ -35,9 +35,16 @@ Requisitos para el Uso del Bot:
         No se permite el envío de mensajes repetitivos o irrelevantes.
         El bot está diseñado para interactuar de forma productiva y no soporta abuso ni spam en los grupos.
 
-    2. Grupo Único
+    2. Grupo Único:
+        El bot solo puede ser adquirido para un único grupo. No se permite el uso del bot en múltiples grupos bajo la misma adquisición.
+    
+    3. Inactividad:
+        Si el bot no es utilizado dentro de los tres días posteriores a su incorporación al grupo, se retirará automáticamente del mismo.
+    
+    4. Sin Otros Bots:
+        El bot no podrá ser agregado a un grupo si ya hay otro bot presente. Asegúrate de que el grupo esté libre de otros bots para un funcionamiento adecuado.
 
-    3. Versión Beta:
+    5. Versión Beta:
         Ten en cuenta que el bot está en versión beta, por lo que puede tener fallos ocasionales o comportamientos inesperados. Agradecemos tu comprensión mientras seguimos mejorando y optimizando el bot.
 
 Soporte y Colaboración:

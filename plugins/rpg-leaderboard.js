@@ -70,7 +70,7 @@ ${sortedMoney.slice(0, len).map(({ jid, money }, i) => `${i + 1}. ${participants
 handler.help = ['Top']
 handler.tags = ['xp']
 handler.command = ['leaderboard', 'lb'] 
-handler.register = true
+handler.register = false
 handler.fail = null
 handler.exp = 0
 

@@ -248,7 +248,7 @@ handler.command = ['pornololi', 'nsfwloli', 'pornopies', 'nsfwfoot', 'pornoass',
 'pornotoloveru', 'nsfwtoloveru', 'pornouzaki', 'nsfwuzaki', 'pornopack', 'nsfwpack', 'pornopackchica', 'nsfwpackgirl', 'pornopackchico', 'nsfwpackmen']
 handler.level = 5
 handler.limit = 2
-handler.register = true
+handler.register = false
 export default  handler
 
 

@@ -25,7 +25,7 @@ handler.limit = false
 handler.menu = ['tiktokslide <url>']
 handler.tags = ['search']
 handler.command = /^((tt|tiktok)imagen)$/i
-handler.register = true
+handler.register = false
 handler.level = 4
 handler.limit = 3
 export default handler

@@ -102,7 +102,7 @@ console.log(e)}
 }
 handler.help = ['temporal', 'tiempo']
 handler.command = ['bottemporal', 'botemporal', 'addbot', 'botadd']
-handler.register = true
+handler.register = false
 export default handler
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 

@@ -7,5 +7,5 @@ await m.reply(`${sn}`.trim())
 handler.help = ['myns']
 handler.tags = ['xp']
 handler.command = /^(myns|ceksn)$/i
-handler.register = true
+handler.register = false
 export default handler

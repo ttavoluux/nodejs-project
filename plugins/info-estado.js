@@ -21,6 +21,7 @@ let estado = `💗 *¡Hola!* ${name}
 
 *Registro de cambios!💗*
 
+> *Se elimino .verificar para todos los comandos!*
 > (beta) new +1|2|6|12 "1/24hs"
 > *.play funcionando*
 ❗ *trate de especificar mejor la cancion para que funcione*

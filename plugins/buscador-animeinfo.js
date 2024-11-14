@@ -47,5 +47,5 @@ console.log(e)
 }}
 handler.command = /^(anime|animeinfo)$/i;
 handler.level = 2
-handler.register = true
+handler.register = false
 export default handler;

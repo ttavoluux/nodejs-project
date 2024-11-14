@@ -49,6 +49,6 @@ handler.help = ['arlette999999999', 'arlette999999999']
 handler.tags = ['arlette999999999']
 handler.command = /^(infoarle)$/i
 handler.exp = 5
-handler.register = true
+handler.register = false
 handler.owner = true
 export default handler

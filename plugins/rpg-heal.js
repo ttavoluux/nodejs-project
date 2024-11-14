@@ -51,7 +51,7 @@ ${usedPrefix}buy potion ${count - user.potion}`, fkontak, m)
 handler.help = ['heal']
 handler.tags = ['rpg']
 handler.command = /^(heal|curar)$/i
-handler.register = true
+handler.register = false
 export default handler
 
 function isNumber(number) {

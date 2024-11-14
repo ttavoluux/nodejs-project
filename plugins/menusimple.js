@@ -19,12 +19,7 @@ let estado = `💗 *¡Hola!* ${name} ✨
 
 💬 𝑼𝑷𝑫𝑨𝑻𝑬 🚀
 
-> *.trivia2 add +300*
-> *.chiste add +200*
-> *.piropo add +300*
-> *.peliculas add +150*
-> *new .clima*
-> *new .horoscopo*
+> *Se quito .verificar para todos los comandos!*
 > (beta) new +1|2|6|12 "1/24hs"
 > *.play funcionando*
 ❗ *trate de especificar mejor la cancion para que funcione*

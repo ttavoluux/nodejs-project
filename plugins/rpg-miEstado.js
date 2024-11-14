@@ -51,5 +51,5 @@ if (text) return conn.sendMessage(m.chat, {text: eg + `*GENIAL!! SE HA AGREGADO 
 miEstado = 0
 }}
 handler.command = ['miestado'] 
-handler.register = true
+handler.register = false
 export default handler

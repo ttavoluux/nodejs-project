@@ -578,7 +578,7 @@ console.log(e)}}
 
 //handler.command = /^(menucompleto|menu|allm|m|\?)$/i
 handler.command = /^(menucompleto)$/i
-//handler.register = true
+//handler.register = false
 export default handler
 
 const more = String.fromCharCode(8206)

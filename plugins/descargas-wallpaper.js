@@ -15,7 +15,7 @@ handler.limit = false
 handler.help = ['', '2'].map(v => 'wallpaper' + v + ' <query>')
 handler.tags = ['downloader']
 handler.command = /^(wp|wallpaper2?)$/i
-handler.register = true
+handler.register = false
 handler.limit = 1
 handler.level = 3
 export default handler 

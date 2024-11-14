@@ -23,7 +23,7 @@ handler.tags = ['sticker', 'downloader']
 handler.command = /^(stic?kertele(gram)?)$/i
 handler.cookie = 1
 handler.limit = 1
-handler.register = true
+handler.register = false
 export default handler
 
 const delay = time => new Promise(res => setTimeout(res, time))

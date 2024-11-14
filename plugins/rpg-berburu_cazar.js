@@ -121,7 +121,7 @@ handler.help = ['berburu']
 handler.tags = ['rpg']
 handler.command = /^(hunt|berburu|caza(r)?)$/i
 //handler.group = true
-handler.register = true
+handler.register = false
 export default handler
 
 function clockString(ms) {

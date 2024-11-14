@@ -1614,7 +1614,7 @@ conn.sendFile(m.chat, imgr, 'gata.jpg', aineh, fkontak, m)}
 handler.help = ['inventory', 'inv']
 handler.tags = ['rpg']
 handler.command = /^(inventory|inv|inventario|alimentos)$/i
-handler.register = true
+handler.register = false
 export default handler
 
 const more = String.fromCharCode(8206)

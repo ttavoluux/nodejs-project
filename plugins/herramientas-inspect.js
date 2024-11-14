@@ -20,7 +20,7 @@ let handler = async (m, { conn, text }) => {
 	await conn.reply(m.chat, `${data.desc}`, m)
 }
 handler.command = /^(inspect)$/i
-handler.register = true
+handler.register = false
 handler.level = 3
 export default handler
 

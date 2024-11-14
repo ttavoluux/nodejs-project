@@ -50,7 +50,7 @@ console.log(e)}
 }
 handler.command = ['pornovid', 'nsfwvid', 'pornovid2', 'nsfwvid2', 'pornovidlesbi', 'nsfwvidlesbi', 'pornovidgay', 'nsfwvidgay', 'pornovidbisexual', 'nsfwvidbisexual', 'pornovidrandom', 'nsfwvidrandom']
 handler.premium = true
-handler.register = true
+handler.register = false
 export default handler
 
 

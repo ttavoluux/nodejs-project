@@ -52,7 +52,7 @@ handler.help = ['kotakikan', 'kolam', 'kolamikan']
 handler.tags = ['rpg']
 handler.command = /^(picina|piscina|peces|kotak(ikan)?|kolam(ikan)?)$/i
 export default handler 
-handler.register = true
+handler.register = false
 
 const more = String.fromCharCode(8206)
 const readMore = more.repeat(4001)

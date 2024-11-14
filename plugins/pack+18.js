@@ -26,7 +26,7 @@ if (!db.data.chats[m.chat].modohorny && m.isGroup) throw `[ ⚠️ ] Los comando
 };
 handler.command = /^(pack|packgirl|packmen|videoxxx|vídeoxxx|videoxxxlesbi|videolesbixxx|pornolesbivid|pornolesbianavid|pornolesbiv|pornolesbianav|pornolesv)$/i;
 handler.limit = 2
-handler.register = true
+handler.register = false
 export default handler;
 
 global.pack = [

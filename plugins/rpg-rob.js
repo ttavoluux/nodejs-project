@@ -21,7 +21,7 @@ handler.help = ['rob']
 handler.tags = ['econ']
 handler.command = ['robar', 'rob']
 handler.group = true
-handler.register = true
+handler.register = false
 export default handler  
 function msToTime(duration) {
 var milliseconds = parseInt((duration % 1000) / 100),

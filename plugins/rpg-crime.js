@@ -32,7 +32,7 @@ console.log(e)}}
 handler.help = ['robar'];
 handler.tags = ['xp'];
 handler.command = /^(crime|Crime)$/i
-handler.register = true
+handler.register = false
 handler.group = true
 export default handler;
 
