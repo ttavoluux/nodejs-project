@@ -17,7 +17,7 @@ const handler = async (m, {conn, command, args, text, usedPrefix}) => {
 
 _*Descargado el audio 🔊, aguarden un momento....*_`.trim();
 
-        await conn.sendFile(m.chat, yt_play[0].thumbnail, 'error.jpg', texto1, m, null, fake);
+        await conn.sendFile(m.chat, yt_play[0].thumbnail, 'error.jpg', texto1, m, null);
         try {
             const apiUrl = `https://deliriussapi-oficial.vercel.app/download/ytmp3?url=${encodeURIComponent(yt_play[0].url)}`;
             const apiResponse = await fetch(apiUrl);
