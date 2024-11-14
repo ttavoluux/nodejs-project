@@ -8,7 +8,7 @@ const LimitVid = 425 * 1024 * 1024; //425MB
 const handler = async (m, {conn, command, args, text, usedPrefix}) => {
 
     if (command == 'play' || command == 'musica') {
-        if (!text) return conn.reply(m.chat, `*🤔Que está buscando? 🤔*\n*Ingrese el nombre de la canción*\n\n*Ejemplo:*\n#play emilia 420`, m, {contextInfo: {externalAdReply :{ mediaUrl: null, mediaType: 1, description: null, title: wm, body: '', previewType: 0, thumbnail: img.getRandom(), sourceUrl: redes.getRandom()}}});
+        if (!text) return conn.reply(m.chat, `*Ingresa el nombre de la cancion* .play name`);
         const yt_play = await search(args.join(' '));
         const ytplay2 = await yts(text);
         const texto1 = `*🎵 Canción: ${yt_play[0].title} 🎵*\n` +
