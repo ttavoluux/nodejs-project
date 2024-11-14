@@ -22,7 +22,7 @@ let handler = async (m, { conn }) => {
 
 ❤ Holis :3
 
-Arlette-bot es un bot (open source) gratuito. Si deseas adquirirlo, contacta a mi desarrolladora.
+Arlette-bot Commutity Edition es un bot (open source) gratuito. Si deseas adquirirlo, contacta a mi desarrolladora.
 
 CENTER ARLENNY
 arlettebot@gmail.com
@@ -51,6 +51,7 @@ Soporte y Colaboración:
 Recuerda usar el comando .menu para ver todas las opciones disponibles del bot. 😊
 
 ¿Tienes alguna sugerencia de comandos?
+¿Quieres Comandos personalizados de uso unico?
 ¡Me encantaría escuchar tus ideas! 😄
 Contáctame y sugiéreme comandos que te gustaría ver en el bot.
 
