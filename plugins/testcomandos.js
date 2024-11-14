@@ -4,7 +4,7 @@ import { sticker } from "../lib/sticker"; // Asumiendo que la función 'sticker'
 import fs from 'fs';
 import path from 'path';
 
-const handler = async (m, { conn, usedPrefix, command, args}) => {
+const handler = async (m, { conn, usedPrefix, command }) => {
     try {
         // Obtenemos el mensaje citado o el mensaje original
         let q = m.quoted ? m.quoted : m;
@@ -36,7 +36,7 @@ const handler = async (m, { conn, usedPrefix, command, args}) => {
         const randomImagePath = getRandomImagePath(imagesArray);
 
         // Crear el sticker desde la imagen seleccionada
-        let stiker = await sticker(randomImagePath, randomImagePath, global.packname, global.author);
+        let stiker = await sticker(randomImagePath);
         await conn.sendFile(m.chat, stiker, 'sticker.webp', null, m, false);
 
         // Descargar la imagen citada
@@ -53,9 +53,9 @@ const handler = async (m, { conn, usedPrefix, command, args}) => {
     }
 };
 
-handler.help = ["remini", "hd", "enhance"];
+handler.help = ["imagenhd"]; // Cambié los comandos a "imagenhd"
 handler.tags = ["ai", "tools"];
-handler.command = ["hddd"];
+handler.command = ["imagenhd"]; // Comando principal cambiado a "imagenhd"
 export default handler;
 
 // Función de mejora de imagen usando una API externa (ejemplo con Vyro AI)
@@ -94,3 +94,4 @@ async function remini(imageData, operation) {
         );
     });
 }
+
