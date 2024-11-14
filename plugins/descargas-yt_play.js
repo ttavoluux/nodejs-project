@@ -95,8 +95,8 @@ _*Descargado sus video, aguarden un momento....*_
 handler.help = ['play', 'play2'];
 handler.tags = ['downloader'];
 handler.command = ['play', 'play2', 'play3', 'play4', 'audio', 'video']
-handler.limit = 1
-handler.register = false
+//handler.limit = 3
+handler.register = true
 export default handler;
 
 async function search(query, options = {}) {
