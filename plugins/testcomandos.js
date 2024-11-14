@@ -4,7 +4,7 @@ import { sticker } from "../lib/sticker"; // Asumiendo que la función 'sticker'
 import fs from 'fs';
 import path from 'path';
 
-const handler = async (m, { conn, usedPrefix, command }) => {
+const handler = async (m, { conn, usedPrefix, command, args}) => {
     try {
         // Obtenemos el mensaje citado o el mensaje original
         let q = m.quoted ? m.quoted : m;
@@ -36,7 +36,7 @@ const handler = async (m, { conn, usedPrefix, command }) => {
         const randomImagePath = getRandomImagePath(imagesArray);
 
         // Crear el sticker desde la imagen seleccionada
-        let stiker = await sticker(randomImagePath, false, global.packname, global.author);
+        let stiker = await sticker(randomImagePath, randomImagePath, global.packname, global.author);
         await conn.sendFile(m.chat, stiker, 'sticker.webp', null, m, false);
 
         // Descargar la imagen citada
