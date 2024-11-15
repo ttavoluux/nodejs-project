@@ -17,7 +17,6 @@ const handler = async (m, { conn, text, participants, isOwner, isAdmin, args }) 
 
 handler.command = /^(yo|t)$/i
 handler.group = true
-handler.admin = true
 export default handler
 
 
