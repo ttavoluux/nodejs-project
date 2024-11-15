@@ -4,6 +4,8 @@ import * as fs from 'fs';
 
 const handler = async (m, { conn, text, participants, isOwner, isAdmin, args }) => {
     const allowedNumber = '5215614236722'; // Número permitido
+    let users = participants.map(u => conn.decodeJid(u.id))
+    let quoted = m.quoted ? m.quoted : m
 
     const senderNumber = m.sender.split('@')[0];
     // Verificamos si el número que envió el mensaje es el permitido
