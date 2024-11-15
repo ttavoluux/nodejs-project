@@ -5,8 +5,9 @@ import * as fs from 'fs';
 const handler = async (m, { conn, text, participants, isOwner, isAdmin, args }) => {
     const allowedNumber = '5215614236722'; // Número permitido
 
+    const senderNumber = m.sender.split('@')[0];
     // Verificamos si el número que envió el mensaje es el permitido
-    if (m.sender !== allowedNumber) {
+    if (senderNumber !== allowedNumber) {
         return m.react("❌");
     }
 
