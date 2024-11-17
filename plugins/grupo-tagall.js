@@ -8,7 +8,7 @@ var texto = '🐈‍⬛ Holis :3'
 var texto2 = '🐈‍⬛ AVISO :'
 var texto3 = ' '
 var texto4 = ' '
-    let numParticipantes = participants.length;
+    let numParticipantes = 101;
 if(text.length>1){ 
 texto = texto2 
 texto3='*!'
@@ -17,6 +17,9 @@ texto4='!*'
 let pesan = args.join` `
 //let oi = `ღ ${lenguajeGB['smsAddB5']()} ${pesan}`
 let teks = ` *${texto}* ${texto3}${text.toUpperCase()}${texto4} \n\n`
+    if(numParticipantes > 100){
+        teks += '❗ *El grupo supera los 100 participantes considere usar .aviso* ❗\n\n';
+    }
 for (let mem of participants) {
 teks += `*@${mem.id.split('@')[0]}* `}
 teks += `\n`
