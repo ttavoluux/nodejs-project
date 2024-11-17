@@ -8,7 +8,7 @@ var texto = '🐈‍⬛ Holis :3'
 var texto2 = '🐈‍⬛ AVISO :'
 var texto3 = ' '
 var texto4 = ' '
-    let numParticipantes = 101;
+    let numParticipantes = participants.length;
 if(text.length>1){ 
 texto = texto2 
 texto3='*!'
