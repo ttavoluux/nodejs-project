@@ -15,11 +15,12 @@ texto3='*!'
 texto4='!*'
 }
 let pesan = args.join` `
-//let oi = `ღ ${lenguajeGB['smsAddB5']()} ${pesan}`
-let teks = ` *${texto}* ${texto3}${text.toUpperCase()}${texto4} \n\n`
+    let teks = ''
     if(numParticipantes > 100){
         teks += '❗ *El grupo supera los 100 participantes considere usar .aviso* ❗\n\n';
     }
+//let oi = `ღ ${lenguajeGB['smsAddB5']()} ${pesan}`
+teks += ` *${texto}* ${texto3}${text.toUpperCase()}${texto4} \n\n`
 for (let mem of participants) {
 teks += `*@${mem.id.split('@')[0]}* `}
 teks += `\n`
