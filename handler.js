@@ -1417,14 +1417,28 @@ export async function participantsUpdate({ id, participants, action }) {
                                 .replace('@desc', groupMetadata.desc?.toString() || '𝑺𝒖𝒑𝒆𝒓 𝑨𝒓𝒍𝒆𝒕𝒔𝒊𝒕𝒂 𝑩𝒐𝒕 ❤')
                                 .replace('@user', '@' + user.split('@')[0]);
 
-                            imageToSend = imagen16;  // Imagen 16 para cuando alguien se une
+                            const numer = Math.floor(Math.random() * 3);
+                            if(numer === 0){
+                                imageToSend = imagen16;
+                            }else if(numer === 1){
+                                imageToSend = imagen20;
+                            }else if (numer === 2){
+                                imageToSend = imagen21;
+                            }
+                              // Imagen 16 para cuando alguien se une
                         }
                         // Si la acción es 'remove' (usuario se elimina)
                         else if (action === 'remove') {
+                            const numer = Math.floor(Math.random() * 2);
                             text = (chat.sBye || this.bye || conn.bye || 'Bye, @user!')
                                 .replace('@user', '@' + user.split('@')[0]);
 
-                            imageToSend = imagen18;  // Imagen 15 para cuando alguien se sale
+                            if(numer === 0){
+                                imageToSend = imagen18;  // Imagen 15 para cuando alguien se sale
+                            }else if(numer === 1){
+                                imageToSend = imagen19;
+                            }
+
                         }
 
                         // Si se activa la funcionalidad antifake y el bot tiene permisos de administrador
