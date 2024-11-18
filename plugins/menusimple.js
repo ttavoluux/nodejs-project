@@ -21,12 +21,10 @@ let estado = `💗 *¡Hola!* ${name} ✨
 
 > *Se quito .verificar para todos los comandos!*
 > (beta) new +1|2|6|12 "1/24hs"
-> *.play funcionando*
-❗ *trate de especificar mejor la cancion para que funcione*
-(.play name cantante/genero/etc.)
 
 💬 𝑮𝒓𝒖𝒑𝒐𝒔
 
+> *.on/.off (Activar y desactivar funciones)*
 > *.todos / .todas*
 > *.aviso / notify*
 > *.spam*
