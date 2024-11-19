@@ -78,7 +78,7 @@ si hay alguna prueba de que el equipo mete más PC de lo acordado, pueden abando
       // Aquí colocas la URL de la imagen que deseas enviar
 
     // Enviar el mensaje con el texto de las reglas y la imagen adjunta
-    await conn.sendFile(m.chat, imagen3, 'imagen3.jpg', reglas, m, {
+    await conn.reply(m.chat, imagen3, 'imagen3.jpg', reglas, m, {
         contextInfo: {
             externalAdReply: {
                 mediaUrl: 'https://www.google.com.mx',  // La URL que deseas asociar con el mensaje
