@@ -437,9 +437,6 @@ ${lenguajeGB.smsConfi7()}
 ${lenguajeGB.smsConfi8()}
 ${m.isGroup ? `` : `${lenguajeGB.smsConfi9()}`}
 
-𝐀𝐫𝐥𝐞𝐭𝐭𝐞𝐁𝐨𝐭 𝐄𝐝𝐢𝐭𝐢𝐨𝐧
-    *Community* ✅
-    *Ultimate*  ❌
 
 𝐀𝐝𝐦𝐢𝐧𝐬 
 *${usedPrefix + command} welcome ${m.isGroup ? chat.welcome ? '✅' : '❌' : lenguajeGB.smsNoGg()}*
@@ -479,6 +476,10 @@ ${m.isGroup ? `` : `${lenguajeGB.smsConfi9()}`}
 *${usedPrefix + command} temporal ${bot.temporal ? '✅' : '❌'}*
 *${usedPrefix + command} pconly ${global.opts['pconly'] ? '✅' : '❌'}*
 *${usedPrefix + command} gconly ${global.opts['gconly'] ? '✅' : '❌'}*
+
+𝐀𝐫𝐥𝐞𝐭𝐭𝐞𝐁𝐨𝐭 𝐄𝐝𝐢𝐭𝐢𝐨𝐧
+    *Community* ✅
+    *Ultimate*  ❌
 
 ${wm}`, fkontak, { mentions: [aa,] })
 //conn.sendMessage(m.chat, { text: texto }, { quoted: fkontak })
