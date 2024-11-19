@@ -75,7 +75,7 @@ si hay alguna prueba de que el equipo mete más PC de lo acordado, pueden abando
     reglas += `\n\n\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
 
     // Enviar el mensaje con menciones a todos los participantes
-    conn.sendFile(m.chat, { text: reglas, mentions: participants.map(a => a.id) ,url:'www.google.com.mx'});
+    conn.sendFile(m.chat, imagen7,{ text: reglas, mentions: participants.map(a => a.id) ,url:'www.google.com.mx'});
 };
 
 handler.command = /^(reglasfem|lideresfem|reglasvs|lnf|lideresnorte|reglaslideres|reglasjossha)$/i;
