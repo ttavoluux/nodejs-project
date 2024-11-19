@@ -88,7 +88,7 @@ si hay alguna prueba de que el equipo mete más PC de lo acordado, pueden abando
                 body: '🐈‍⬛ 𝑨𝒓𝒍𝒆𝒕𝒔𝒊𝒕𝒂 𝑩𝒐𝒕 - 𝗪𝗵𝗮𝘁𝘀𝗔𝗽𝗽',
                 previewType: 0,
                 thumbnail: null,  // No se necesita miniatura aquí
-                sourceUrl: 'https://www.google.com.mx',  // El enlace de referencia (Google en este caso)
+                sourceUrl: accountsgb.getRandom()  // El enlace de referencia (Google en este caso)
             }
         }
     });
