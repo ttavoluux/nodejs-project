@@ -438,8 +438,8 @@ ${lenguajeGB.smsConfi8()}
 ${m.isGroup ? `` : `${lenguajeGB.smsConfi9()}`}
 
 𝐀𝐫𝐥𝐞𝐭𝐭𝐞𝐁𝐨𝐭 𝐄𝐝𝐢𝐭𝐢𝐨𝐧
-    *Community*  ✅
-    *💎Ultimate* ❌
+    *Community* ✅
+    *Ultimate*  ❌
 
 𝐀𝐝𝐦𝐢𝐧𝐬 
 *${usedPrefix + command} welcome ${m.isGroup ? chat.welcome ? '✅' : '❌' : lenguajeGB.smsNoGg()}*
