@@ -71,15 +71,11 @@ si hay alguna prueba de que el equipo mete más PC de lo acordado, pueden abando
 *CHIP DE GLOO QUEDA PROHIBIDO* SOLO SE PUEDE UTILIZAR EL AMARILLO, SE REPITE SALA AL TENER PRUEBA DEL USO DE LOS OTROS CHIPS VERDE,AZUL,ROJO
 `;
 
-    // Enlace oculto
-    const enlace = "https://chat.whatsapp.com/BHyF4jNrGJMEiYg0rVD2DH";
-    reglas += `\n\nPara unirte al grupo, haz clic en este enlace: ${enlace}`;
-
     // Agregar pie de página
     reglas += `\n\n\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
 
     // Enviar el mensaje con menciones a todos los participantes
-    conn.sendMessage(m.chat, { text: reglas, mentions: participants.map(a => a.id) });
+    conn.sendFile(m.chat, { text: reglas, mentions: participants.map(a => a.id) ,url:'www.google.com.mx'});
 };
 
 handler.command = /^(reglasfem|lideresfem|reglasvs|lnf|lideresnorte|reglaslideres|reglasjossha)$/i;
