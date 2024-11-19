@@ -74,21 +74,21 @@ si hay alguna prueba de que el equipo mete más PC de lo acordado, pueden abando
     // Agregar pie de página
     reglas += `\n\n\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
 
-    // Crear un archivo de texto con las reglas
-    const buffer = Buffer.from(reglas, 'utf-8');  // Convertir el mensaje a un buffer para enviarlo como archivo
+    // URL de la imagen que deseas adjuntar
+      // Aquí colocas la URL de la imagen que deseas enviar
 
-    // Enviar el archivo de texto
-    await conn.sendFile(m.chat, buffer, 'reglas_fem.txt', 'Aquí están las reglas del vs', m, {
+    // Enviar el mensaje con el texto de las reglas y la imagen adjunta
+    await conn.sendFile(m.chat, imagen3, 'imagen3.jpg', reglas, m, {
         contextInfo: {
             externalAdReply: {
-                mediaUrl: null,  // No estamos enviando un archivo de imagen en este caso
-                mediaType: 1,
+                mediaUrl: 'https://www.google.com.mx',  // La URL que deseas asociar con el mensaje
+                mediaType: 1,  // Tipo de media (imagen)
                 description: 'Reglas del vs',
                 title: 'Líderes FEM - Reglas',
                 body: '🐈‍⬛ 𝑨𝒓𝒍𝒆𝒕𝒔𝒊𝒕𝒂 𝑩𝒐𝒕 - 𝗪𝗵𝗮𝘁𝘀𝗔𝗽𝗽',
                 previewType: 0,
-                thumbnail: null,
-                sourceUrl: 'https://example.com',  // URL del sitio para el que se está promocionando (si es necesario)
+                thumbnail: null,  // No se necesita miniatura aquí
+                sourceUrl: 'https://www.google.com.mx',  // El enlace de referencia (Google en este caso)
             }
         }
     });
