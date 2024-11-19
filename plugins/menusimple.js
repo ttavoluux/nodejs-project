@@ -21,6 +21,7 @@ let estado = `💗 *¡Hola!* ${name} ✨
 
 > *Se quito .verificar para todos los comandos!*
 > (beta) new +1|2|6|12 "1/24hs"
+> (update) .on"
 
 💬 𝑮𝒓𝒖𝒑𝒐𝒔
 

@@ -439,6 +439,7 @@ ${m.isGroup ? `` : `${lenguajeGB.smsConfi9()}`}
 
 
 𝐀𝐝𝐦𝐢𝐧𝐬 
+
 *${usedPrefix + command} welcome ${m.isGroup ? chat.welcome ? '✅' : '❌' : lenguajeGB.smsNoGg()}*
 *${usedPrefix + command} detect ${m.isGroup ? chat.detect ? '✅' : '❌' : lenguajeGB.smsNoGg()}*
 *${usedPrefix + command} juegos ${m.isGroup ? chat.game ? '✅' : '❌' : lenguajeGB.smsNoGg()}*
@@ -466,6 +467,7 @@ ${m.isGroup ? `` : `${lenguajeGB.smsConfi9()}`}
 *${usedPrefix + command} antiTwitter ${m.isGroup ? chat.antiTwitter ? '✅' : '❌' : lenguajeGB.smsNoGg()}*
 
 𝐂𝐫𝐞𝐚𝐝𝐨𝐫𝐚
+
 *${usedPrefix + command} autolevelup ${m.isGroup ? chat.autolevelup ? '✅' : '❌' : lenguajeGB.smsNoGg()}* 
 *${usedPrefix + command} restrict ${bot.restrict ? '✅' : '❌'}*
 *${usedPrefix + command} antiprivado ${bot.antiPrivate ? '✅' : '❌'}*
@@ -478,6 +480,7 @@ ${m.isGroup ? `` : `${lenguajeGB.smsConfi9()}`}
 *${usedPrefix + command} gconly ${global.opts['gconly'] ? '✅' : '❌'}*
 
 𝐀𝐫𝐥𝐞𝐭𝐭𝐞𝐁𝐨𝐭 𝐄𝐝𝐢𝐭𝐢𝐨𝐧
+
     *Community* ✅
     *Ultimate*  ❌
 
