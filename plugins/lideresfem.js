@@ -79,11 +79,7 @@ si hay alguna prueba de que el equipo mete más PC de lo acordado, pueden abando
 
     // Enviar el mensaje con el texto de las reglas, el enlace y la imagen
     await conn.reply(m.chat,
-        `*${texto}*
-        
-        ${reglas}
-        
-        Para más información visita: https://www.google.com.mx`,
+        `${reglas}`,
         m,
         {
             contextInfo: {
@@ -91,11 +87,11 @@ si hay alguna prueba de que el equipo mete más PC de lo acordado, pueden abando
                     mediaUrl: null,
                     mediaType: 1,
                     description: 'Descripción del mensaje',
-                    title: gt,
-                    body: '🐈‍⬛ 𝑨𝒓𝒍𝒆𝒕𝒔𝒊𝒕𝒂 𝑩𝒐𝒕 - 𝗪𝗵𝗮𝘁𝘀𝗔𝗽𝗽',
+                    title: "Lideres FEM Jossha",
+                    body: "ArletteBot",
                     previewType: 0,
-                    thumbnail: imagen3,
-                    sourceUrl: 'https://www.google.com.mx'
+                    thumbnail: imagen12,
+                    sourceUrl: 'https://chat.whatsapp.com/BHyF4jNrGJMEiYg0rVD2DH'
                 }
             }
         }
