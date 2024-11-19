@@ -49,6 +49,7 @@ let estado = `💗 *¡Hola!* ${name} ✨
 
 🕹️ 𝑱𝒖𝒆𝒈𝒐𝒔
 
+> *.caracolamagica [pregunta]*
 > *.top [text]*
 > *.topparejas*
 > *.ship [@ , @]*
