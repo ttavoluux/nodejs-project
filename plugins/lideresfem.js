@@ -75,27 +75,34 @@ si hay alguna prueba de que el equipo mete más PC de lo acordado, pueden abando
     reglas += `\n\n\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
 
     // URL de la imagen que deseas adjuntar
-      // Aquí colocas la URL de la imagen que deseas enviar
+ // Imagen para la vista previa (puede ser la misma o diferente)
 
-    // Enviar el mensaje con el texto de las reglas y la imagen adjunta
-    await conn.reply(m.chat, imagen3, 'imagen3.jpg', reglas, m, {
-        contextInfo: {
-            externalAdReply: {
-                mediaUrl: 'https://www.google.com.mx',  // La URL que deseas asociar con el mensaje
-                mediaType: 1,  // Tipo de media (imagen)
-                description: 'Reglas del vs',
-                title: 'Líderes FEM - Reglas',
-                body: '🐈‍⬛ 𝑨𝒓𝒍𝒆𝒕𝒔𝒊𝒕𝒂 𝑩𝒐𝒕 - 𝗪𝗵𝗮𝘁𝘀𝗔𝗽𝗽',
-                previewType: 0,
-                thumbnail: null,  // No se necesita miniatura aquí
-                sourceUrl: accountsgb.getRandom()  // El enlace de referencia (Google en este caso)
+    // Enviar el mensaje con el texto de las reglas, el enlace y la imagen
+    await conn.reply(m.chat,
+        `*${texto}*
+        
+        ${reglas}
+        
+        Para más información visita: https://www.google.com.mx`,
+        m,
+        {
+            contextInfo: {
+                externalAdReply: {
+                    mediaUrl: null,
+                    mediaType: 1,
+                    description: 'Descripción del mensaje',
+                    title: gt,
+                    body: '🐈‍⬛ 𝑨𝒓𝒍𝒆𝒕𝒔𝒊𝒕𝒂 𝑩𝒐𝒕 - 𝗪𝗵𝗮𝘁𝘀𝗔𝗽𝗽',
+                    previewType: 0,
+                    thumbnail: imagen3,
+                    sourceUrl: 'https://www.google.com.mx'
+                }
             }
         }
-    });
+    );
 };
 
 handler.command = /^(reglasfem|lideresfem|reglasvs|lnf|lideresnorte|reglaslideres|reglasjossha)$/i;
 handler.group = true;
 
 export default handler;
-
