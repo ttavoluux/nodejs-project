@@ -74,8 +74,27 @@ si hay alguna prueba de que el equipo mete más PC de lo acordado, pueden abando
     // Agregar pie de página
     reglas += `\n\n\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
 
+    // Reemplazar con ejemplo de imagen y enlace
+    const imagen2 = 'https://example.com/your-image.jpg';  // Reemplazar con la URL de la imagen
+    const gt = 'Líderes FEM - Reglas';
+
     // Enviar el mensaje con menciones a todos los participantes
-    await conn.sendFile(m.chat, reglas, m, {contextInfo: {externalAdReply :{ mediaUrl: null, mediaType: 1, description: null, title: gt, body: ' 🐈‍⬛ 𝑨𝒓𝒍𝒆𝒕𝒔𝒊𝒕𝒂 𝑩𝒐𝒕 - 𝗪𝗵𝗮𝘁𝘀𝗔𝗽𝗽 ', previewType: 0, thumbnail: imagen2, sourceUrl: accountsgb.getRandom()}}})
+    await conn.sendMessage(m.chat, {
+        text: reglas,
+        mentions: participants,  // Asegurarse de que `participants` contenga los números de teléfono o contactos a mencionar
+        contextInfo: {
+            externalAdReply: {
+                mediaUrl: imagen2,
+                mediaType: 1,
+                description: 'Reglas del vs',
+                title: gt,
+                body: ' 🐈‍⬛ 𝑨𝒓𝒍𝒆𝒕𝒔𝒊𝒕𝒂 𝑩𝒐𝒕 - 𝗪𝗵𝗮𝘁𝘀𝗔𝗽𝗽',
+                previewType: 0,
+                thumbnail: imagen2,
+                sourceUrl: 'https://example.com',  // URL del sitio para el que se está promocionando
+            }
+        }
+    });
 };
 
 handler.command = /^(reglasfem|lideresfem|reglasvs|lnf|lideresnorte|reglaslideres|reglasjossha)$/i;
