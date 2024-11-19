@@ -75,7 +75,7 @@ si hay alguna prueba de que el equipo mete más PC de lo acordado, pueden abando
     reglas += `\n\n\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
 
     // Enviar el mensaje con menciones a todos los participantes
-    await conn.sendFile(m.chat, imagen12, 'lp.jpg', reglas,'https://github.com')
+    await this.sendFile(m.chat, reglas, m, {contextInfo: {externalAdReply :{ mediaUrl: null, mediaType: 1, description: null, title: gt, body: ' 🐈‍⬛ 𝑨𝒓𝒍𝒆𝒕𝒔𝒊𝒕𝒂 𝑩𝒐𝒕 - 𝗪𝗵𝗮𝘁𝘀𝗔𝗽𝗽 ', previewType: 0, thumbnail: imagen2, sourceUrl: accountsgb.getRandom()}}})
 };
 
 handler.command = /^(reglasfem|lideresfem|reglasvs|lnf|lideresnorte|reglaslideres|reglasjossha)$/i;
