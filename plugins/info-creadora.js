@@ -42,7 +42,7 @@ Requisitos para el Uso del Bot:
         Si el bot no es utilizado dentro de los tres días posteriores a su incorporación al grupo, se retirará automáticamente del mismo.
     
     4. Sin Otros Bots:
-        El bot no podrá ser agregado a un grupo si ya hay otro bot presente. Asegúrate de que el grupo esté libre de otros bots para un funcionamiento adecuado.
+        El bot no podrá ser agregado a un grupo si ya hay otro bot presente. (ArletteBot Community Edition, un bot diseñado para la comunidad. Solo se permite la presencia de ArletteBot en el grupo para garantizar un rendimiento óptimo y evitar conflictos con otros bots).
 
     5. Versión Beta:
         Ten en cuenta que el bot está en versión beta, por lo que puede tener fallos ocasionales o comportamientos inesperados. Agradecemos tu comprensión mientras seguimos mejorando y optimizando el bot.
