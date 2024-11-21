@@ -1,137 +1,121 @@
 import fetch from 'node-fetch';
 import yts from 'yt-search';
+import ytdl from 'ytdl-core';
+import { MessageType } from '@adiwajshing/baileys';
 
 const LimitAud = 725 * 1024 * 1024; // 700MB
 const LimitVid = 425 * 1024 * 1024; // 425MB
 
 const handler = async (m, { conn, command, args, text, usedPrefix }) => {
+    // Verificar si se ha ingresado un texto
+    if (!text) return conn.reply(m.chat, `*Ingresa el nombre de la canción* .play name`);
 
-    if (command == 'play' || command == 'musica') {
-        if (!text) return conn.reply(m.chat, `*Ingresa el nombre de la canción* .play name`);
+    const yt_play = await search(args.join(' '));
 
-        const yt_play = await search(args.join(' '));
-        const texto1 = `*🎵 Canción: ${yt_play[0].title} 🎵*\n` +
-            `*⏱ Duración: ${secondString(yt_play[0].duration.seconds)}*\n` +
-            `*🔗 Enlace: ${yt_play[0].url}*`.trim();
+    if (!yt_play || yt_play.length === 0) return m.reply('No se encontraron resultados para esa búsqueda.');
 
-        await conn.sendFile(m.chat, imagen7, 'error.jpg', texto1, m, null);
+    const video = yt_play[0];
+    const videoUrl = video.url;
+    const videoTitle = video.title;
+    const videoDuration = secondString(video.duration.seconds);
+    const videoThumbnail = video.thumbnail;
 
+    const textMessage = `*🎵 Canción: ${videoTitle} 🎵*\n` +
+        `*⏱ Duración: ${videoDuration}*\n` +
+        `*🔗 Enlace: ${videoUrl}*`;
+
+    // Enviar detalles del video
+    await conn.sendFile(m.chat, videoThumbnail, 'error.jpg', textMessage, m);
+
+    if (command === 'play' || command === 'musica') {
         try {
-            // Intentar obtener el audio con diferentes APIs
-            const downloadUrl = await getAudioDownloadUrl(yt_play[0].url);
-            if (!downloadUrl) return m.react("❌");
-
-            const fileSize = await getFileSize(downloadUrl);
+            // Descargar el audio
+            const audioStream = ytdl(videoUrl, { filter: 'audioonly', quality: 'highestaudio' });
+            const fileSize = await getFileSize(audioStream);
 
             if (fileSize > LimitAud) {
-                await conn.sendMessage(m.chat, { document: { url: downloadUrl }, mimetype: 'audio/mpeg', fileName: `${yt_play[0].title}.mp3` }, { quoted: m });
+                await conn.sendMessage(m.chat, {
+                    document: { url: videoUrl },
+                    fileName: `${videoTitle}.mp3`,
+                    caption: `🎶 Aquí está tu audio: ${videoTitle}`,
+                    mimetype: 'audio/mpeg',
+                }, { quoted: m });
             } else {
-                await conn.sendMessage(m.chat, { audio: { url: downloadUrl }, mimetype: 'audio/mpeg' }, { quoted: m });
+                await conn.sendMessage(m.chat, {
+                    audio: { url: videoUrl },
+                    mimetype: 'audio/mpeg',
+                    ptt: true,
+                }, { quoted: m });
             }
-        } catch (e) {
-            await m.react("❌");
-            console.error("Error al intentar obtener el audio:", e);
+        } catch (error) {
+            console.error(error);
+            await m.react('❌');
+        }
+    } else if (command === 'play2' || command === 'video') {
+        try {
+            // Descargar el video
+            const videoStream = ytdl(videoUrl, { filter: 'videoonly', quality: 'highest' });
+            const fileSize = await getFileSize(videoStream);
+
+            if (fileSize > LimitVid) {
+                await conn.sendMessage(m.chat, {
+                    document: { url: videoUrl },
+                    fileName: `${videoTitle}.mp4`,
+                    caption: `🎬 Aquí está tu video: ${videoTitle}`,
+                    mimetype: 'video/mp4',
+                }, { quoted: m });
+            } else {
+                await conn.sendMessage(m.chat, {
+                    video: { url: videoUrl },
+                    fileName: `${videoTitle}.mp4`,
+                    caption: `🎬 Aquí está tu video: ${videoTitle}`,
+                    mimetype: 'video/mp4',
+                    thumbnail: videoThumbnail,
+                }, { quoted: m });
+            }
+        } catch (error) {
+            console.error(error);
+            await m.react('❌');
         }
     }
 };
 
-// Función que maneja múltiples APIs para obtener el enlace de descarga del audio
-const getAudioDownloadUrl = async (url) => {
-    try {
-        let downloadUrl = null;
-
-        // Intentar la primera API
-        let res = await fetchWithHeaders(`https://deliriussapi-oficial.vercel.app/download/ytmp3?url=${encodeURIComponent(url)}`);
-        let data = await res.json();
-        if (data.status && data.data?.download?.url) {
-            downloadUrl = data.data.download.url;
-        }
-
-        if (!downloadUrl) {
-            // Si falló la primera API, intentar otra
-            res = await fetchWithHeaders(`https://api.zenkey.my.id/api/download/ytmp3?apikey=zenkey&url=${encodeURIComponent(url)}`);
-            data = await res.json();
-            if (data.status && data.result?.downloadUrl) {
-                downloadUrl = data.result.downloadUrl;
-            }
-        }
-
-        if (!downloadUrl) {
-            // Intentar una tercera API
-            res = await fetchWithHeaders(`https://exonity.tech/api/ytdlp2-faster?apikey=adminsepuh&url=${url}`);
-            data = await res.json();
-            if (data.result?.media?.mp3) {
-                downloadUrl = data.result.media.mp3;
-            }
-        }
-
-        return downloadUrl;
-    } catch (e) {
-        console.error("Error al obtener el enlace de descarga:", e);
-        return null;
-    }
-};
-
-// Función personalizada de fetch con cabecera (User-Agent) que intenta evitar el bloqueo 403
-const fetchWithHeaders = async (url) => {
-    const options = {
-        method: 'GET',
-        headers: {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', // User-Agent de navegador
-            'Accept': 'application/json', // Especificar que queremos respuestas en formato JSON
-            'Accept-Language': 'es-ES,es;q=0.9', // Solicitar respuestas en español
-            'Connection': 'keep-alive', // Mantener la conexión abierta si es necesario
-            'Upgrade-Insecure-Requests': '1' // Permitir solicitudes no seguras
-        }
-    };
-    try {
-        const response = await fetch(url, options);
-        if (!response.ok) {
-            throw new Error(`Error en la respuesta: ${response.statusText}`);
-        }
-        return response;
-    } catch (error) {
-        console.error("Error al hacer la solicitud:", error);
-        throw error;
-    }
-};
-
-// Función de búsqueda de videos
-async function search(query, options = {}) {
-    const search = await yts.search({ query, hl: 'es', gl: 'ES', ...options });
-    return search.videos;
+// Función para realizar la búsqueda de videos en YouTube usando yts
+async function search(query) {
+    const searchResult = await yts(query);
+    return searchResult.videos; // Devuelve la lista de videos encontrados
 }
 
-// Función para convertir los segundos en un formato de tiempo legible
+// Función para formatear el tiempo en segundos a formato legible
 function secondString(seconds) {
     seconds = Number(seconds);
     const d = Math.floor(seconds / (3600 * 24));
     const h = Math.floor((seconds % (3600 * 24)) / 3600);
     const m = Math.floor((seconds % 3600) / 60);
     const s = Math.floor(seconds % 60);
-    const dDisplay = d > 0 ? d + (d == 1 ? ' día, ' : ' días, ') : '';
-    const hDisplay = h > 0 ? h + (h == 1 ? ' hora, ' : ' horas, ') : '';
-    const mDisplay = m > 0 ? m + (m == 1 ? ' minuto, ' : ' minutos, ') : '';
-    const sDisplay = s > 0 ? s + (s == 1 ? ' segundo' : ' segundos') : '';
+    const dDisplay = d > 0 ? d + (d === 1 ? ' día, ' : ' días, ') : '';
+    const hDisplay = h > 0 ? h + (h === 1 ? ' hora, ' : ' horas, ') : '';
+    const mDisplay = m > 0 ? m + (m === 1 ? ' minuto, ' : ' minutos, ') : '';
+    const sDisplay = s > 0 ? s + (s === 1 ? ' segundo' : ' segundos') : '';
     return dDisplay + hDisplay + mDisplay + sDisplay;
 }
 
 // Función para obtener el tamaño del archivo
-async function getFileSize(url) {
-    try {
-        const response = await fetch(url, { method: 'HEAD' });
-        const contentLength = response.headers.get('content-length');
-        return contentLength ? parseInt(contentLength, 10) : 0;
-    } catch (error) {
-        console.error("Error al obtener el tamaño del archivo", error);
-        return 0;
-    }
+async function getFileSize(stream) {
+    return new Promise((resolve, reject) => {
+        let fileSize = 0;
+        stream.on('data', chunk => {
+            fileSize += chunk.length;
+        });
+        stream.on('end', () => resolve(fileSize));
+        stream.on('error', reject);
+    });
 }
 
-handler.help = ['play', 'musica'];
+handler.help = ['play', 'play2'];
 handler.tags = ['downloader'];
-handler.command = ['play', 'musica'];
-handler.register = true;
+handler.command = ['play', 'play2', 'audio', 'video'];
+
 export default handler;
 
 
