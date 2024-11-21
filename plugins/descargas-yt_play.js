@@ -1,121 +1,149 @@
 import fetch from 'node-fetch';
 import yts from 'yt-search';
 import ytdl from 'ytdl-core';
-import { MessageType } from '@adiwajshing/baileys';
+import axios from 'axios';
+import {youtubedl, youtubedlv2} from '@bochilteam/scraper';
+const LimitAud = 725 * 1024 * 1024; //700MB
+const LimitVid = 425 * 1024 * 1024; //425MB
+const handler = async (m, {conn, command, args, text, usedPrefix}) => {
 
-const LimitAud = 725 * 1024 * 1024; // 700MB
-const LimitVid = 425 * 1024 * 1024; // 425MB
+    if (command == 'play' || command == 'musica') {
+        if (!text) return conn.reply(m.chat, `*Ingresa el nombre de la cancion* .play name`);
+        const yt_play = await search(args.join(' '));
+        const ytplay2 = await yts(text);
+        const texto1 = `*🎵 Canción: ${yt_play[0].title} 🎵*\n` +
+            `*⏱ Duración: ${secondString(yt_play[0].duration.seconds)}*\n` +
+            `*🔗 Enlace: ${yt_play[0].url}*`.trim();
 
-const handler = async (m, { conn, command, args, text, usedPrefix }) => {
-    // Verificar si se ha ingresado un texto
-    if (!text) return conn.reply(m.chat, `*Ingresa el nombre de la canción* .play name`);
 
-    const yt_play = await search(args.join(' '));
 
-    if (!yt_play || yt_play.length === 0) return m.reply('No se encontraron resultados para esa búsqueda.');
-
-    const video = yt_play[0];
-    const videoUrl = video.url;
-    const videoTitle = video.title;
-    const videoDuration = secondString(video.duration.seconds);
-    const videoThumbnail = video.thumbnail;
-
-    const textMessage = `*🎵 Canción: ${videoTitle} 🎵*\n` +
-        `*⏱ Duración: ${videoDuration}*\n` +
-        `*🔗 Enlace: ${videoUrl}*`;
-
-    // Enviar detalles del video
-    await conn.sendFile(m.chat, videoThumbnail, 'error.jpg', textMessage, m);
-
-    if (command === 'play' || command === 'musica') {
+        await conn.sendFile(m.chat, imagen7, 'error.jpg', texto1, m, null);
         try {
-            // Descargar el audio
-            const audioStream = ytdl(videoUrl, { filter: 'audioonly', quality: 'highestaudio' });
-            const fileSize = await getFileSize(audioStream);
+            const apiUrl = `https://deliriussapi-oficial.vercel.app/download/ytmp3?url=${encodeURIComponent(yt_play[0].url)}`;
+            const apiResponse = await fetch(apiUrl);
+            const delius = await apiResponse.json();
+            if (!delius.status) return m.react("❌");
+            const downloadUrl = delius.data.download.url;
+            const fileSize = await getFileSize(downloadUrl);
+            await conn.sendMessage(m.chat, { audio: { url: downloadUrl }, mimetype: 'audio/mpeg' }, { quoted: m });
+            if (fileSize > LimitAud) return await conn.sendMessage(m.chat, { document: { url: downloadUrl }, mimetype: 'audio/mpeg', fileName: `${yt_play[0].title}.mp3` }, { quoted: m });
+        } catch (e1) {
+            try {
+                const res = await fetch(`https://api.zenkey.my.id/api/download/ytmp3?apikey=zenkey&url=${yt_play[0].url}`)
+                const audioData = await res.json()
 
-            if (fileSize > LimitAud) {
-                await conn.sendMessage(m.chat, {
-                    document: { url: videoUrl },
-                    fileName: `${videoTitle}.mp3`,
-                    caption: `🎶 Aquí está tu audio: ${videoTitle}`,
-                    mimetype: 'audio/mpeg',
-                }, { quoted: m });
-            } else {
-                await conn.sendMessage(m.chat, {
-                    audio: { url: videoUrl },
-                    mimetype: 'audio/mpeg',
-                    ptt: true,
-                }, { quoted: m });
-            }
-        } catch (error) {
-            console.error(error);
-            await m.react('❌');
-        }
-    } else if (command === 'play2' || command === 'video') {
+                if (audioData.status && audioData.result?.downloadUrl) {
+                    await conn.sendMessage(m.chat, { audio: { url: audioData.result.downloadUrl }, mimetype: 'audio/mpeg' }, { quoted: m });
+                }
+            } catch (e2) {
+                try {
+                    let d2 = await fetch(`https://exonity.tech/api/ytdlp2-faster?apikey=adminsepuh&url=${yt_play[0].url}`);
+                    let dp = await d2.json();
+                    const audiop = await getBuffer(dp.result.media.mp3);
+                    const fileSize = await getFileSize(dp.result.media.mp3);
+                    await conn.sendMessage(m.chat, { audio: { url: audiop }, mimetype: 'audio/mpeg' }, { quoted: m });
+                    if (fileSize > LimitAud) return await conn.sendMessage(m.chat, { document: { url: audiop }, mimetype: 'audio/mpeg', fileName: `${yt_play[0].title}.mp3` }, { quoted: m });
+                } catch (e3) {
+                    await m.react('❌');
+                    console.log(e3);
+                }}}}
+
+    if (command == 'play2' || command == 'video') {
+        if (!text) return conn.reply(m.chat, `*🤔Que está buscando? 🤔*\n*Ingrese el nombre del video*\n\n*Ejemplo:*\n#play emilia 420`, m, {contextInfo: {externalAdReply :{ mediaUrl: null, mediaType: 1, description: null, title: wm, body: '', previewType: 0, thumbnail: img.getRandom(), sourceUrl: redes.getRandom()}}});
+        const yt_play = await search(args.join(' '));
+        const ytplay2 = await yts(text);
+        const texto1 = `📌 *Título* : ${yt_play[0].title}\n📆 *Publicado:* ${yt_play[0].ago}\n⌚ *Duración:* ${secondString(yt_play[0].duration.seconds)}
+
+_*Descargado sus video, aguarden un momento....*_
+
+> _*Si este comando falla usar de la seguirte manera:*_ #ytmp4 ${yt_play[0].url}`.trim();
+
+        await conn.sendFile(m.chat, yt_play[0].thumbnail, 'error.jpg', texto1, m, null, fake);
         try {
-            // Descargar el video
-            const videoStream = ytdl(videoUrl, { filter: 'videoonly', quality: 'highest' });
-            const fileSize = await getFileSize(videoStream);
-
+            const apiUrl = `https://deliriussapi-oficial.vercel.app/download/ytmp4?url=${encodeURIComponent(yt_play[0].url)}`;
+            const apiResponse = await fetch(apiUrl);
+            const delius = await apiResponse.json();
+            if (!delius.status) return m.react("❌");
+            const downloadUrl = delius.data.download.url;
+            const fileSize = await getFileSize(downloadUrl);
             if (fileSize > LimitVid) {
-                await conn.sendMessage(m.chat, {
-                    document: { url: videoUrl },
-                    fileName: `${videoTitle}.mp4`,
-                    caption: `🎬 Aquí está tu video: ${videoTitle}`,
-                    mimetype: 'video/mp4',
-                }, { quoted: m });
+                await conn.sendMessage(m.chat, { document: { url: downloadUrl }, fileName: `${yt_play[0].title}.mp4`, caption: `🔰 Aquí está tu video \n🔥 Título: ${yt_play[0].title}` }, { quoted: m });
             } else {
-                await conn.sendMessage(m.chat, {
-                    video: { url: videoUrl },
-                    fileName: `${videoTitle}.mp4`,
-                    caption: `🎬 Aquí está tu video: ${videoTitle}`,
-                    mimetype: 'video/mp4',
-                    thumbnail: videoThumbnail,
-                }, { quoted: m });
-            }
-        } catch (error) {
-            console.error(error);
-            await m.react('❌');
-        }
-    }
-};
+                await conn.sendMessage(m.chat, { video: { url: downloadUrl }, fileName: `${yt_play[0].title}.mp4`, caption: `🔰 Aquí está tu video \n🔥 Título: ${yt_play[0].title}`, thumbnail: yt_play[0].thumbnail, mimetype: 'video/mp4' }, { quoted: m });
+            }} catch (e1) {
+            try {
+                let d2 = await fetch(`https://exonity.tech/api/ytdlp2-faster?apikey=adminsepuh&url=${yt_play[0].url}`);
+                let dp = await d2.json();
+                const audiop = await getBuffer(dp.result.media.mp4);
+                const fileSize = await getFileSize(dp.result.media.mp4);
+                if (fileSize > LimitVid) {
+                    await conn.sendMessage(m.chat, { document: { url: audiop }, fileName: `${yt_play[0].title}.mp4`, caption: `🔰 Aquí está tu video \n🔥 Título: ${yt_play[0].title}` }, { quoted: m });
+                } else {
+                    await conn.sendMessage(m.chat, { video: { url: audiop }, fileName: `${yt_play[0].title}.mp4`, caption: `🔰 Aquí está tu video \n🔥 Título: ${yt_play[0].title}`, thumbnail: yt_play[0].thumbnail, mimetype: 'video/mp4' }, { quoted: m });
+                }} catch (e2) {
+                await m.react('❌');
+                console.log(e2);
+            }}}
 
-// Función para realizar la búsqueda de videos en YouTube usando yts
-async function search(query) {
-    const searchResult = await yts(query);
-    return searchResult.videos; // Devuelve la lista de videos encontrados
+    if (command == 'play3' || command == 'play4') {
+        if (!text) return conn.reply(m.chat, `*🤔Que esta buscado? 🤔*\n*Ingrese el nombre del la canción*\n\n*Ejemplo:*\n#play emilia 420`, m, {contextInfo: {externalAdReply :{ mediaUrl: null, mediaType: 1, description: null, title: wm, body: '', previewType: 0, thumbnail: img.getRandom(), sourceUrl: redes.getRandom()}}})
+        const yt_play = await search(args.join(' '))
+        const texto1 = `📌 *Título* : ${yt_play[0].title}\n📆 *Publicado:* ${yt_play[0].ago}\n⌚ *Duración:* ${secondString(yt_play[0].duration.seconds)}\n👀 *Vistas:* ${MilesNumber(yt_play[0].views)}`.trim()
+
+        await conn.sendButton(m.chat, texto1, botname, yt_play[0].thumbnail, [['Audio', `${usedPrefix}ytmp3 ${yt_play[0].url}`], ['video', `${usedPrefix}ytmp4 ${yt_play[0].url}`], ['Mas resultados', `${usedPrefix}yts ${text}`]], null, null, m)
+    }}
+handler.help = ['play', 'play2'];
+handler.tags = ['downloader'];
+handler.command = ['play', 'play2', 'play3', 'play4', 'audio', 'video']
+//handler.limit = 3
+handler.register = true
+export default handler;
+
+async function search(query, options = {}) {
+    const search = await yts.search({query, hl: 'es', gl: 'ES', ...options});
+    return search.videos;
 }
 
-// Función para formatear el tiempo en segundos a formato legible
+function MilesNumber(number) {
+    const exp = /(\d)(?=(\d{3})+(?!\d))/g;
+    const rep = '$1.';
+    const arr = number.toString().split('.');
+    arr[0] = arr[0].replace(exp, rep);
+    return arr[1] ? arr.join('.') : arr[0];
+}
+
 function secondString(seconds) {
     seconds = Number(seconds);
     const d = Math.floor(seconds / (3600 * 24));
     const h = Math.floor((seconds % (3600 * 24)) / 3600);
     const m = Math.floor((seconds % 3600) / 60);
     const s = Math.floor(seconds % 60);
-    const dDisplay = d > 0 ? d + (d === 1 ? ' día, ' : ' días, ') : '';
-    const hDisplay = h > 0 ? h + (h === 1 ? ' hora, ' : ' horas, ') : '';
-    const mDisplay = m > 0 ? m + (m === 1 ? ' minuto, ' : ' minutos, ') : '';
-    const sDisplay = s > 0 ? s + (s === 1 ? ' segundo' : ' segundos') : '';
+    const dDisplay = d > 0 ? d + (d == 1 ? ' día, ' : ' días, ') : '';
+    const hDisplay = h > 0 ? h + (h == 1 ? ' hora, ' : ' horas, ') : '';
+    const mDisplay = m > 0 ? m + (m == 1 ? ' minuto, ' : ' minutos, ') : '';
+    const sDisplay = s > 0 ? s + (s == 1 ? ' segundo' : ' segundos') : '';
     return dDisplay + hDisplay + mDisplay + sDisplay;
 }
 
-// Función para obtener el tamaño del archivo
-async function getFileSize(stream) {
-    return new Promise((resolve, reject) => {
-        let fileSize = 0;
-        stream.on('data', chunk => {
-            fileSize += chunk.length;
-        });
-        stream.on('end', () => resolve(fileSize));
-        stream.on('error', reject);
-    });
+const getBuffer = async (url) => {
+    try {
+        const response = await fetch(url);
+        const buffer = await response.arrayBuffer();
+        return Buffer.from(buffer);
+    } catch (error) {
+        console.error("Error al obtener el buffer", error);
+        throw new Error("Error al obtener el buffer");
+    }
 }
 
-handler.help = ['play', 'play2'];
-handler.tags = ['downloader'];
-handler.command = ['play', 'play2', 'audio', 'video'];
-
-export default handler;
-
+async function getFileSize(url) {
+    try {
+        const response = await fetch(url, { method: 'HEAD' });
+        const contentLength = response.headers.get('content-length');
+        return contentLength ? parseInt(contentLength, 10) : 0;
+    } catch (error) {
+        console.error("Error al obtener el tamaño del archivo", error);
+        return 0;
+    }
+}
 
