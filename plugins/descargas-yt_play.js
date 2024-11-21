@@ -1,6 +1,5 @@
 import fetch from 'node-fetch';
 import yts from 'yt-search';
-import { youtubedl, youtubedlv2 } from '@bochilteam/scraper';
 
 const LimitAud = 725 * 1024 * 1024; // 700MB
 const LimitVid = 425 * 1024 * 1024; // 425MB
@@ -11,7 +10,6 @@ const handler = async (m, { conn, command, args, text, usedPrefix }) => {
         if (!text) return conn.reply(m.chat, `*Ingresa el nombre de la canción* .play name`);
 
         const yt_play = await search(args.join(' '));
-        const ytplay2 = await yts(text);
         const texto1 = `*🎵 Canción: ${yt_play[0].title} 🎵*\n` +
             `*⏱ Duración: ${secondString(yt_play[0].duration.seconds)}*\n` +
             `*🔗 Enlace: ${yt_play[0].url}*`.trim();
@@ -43,7 +41,7 @@ const getAudioDownloadUrl = async (url) => {
         let downloadUrl = null;
 
         // Intentar la primera API
-        let res = await fetch(`https://deliriussapi-oficial.vercel.app/download/ytmp3?url=${encodeURIComponent(url)}`);
+        let res = await fetchWithHeaders(`https://deliriussapi-oficial.vercel.app/download/ytmp3?url=${encodeURIComponent(url)}`);
         let data = await res.json();
         if (data.status && data.data?.download?.url) {
             downloadUrl = data.data.download.url;
@@ -51,7 +49,7 @@ const getAudioDownloadUrl = async (url) => {
 
         if (!downloadUrl) {
             // Si falló la primera API, intentar otra
-            res = await fetch(`https://api.zenkey.my.id/api/download/ytmp3?apikey=zenkey&url=${encodeURIComponent(url)}`);
+            res = await fetchWithHeaders(`https://api.zenkey.my.id/api/download/ytmp3?apikey=zenkey&url=${encodeURIComponent(url)}`);
             data = await res.json();
             if (data.status && data.result?.downloadUrl) {
                 downloadUrl = data.result.downloadUrl;
@@ -60,7 +58,7 @@ const getAudioDownloadUrl = async (url) => {
 
         if (!downloadUrl) {
             // Intentar una tercera API
-            res = await fetch(`https://exonity.tech/api/ytdlp2-faster?apikey=adminsepuh&url=${url}`);
+            res = await fetchWithHeaders(`https://exonity.tech/api/ytdlp2-faster?apikey=adminsepuh&url=${url}`);
             data = await res.json();
             if (data.result?.media?.mp3) {
                 downloadUrl = data.result.media.mp3;
@@ -71,6 +69,26 @@ const getAudioDownloadUrl = async (url) => {
     } catch (e) {
         console.error("Error al obtener el enlace de descarga:", e);
         return null;
+    }
+};
+
+// Función personalizada de fetch con cabecera (User-Agent) que intenta evitar el bloqueo 403
+const fetchWithHeaders = async (url) => {
+    const options = {
+        method: 'GET',
+        headers: {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36', // User-Agent de navegador
+        }
+    };
+    try {
+        const response = await fetch(url, options);
+        if (!response.ok) {
+            throw new Error(`Error en la respuesta: ${response.statusText}`);
+        }
+        return response;
+    } catch (error) {
+        console.error("Error al hacer la solicitud:", error);
+        throw error;
     }
 };
 
