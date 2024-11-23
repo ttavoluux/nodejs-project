@@ -434,7 +434,6 @@ if (!/[01]/.test(command)) return await conn.reply(m.chat, `❤️ ${lenguajeGB.
 
 ${lenguajeGB.smsConfi6()}
 ${lenguajeGB.smsConfi7()}
-${lenguajeGB.smsConfi8()}
 ${m.isGroup ? `` : `${lenguajeGB.smsConfi9()}`}
 
 
