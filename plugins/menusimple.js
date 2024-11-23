@@ -17,12 +17,6 @@ let fkontak = { "key": { "participants":"0@s.whatsapp.net", "remoteJid": "status
 let uptime = clockString(_uptime)
 let estado = `💗 *¡Hola!* ${name} ✨
 
-💬 𝑼𝑷𝑫𝑨𝑻𝑬 🚀
-
-> *Se quito .verificar para todos los comandos!*
-> (beta) new +1|2|6|12 "1/24hs"
-> (update) .on"
-
 💬 𝑮𝒓𝒖𝒑𝒐𝒔
 
 > *.on/.off (Activar y desactivar funciones)*
@@ -83,6 +77,8 @@ let estado = `💗 *¡Hola!* ${name} ✨
 
 > *.estado*
 > *.owner*
+
+🎨 𝑨𝒅𝒅 𝑴𝒊𝒏𝒊𝒎𝒂𝒍𝒊𝒔𝒕 𝑫𝒆𝒔𝒊𝒈𝒏 🎨
 
 📌
 > .menucompleto
