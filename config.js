@@ -219,6 +219,8 @@ global.imagen18 = fs.readFileSync("./media/menus/imagenbye.jpg")
 global.imagen19 = fs.readFileSync("./media/menus/imagenbye2.jpg")
 global.imagen20 = fs.readFileSync("./media/menus/imagenwelcome2.jpg")
 global.imagen21 = fs.readFileSync("./media/menus/imagenwelcome3.jpg")
+global.imagen22 = fs.readFileSync("./media/menus/imagenminimalist.jpg")
+
 
 
 global.img = 'https://i.imgur.com/IXlUwTW.jpg'
