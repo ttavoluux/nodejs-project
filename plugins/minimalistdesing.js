@@ -12,24 +12,25 @@ let handler = async (m, { conn, command, usedPrefix }) => {
     
     🎨 𝑨𝒅𝒅 𝑴𝒊𝒏𝒊𝒎𝒂𝒍𝒊𝒔𝒕 𝑫𝒆𝒔𝒊𝒈𝒏 🎨
 
-> Se cambiará el diseño de cómo se muestran los comandos para darle un estilo más minimalista. Esta nueva apariencia busca hacer la interfaz más limpia y fácil de usar, eliminando elementos innecesarios y centrando la atención en lo esencial.
 
-*@todos*      ✅
-*@aviso*      ✅
-*@notify*     ✅
-*@antidelete* ✅
-*@welcome*    ✅
-*@bye*        ✅
-*@menu*       ✅
-*@estado*     ✅
-*@trivia*     ✅
-*@pregunta*   ✅
-*@stiker*     ✅
-*@on*         ✅
-*@ban*        ✅
-*@fantasmas*  ✅
-*@top*        ✅
-*@hd*         ✅
+✅ *@todos*  
+✅ *@aviso*
+✅ *@notify*
+✅ *@antidelete* 
+✅ *@welcome*
+✅ *@bye*
+✅ *@menu*
+✅ *@estado*
+✅ *@trivia*
+✅ *@pregunta*
+✅ *@stiker*
+✅ *@on*
+✅ *@ban*
+✅ *@fantasmas*
+✅ *@top*
+✅ *@hd*
+
+> Se cambiará el diseño de cómo se muestran los comandos para darle un estilo más minimalista. Esta nueva apariencia busca hacer la interfaz más limpia y fácil de usar, eliminando elementos innecesarios y centrando la atención en lo esencial.
 
     
     *Versión:* ${vs}`
