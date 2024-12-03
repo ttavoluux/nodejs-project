@@ -18,7 +18,7 @@ let htextos = `${text ? text : " *🐈‍⬛ Holis :3* "}`
         await conn.sendFile(m.chat, stiker, 'sticker.webp', null, m, false, { mentions: users
         },{ quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
     }else if(numer === 0){
-        await conn.sendMessage(m.chat, { text : text ? text : `noti :3 ❤️    @ *${await conn.getName(m.chat)}*` , mentions: users}, { quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
+        await conn.sendMessage(m.chat, { text : text ? text : `❄️noti :3 ❤️    @ *${await conn.getName(m.chat)}*❄️` , mentions: users}, { quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
     }
 return
 } 
@@ -48,7 +48,7 @@ const more = String.fromCharCode(8206)
 const masss = more.repeat(850)
 const htextos = `${text ? text : '📣📣📣'}`
 
-await conn.sendMessage(m.chat, { text: text + '\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ', mentions: users }, { quoted: m }) 
+await conn.sendMessage(m.chat, { text: text + '\n                                                    ᴬʳˡᵉᵗᵗᴮᵒᵗ❄️', mentions: users }, { quoted: m })
 
 
 }else{
