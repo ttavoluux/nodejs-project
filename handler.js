@@ -1421,9 +1421,9 @@ export async function participantsUpdate({ id, participants, action }) {
                             if(numer === 0){
                                 imageToSend = imagen16;
                             }else if(numer === 1){
-                                imageToSend = imagen20;
+                                imageToSend = imagen16;
                             }else if (numer === 2){
-                                imageToSend = imagen21;
+                                imageToSend = imagen16;
                             }
                               // Imagen 16 para cuando alguien se une
                         }
