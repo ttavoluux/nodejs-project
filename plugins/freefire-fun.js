@@ -48,7 +48,7 @@ let handler = async (m, { conn, command, usedPrefix,text}) => {
 - 
 - 
 - `
-        await conn.sendMessage(m.chat, scrims12, { quoted: m })
+        await conn.sendMessage(m.chat, {text:scrims12, quoted: m })
     }
 
     if (command === 'ff16vs16') {
