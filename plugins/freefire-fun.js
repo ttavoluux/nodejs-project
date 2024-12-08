@@ -23,9 +23,9 @@ let handler = async (m, { conn, command, usedPrefix,text}) => {
         let horaCO = (horaMX + 1) % 24;  // Colombia está una hora adelante de México
         let horaAR = (horaMX + 3) % 24;  // Argentina está tres horas adelante de México
 
-        let horaMX12 = to12HourFormat(horaMX);
-        let horaCO12 = to12HourFormat(horaCO);
-        let horaAR12 = to12HourFormat(horaAR);
+        let horaMX12 = horaMX;
+        let horaCO12 = horaCO;
+        let horaAR12 = horaAR;
 
         let scrims12 = `*12VS12*
 
@@ -61,9 +61,9 @@ let handler = async (m, { conn, command, usedPrefix,text}) => {
         let horaCO = (horaMX + 1) % 24;  // Colombia está una hora adelante de México
         let horaAR = (horaMX + 3) % 24;  // Argentina está tres horas adelante de México
 
-        let horaMX12 = to12HourFormat(horaMX);
-        let horaCO12 = to12HourFormat(horaCO);
-        let horaAR12 = to12HourFormat(horaAR);
+        let horaMX12 = horaMX;
+        let horaCO12 = horaCO;
+        let horaAR12 = horaAR;
 
         let scrims16 = `*16VS16*
 
@@ -105,9 +105,9 @@ let handler = async (m, { conn, command, usedPrefix,text}) => {
         let horaCO = (horaMX + 1) % 24;  // Colombia está una hora adelante de México
         let horaAR = (horaMX + 3) % 24;  // Argentina está tres horas adelante de México
 
-        let horaMX12 = to12HourFormat(horaMX);
-        let horaCO12 = to12HourFormat(horaCO);
-        let horaAR12 = to12HourFormat(horaAR);
+        let horaMX12 = horaMX;
+        let horaCO12 = horaCO;
+        let horaAR12 = horaAR;
 
         let cuadrilatero = `*CUADRILATERO*
 
@@ -143,9 +143,9 @@ let handler = async (m, { conn, command, usedPrefix,text}) => {
         let horaCO = (horaMX + 1) % 24;  // Colombia está una hora adelante de México
         let horaAR = (horaMX + 3) % 24;  // Argentina está tres horas adelante de México
 
-        let horaMX12 = to12HourFormat(horaMX);
-        let horaCO12 = to12HourFormat(horaCO);
-        let horaAR12 = to12HourFormat(horaAR);
+        let horaMX12 = horaMX;
+        let horaCO12 = horaCO;
+        let horaAR12 = horaAR;
 
         let scrims = `*SCRIMS*
 
