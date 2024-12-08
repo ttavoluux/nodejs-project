@@ -185,9 +185,6 @@ let handler = async (m, { conn, command, usedPrefix,text}) => {
         await conn.sendMessage(m.chat, {text: scrims, quoted: m })
     }
 
-    if (command === 'ffreglasfemf') {
-        // Lógica para el comando "ffreglasfem" (si se necesita)
-    }
     if (command === 'ffespacio') {
         let espacio = '(ㅤ) espacio compatible Android/IOS'
         await conn.sendMessage(m.chat, {text: espacio, quoted: m })
@@ -195,8 +192,8 @@ let handler = async (m, { conn, command, usedPrefix,text}) => {
 
 }
 
-handler.help = ['ff', 'ff12vs12', 'ff16vs16', 'ffcuadrilatero', 'ffscrims', 'ffreglasfem']
+handler.help = ['ff', 'ff12vs12', 'ff16vs16', 'ffcuadrilatero', 'ffscrims']
 handler.tags = ['funff']
-handler.command = /^(ff|ff12vs12|ff16vs16|ffcuadrilatero|ffscrims|ffreglasfemf|ffespacio)$/i
+handler.command = /^(ff|ff12vs12|ff16vs16|ffcuadrilatero|ffscrims|ffespacio)$/i
 export default handler
 

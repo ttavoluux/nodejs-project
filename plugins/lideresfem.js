@@ -21,9 +21,9 @@ let handler = async (m, { conn, text, participants, args, command }) => {
     const pesan = args.join(' ');
 
     // Construcción de las reglas en el formato adecuado
-    let reglas = `${inv}𝐑𝐄𝐆𝐋𝐀𝐒 𝐋𝐈́𝐃𝐄𝐑𝐄𝐒 𝐅𝐄𝐌 (26/08/24)${inv}\n`;
+    let reglas = `${inv}𝐑𝐄𝐆𝐋𝐀𝐒 𝐋𝐈́𝐃𝐄𝐑𝐄𝐒 𝐅𝐄𝐌 (5/12/24)${inv}\n`;
 
-    reglas += `*REGLAS LÍDERES FEM*
+    reglas += `
 ◼ *NEGRO _(P. HOMBRE)_ LADO B*
 ◻ *BLANCO _(P. MUJER)_ LADO A* _(PONE PRIMERA SALA)_
 
@@ -48,11 +48,14 @@ let handler = async (m, { conn, text, participants, args, command }) => {
 *EN CASO DE CUALQUIER INCUMPLIMIENTO DE REGLA LA SALA TENDRÁ QUE SER REPETIDA, AFECTANDO O NO EL INCUMPLIMIENTO*
 🔸️ ES VÁLIDO MATAR JUGADORAS QUE INVADEN Y LUTEAN ZONA RIVAL *INTENCIONALMENTE.* 
 
+*Los tokens son responsabilidad del equipo que lo lleve*
+
 ▪︎🏳️‍🌈 *2 GAY / BISEXUAL* _(MÁXIMO)_
 _Las trangeneros serán consideradas como *MUJERES* y no necesitarán de una ficha para poder ser participes en versus FEMENINOS, siempre y cuando tengan la documentación que lo acredite, si no lo tiene o no quiere mostrarlo por privacidad *SI SERÁ CONTADO COMO GAY.*_
 ▪︎❌ *NO HOMBRES HETEROS*
 ▪︎💻 *VÁLIDAS 2 PC POR EQUIPO* _VS DE 12 (2PC) VS DE 16 (3PC)._ Al equipo que le toque hacer salas debe mandar captura de la cantidad *ANTES DE INICIAR PRIMER SALA.*
 si hay alguna prueba de que el equipo mete más PC de lo acordado, pueden abandonar el vs  *y este NO PODRÁ SER PUBLICADO POR NINGÚN EQUIPO.*
+
 
 ⏰ *TIEMPO DE ESPERA*
 - 10MIN. A PARTIR DE PASAR DATOS DE 1RA. SALA.
@@ -68,8 +71,7 @@ si hay alguna prueba de que el equipo mete más PC de lo acordado, pueden abando
 
 *PARA PODER RESOLVER ALGUNA SITUACIÓN,  PUEDEN HACERLO LLEGAR A CUALQUIERA DE LAS LÍDERES, SIEMPRE Y CUANDO SUS VERSUS HAYAN SIDO AGENDADOS CON ESTAS REGLAS*
 
-*CHIP DE GLOO QUEDA PROHIBIDO* SOLO SE PUEDE UTILIZAR EL AMARILLO, SE REPITE SALA AL TENER PRUEBA DEL USO DE LOS OTROS CHIPS VERDE,AZUL,ROJO
-`;
+*TUBOS DE TRANSPORTE QUEDAN PROHIBIDO SU USO AL RESTRINGIR ZONA/COMBATE*`;
 
     // Agregar pie de página
     reglas += `\n\n\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
@@ -98,7 +100,7 @@ si hay alguna prueba de que el equipo mete más PC de lo acordado, pueden abando
     );
 };
 
-handler.command = /^(reglasfem|lideresfem|reglasvs|lnf|lideresnorte|reglaslideres|reglasjossha)$/i;
+handler.command = /^(reglasfem|lideresfem|reglasvs|nfl|ffreglasfem|reglaslideres|reglasjossha)$/i;
 handler.group = true;
 
 export default handler;
