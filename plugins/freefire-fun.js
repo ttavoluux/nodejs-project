@@ -92,7 +92,7 @@ let handler = async (m, { conn, command, usedPrefix,text}) => {
 - 
 - 
 - `
-        await conn.sendMessage(m.chat, scrims16, { quoted: m })
+        await conn.sendMessage(m.chat, {text:scrims16, quoted: m })
     }
 
     if (command === 'ffcuadrilatero') {
