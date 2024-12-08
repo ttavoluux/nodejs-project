@@ -15,7 +15,7 @@ let handler = async (m, { conn, command, usedPrefix,text}) => {
     }
     if (command === 'ff12vs12') {
         if (!text) {
-            return conn.sendMessage(m.chat, '*Por favor, proporciona una hora para la partida (hora de México). Ejemplo: `.ff12vs12 9`', { quoted: m })
+            return conn.sendMessage(m.chat, {text:'*Por favor, proporciona una hora para la partida (hora de México). Ejemplo: `.ff12vs12 9`',  quoted: m })
         }
 
         let horaMX = parseInt(text);  // Extraemos la hora (sin minutos)
@@ -53,7 +53,7 @@ let handler = async (m, { conn, command, usedPrefix,text}) => {
 
     if (command === 'ff16vs16') {
         if (!text) {
-            return conn.sendMessage(m.chat, '> *Por favor, proporciona una hora para la partida (hora de México). Ejemplo: `.ff16vs16 9`', { quoted: m })
+            return conn.sendMessage(m.chat, {text:'> *Por favor, proporciona una hora para la partida (hora de México). Ejemplo: `.ff16vs16 9`', quoted: m })
         }
 
         let horaMX = parseInt(text);  // Extraemos la hora (sin minutos)
@@ -97,7 +97,7 @@ let handler = async (m, { conn, command, usedPrefix,text}) => {
 
     if (command === 'ffcuadrilatero') {
         if (!text) {
-            return conn.sendMessage(m.chat, '> *Por favor, proporciona una hora para la partida (hora de México). Ejemplo: `.ffcuadrilatero 9`', { quoted: m })
+            return conn.sendMessage(m.chat, {text:'> *Por favor, proporciona una hora para la partida (hora de México). Ejemplo: `.ffcuadrilatero 9`', quoted: m })
         }
 
         let horaMX = parseInt(text);  // Extraemos la hora (sin minutos)
@@ -135,7 +135,7 @@ let handler = async (m, { conn, command, usedPrefix,text}) => {
 
     if (command === 'ffscrims') {
         if (!text) {
-            return conn.sendMessage(m.chat, '> *Por favor, proporciona una hora para la partida (hora de México). Ejemplo: `.ffscrims 9`', { quoted: m })
+            return conn.sendMessage(m.chat, {text:'> *Por favor, proporciona una hora para la partida (hora de México). Ejemplo: `.ffscrims 9`', quoted: m })
         }
 
         let horaMX = parseInt(text);  // Extraemos la hora (sin minutos)
@@ -155,7 +155,7 @@ let handler = async (m, { conn, command, usedPrefix,text}) => {
 - 
 - 
 - `
-        await conn.sendMessage(m.chat, scrims, { quoted: m })
+        await conn.sendMessage(m.chat, {text: scrims, quoted: m })
     }
 
     if (command === 'ffreglasfemf') {
@@ -163,7 +163,7 @@ let handler = async (m, { conn, command, usedPrefix,text}) => {
     }
     if (command === 'ffespacio') {
         let espacio = '(ㅤ) espacio compatible Android/IOS'
-        await conn.sendMessage(m.chat, espacio, { quoted: m })
+        await conn.sendMessage(m.chat, {text: espacio, quoted: m })
     }
 
 }
