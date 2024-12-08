@@ -422,30 +422,6 @@ type: 'audioMessage',
 ptt: true })}
 
 
-
-
-if (command == 'scrims'){
-if (!text) return m.reply(` *⚠️ Falta la hora (.scrims + hora)* `) 
- const numeroC = parseInt(text.toUpperCase())+1
- var stnk = numeroC
-}
-if (command == 'scrims') {
-let top = `*✨ SCRIMS ✨*
-
-*HORA: ${text.toUpperCase()}🇲🇽${stnk}🇨🇴*  
-
-*ESCUADRA 🎀*
-🖥️ :
-📱 :
-📱 :
-📱 :
-`
-m.reply(top, null, { mentions: conn.parseMention(top) })
-conn.sendFile(m.chat, vn, 'error.mp3', null, m, true, {
-type: 'audioMessage', 
-ptt: true })}
-
-
  // ------------------------------------------------------------------------------------------------------------------------------------------------   
  
  if (command == 'topgays') {
@@ -653,7 +629,7 @@ console.log(`❗❗ ${lenguajeGB['smsMensError2']()} ${usedPrefix + command} ❗
 console.log(e)}}
 handler.help = ['love', 'gay2', 'lesbiana', 'pajero', 'pajera', 'puto', 'puta', 'manco', 'manca', 'rata', 'prostituta', 'prostituto','follar','topinfieles|vs12|scrims'].map(v => v + ' @tag | nombre')
 handler.tags = ['calculator']
-handler.command = /^love|gay2|lesbiana|pajero|pajera|puto|puta|manco|manca|rata|prostituta|prostituto|amigorandom|amistad|regalar|dar|enviar|meter|chupar|metersela|retar|formarpareja|formarparejas|gay|personalidad|pregunta|preguntas|caracolamagica|ship|shippear|topgays|topputos|toplindos|toplind@s|topput@s|toppajer@s|toppajeros|topshipost|topshiposters|toppanafresco|topgrasa|toppanafrescos|toplagrasa|topintegrante|topintegrantes|topotakus|topfamosos|topfamos@s|topsostero|topparejas|top5parejas|Doxxeo|doxxeo|doxxear|Doxxear|doxeo|doxear|doxxeame|doxeame|ruletas|ruleta|suerte|follar|topinfieles|vs12|scrims|top|top1|top3|rnd|mmenu/i
+handler.command = /^love|gay2|lesbiana|pajero|pajera|puto|puta|manco|manca|rata|prostituta|prostituto|amigorandom|amistad|regalar|dar|enviar|meter|chupar|metersela|retar|formarpareja|formarparejas|gay|personalidad|pregunta|preguntas|caracolamagica|ship|shippear|topgays|topputos|toplindos|toplind@s|topput@s|toppajer@s|toppajeros|topshipost|topshiposters|toppanafresco|topgrasa|toppanafrescos|toplagrasa|topintegrante|topintegrantes|topotakus|topfamosos|topfamos@s|topsostero|topparejas|top5parejas|Doxxeo|doxxeo|doxxear|Doxxear|doxeo|doxear|doxxeame|doxeame|ruletas|ruleta|suerte|follar|topinfieles|top|top1|top3|rnd|mmenu/i
 handler.exp = 100
 handler.group = true
 export default handler
