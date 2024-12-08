@@ -72,7 +72,7 @@ let handler = async (m, { conn, command, usedPrefix,text}) => {
             horaAR = horaAR-12;
         }
         if (horaCO>12){
-            horaCO = -12;
+            horaCO = horaCO-12;
         }
 
         let horaMX12 = horaMX;
@@ -120,10 +120,10 @@ let handler = async (m, { conn, command, usedPrefix,text}) => {
         let horaAR = (horaMX + 3) % 24;  // Argentina está tres horas adelante de México
 
         if (horaAR>12){
-            horaAR -= horaAR-12;
+            horaAR = horaAR-12;
         }
         if (horaCO>12){
-            horaCO -= horaCO - 12;
+            horaCO = horaCO - 12;
         }
 
         let horaMX12 = horaMX;
@@ -165,10 +165,10 @@ let handler = async (m, { conn, command, usedPrefix,text}) => {
         let horaAR = (horaMX + 3) % 24;  // Argentina está tres horas adelante de México
 
         if (horaAR>12){
-            horaAR -= horaAR-12;
+            horaAR = horaAR-12;
         }
         if (horaCO>12){
-            horaCO -= horaCO - 12;
+            horaCO = horaCO - 12;
         }
         let horaMX12 = horaMX;
         let horaCO12 = horaCO;
