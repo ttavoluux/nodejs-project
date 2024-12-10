@@ -11,7 +11,8 @@ let handler = async (m, { conn, command, usedPrefix,text}) => {
 > .ff12vs12
 > .ffcuadrilatero
 > .ffscrims
-> .ffreglasfem`
+> .ffreglasfem lideresfem
+> .ffreglasmasc lideresmasc`
         menuff += '\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ'
         await conn.sendFile(m.chat, imagen22, 'lp.jpg', menuff)
     }
@@ -192,10 +193,15 @@ let handler = async (m, { conn, command, usedPrefix,text}) => {
         await conn.sendMessage(m.chat, {text: espacio, quoted: m })
     }
 
+    if (command === 'ffreglasmasc') {
+        let espacio = '> *Aun no contamos con datos*'
+        await conn.sendMessage(m.chat, {text: espacio, quoted: m })
+    }
+
 }
 
 handler.help = ['ff', 'ff12vs12', 'ff16vs16', 'ffcuadrilatero', 'ffscrims']
 handler.tags = ['funff']
-handler.command = /^(ff|ff12vs12|ff16vs16|ffcuadrilatero|ffscrims|ffespacio)$/i
+handler.command = /^(ff|ff12vs12|ff16vs16|ffcuadrilatero|ffscrims|ffespacio|ffreglasmasc)$/i
 export default handler
 
