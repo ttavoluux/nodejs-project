@@ -4,6 +4,8 @@ let handler = async (m, { conn, command, usedPrefix,text}) => {
     if (command === 'ff') {
         let menuff = `💗 *¡Hola!* ${name} ✨
 
+*FF 🕹️*
+
 > .ffespacio
 > .ff16vs16
 > .ff12vs12

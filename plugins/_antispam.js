@@ -61,7 +61,7 @@ if (userData.messageCount >= messageLimit) {
 const mention = `@${sender.split("@")[0]}`
 const warningMessage = `${mid.smsNoSpam6(mention)}`
 if (userData.antiBan > 2) return
-//await conn.reply(m.chat, warningMessage, m, { mentions: [m.sender] })  
+//await conn.reply(m.chat, warningMessage, m, { mentions: [m.sender] })
 user.banned = true
 userData.antiBan++
 userData.messageCount = 1
