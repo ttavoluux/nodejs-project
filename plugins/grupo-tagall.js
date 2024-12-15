@@ -4,15 +4,15 @@ global.dfail('admin', m, conn)
 throw false
 }
 
-var texto = '❄️ Holis :3🎄'
-var texto2 = '❄️ AVISO :'
+var texto = '🎄 Holis :3🎄'
+var texto2 = '🎄 AVISO :'
 var texto3 = ' '
 var texto4 = ' '
     let numParticipantes = participants.length;
 if(text.length>1){ 
 texto = texto2 
 texto3='*!'
-texto4='!*'
+texto4='🎄 !*'
 }
 let pesan = args.join` `
     let teks = ''
