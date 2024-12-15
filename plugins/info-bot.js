@@ -7,7 +7,7 @@ let fkontak = { "key": { "participants":"0@s.whatsapp.net", "remoteJid": "status
 let chat = global.db.data.chats[m.chat]
 if (chat.isBanned) return
 let vn = 'https://qu.ax/Ocxm.mp3'
-let bot = `${pickRandom([`*¡𝑬𝒚! 𝑨𝒒𝒖í 𝒆𝒔𝒕𝒐𝒚. 𝒀𝒐 𝒑𝒖𝒆𝒅𝒐 𝒂𝒚𝒖𝒅𝒂𝒓 👉👈 𝑯𝒆𝒚! 𝑰'𝒎 𝒉𝒆𝒓𝒆. 𝑰 𝒄𝒂𝒏 𝒉𝒆𝒍𝒑 🙌*`, `Aqui estoy 😼`, `*Hola Aqui estoy yo puedo ayudar? 😸*`])}
+let bot = `${pickRandom([`*Hi! ❤️*`, `Aqui estoy ‹𝟹`, `*🌸 Holis uwu 🌸*`])}
 `.trim()
 const estilo = { key: {  fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "5219992095479-1625305606@g.us" } : {}) },
 message: { 
@@ -21,7 +21,7 @@ message: {
 if (/^bot$/i.test(m.text)) {
     
 conn.sendPresenceUpdate('recording', m.chat)    
-await conn.sendMessage(m.chat, {text: bot, mentions: [m.sender]}, {quoted: fkontak})
+
 //conn.sendButton(m.chat, `¡𝑬𝒚! 𝑨𝒒𝒖í 𝒆𝒔𝒕𝒐𝒚. 𝒀𝒐 𝒑𝒖𝒆𝒅𝒐 𝒂𝒚𝒖𝒅𝒂𝒓 👉👈 𝑯𝒆𝒚! 𝑰'𝒎 𝒉𝒆𝒓𝒆. 𝑰 𝒄𝒂𝒏 𝒉𝒆𝒍𝒑 🙌`, wm, [['𝙑𝙤𝙡𝙫𝙚𝙧 𝙖𝙡 𝙈𝙚𝙣𝙪́ | 𝘽𝙖𝙘𝙠 𝙩𝙤 𝙈𝙚𝙣𝙪 ☘️', `#menu`]], 'conversation', { sendEphemeral: true, quoted: estilo })
 //conn.sendFile(m.chat, vn, 'bot.mp3', null, m, true, { type: 'audioMessage', ptt: true, sendEphemeral: true, quoted: estiloaudio })
     const numer = Math.floor(Math.random() * 12);
@@ -79,6 +79,7 @@ switch (numer){
         stiker = await sticker(imagen24, false, global.packname, global.author)
         await conn.sendFile(m.chat, stiker, 'sticker.webp', null, m, false)
 }
+    await conn.sendMessage(m.chat, {text: bot, mentions: [m.sender]}, {quoted: fkontak})
 
 }
 return !0
