@@ -1,5 +1,6 @@
 import fetch from 'node-fetch';
 import yts from 'yt-search';
+import ytdl from 'ytdl-core';
 import { youtubedl, youtubedlv2 } from '@bochilteam/scraper';
 
 const LimitAud = 725 * 1024 * 1024; // 700MB
@@ -108,21 +109,40 @@ async function getFileSize(url) {
     }
 }
 
-// Maneja la descarga de audio
+// Maneja la descarga de audio asegurando 128 kbps
 async function downloadAndSendAudio(url, title, m, conn) {
-    const apiUrl = `https://deliriussapi-oficial.vercel.app/download/ytmp3?url=${encodeURIComponent(url)}`;
-    const apiResponse = await fetch(apiUrl);
-    const delius = await apiResponse.json();
-    if (!delius.status) throw new Error("Error al descargar el audio");
+    const audioStream = ytdl(url, {
+        quality: 'highestaudio', // Descargar la mejor calidad de audio disponible
+        filter: 'audioonly', // Solo audio
+        highWaterMark: 1 << 25 // Usamos un buffer más grande para descargar en alta calidad
+    });
 
-    const downloadUrl = delius.data.download.url;
-    const fileSize = await getFileSize(downloadUrl);
+    const audioBuffer = await streamToBuffer(audioStream);
+    const fileSize = audioBuffer.length;
 
+    // Verifica que el tamaño del archivo sea aceptable y envíalo
     if (fileSize > LimitAud) {
-        await conn.sendMessage(m.chat, { document: { url: downloadUrl }, mimetype: 'audio/mpeg', fileName: `${title}.mp3` }, { quoted: m });
+        await conn.sendMessage(m.chat, {
+            document: { url: audioBuffer },
+            mimetype: 'audio/mpeg',
+            fileName: `${title}.mp3`
+        }, { quoted: m });
     } else {
-        await conn.sendMessage(m.chat, { audio: { url: downloadUrl }, mimetype: 'audio/mpeg' }, { quoted: m });
+        await conn.sendMessage(m.chat, {
+            audio: audioBuffer,
+            mimetype: 'audio/mpeg'
+        }, { quoted: m });
     }
+}
+
+// Convierte un stream a un buffer
+async function streamToBuffer(stream) {
+    return new Promise((resolve, reject) => {
+        const chunks = [];
+        stream.on('data', chunk => chunks.push(chunk));
+        stream.on('end', () => resolve(Buffer.concat(chunks)));
+        stream.on('error', reject);
+    });
 }
 
 // Maneja la descarga de video
@@ -136,10 +156,21 @@ async function downloadAndSendVideo(url, title, thumbnail, m, conn) {
     const fileSize = await getFileSize(downloadUrl);
 
     if (fileSize > LimitVid) {
-        await conn.sendMessage(m.chat, { document: { url: downloadUrl }, fileName: `${title}.mp4`, caption: `🔰 Aquí está tu video \n🔥 Título: ${title}` }, { quoted: m });
+        await conn.sendMessage(m.chat, {
+            document: { url: downloadUrl },
+            fileName: `${title}.mp4`,
+            caption: `🔰 Aquí está tu video \n🔥 Título: ${title}`
+        }, { quoted: m });
     } else {
-        await conn.sendMessage(m.chat, { video: { url: downloadUrl }, fileName: `${title}.mp4`, caption: `🔰 Aquí está tu video \n🔥 Título: ${title}`, thumbnail, mimetype: 'video/mp4' }, { quoted: m });
+        await conn.sendMessage(m.chat, {
+            video: { url: downloadUrl },
+            fileName: `${title}.mp4`,
+            caption: `🔰 Aquí está tu video \n🔥 Título: ${title}`,
+            thumbnail,
+            mimetype: 'video/mp4'
+        }, { quoted: m });
     }
 }
+
 
 
