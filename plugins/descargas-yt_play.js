@@ -111,27 +111,38 @@ async function getFileSize(url) {
 
 // Maneja la descarga de audio asegurando 128 kbps
 async function downloadAndSendAudio(url, title, m, conn) {
-    const audioStream = ytdl(url, {
-        quality: 'highestaudio', // Descargar la mejor calidad de audio disponible
-        filter: 'audioonly', // Solo audio
-        highWaterMark: 1 << 25 // Usamos un buffer más grande para descargar en alta calidad
-    });
+    try {
+        const audioStream = ytdl(url, {
+            quality: 'highestaudio', // Obtener la mejor calidad de audio disponible
+            filter: 'audioonly', // Solo audio
+            highWaterMark: 1 << 25, // Buffer más grande para alta calidad
+            requestOptions: {
+                headers: {
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+                    'Accept-Language': 'en-US,en;q=0.5',
+                }
+            }
+        });
 
-    const audioBuffer = await streamToBuffer(audioStream);
-    const fileSize = audioBuffer.length;
+        const audioBuffer = await streamToBuffer(audioStream);
+        const fileSize = audioBuffer.length;
 
-    // Verifica que el tamaño del archivo sea aceptable y envíalo
-    if (fileSize > LimitAud) {
-        await conn.sendMessage(m.chat, {
-            document: { url: audioBuffer },
-            mimetype: 'audio/mpeg',
-            fileName: `${title}.mp3`
-        }, { quoted: m });
-    } else {
-        await conn.sendMessage(m.chat, {
-            audio: audioBuffer,
-            mimetype: 'audio/mpeg'
-        }, { quoted: m });
+        // Verifica si el tamaño del archivo es adecuado y envíalo
+        if (fileSize > LimitAud) {
+            await conn.sendMessage(m.chat, {
+                document: { url: audioBuffer },
+                mimetype: 'audio/mpeg',
+                fileName: `${title}.mp3`
+            }, { quoted: m });
+        } else {
+            await conn.sendMessage(m.chat, {
+                audio: audioBuffer,
+                mimetype: 'audio/mpeg'
+            }, { quoted: m });
+        }
+    } catch (error) {
+        console.error("Error al descargar el audio:", error);
+        throw new Error("Error al descargar el audio.");
     }
 }
 
@@ -171,6 +182,7 @@ async function downloadAndSendVideo(url, title, thumbnail, m, conn) {
         }, { quoted: m });
     }
 }
+
 
 
 
