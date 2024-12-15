@@ -18,7 +18,7 @@ message: {
 "audioMessage": { "mimetype":"audio/ogg; codecs=opus", "seconds": "99569", "ptt": "true"   
 }}}  
 
-if (/^bot$/i.test(m.text)) {
+if (/bot/i.test(m.text)) {
     
 conn.sendPresenceUpdate('recording', m.chat)    
 
