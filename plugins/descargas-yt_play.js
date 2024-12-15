@@ -1,115 +1,75 @@
 import fetch from 'node-fetch';
 import yts from 'yt-search';
-import ytdl from 'ytdl-core';
-import axios from 'axios';
-import {youtubedl, youtubedlv2} from '@bochilteam/scraper';
-const LimitAud = 725 * 1024 * 1024; //700MB
-const LimitVid = 425 * 1024 * 1024; //425MB
-const handler = async (m, {conn, command, args, text, usedPrefix}) => {
+import { youtubedl, youtubedlv2 } from '@bochilteam/scraper';
 
-    if (command == 'play' || command == 'musica') {
-        if (!text) return conn.reply(m.chat, `*Ingresa el nombre de la cancion* .play name`);
+const LimitAud = 725 * 1024 * 1024; // 700MB
+const LimitVid = 425 * 1024 * 1024; // 425MB
+
+const handler = async (m, { conn, command, args, text, usedPrefix }) => {
+    // Comando de música
+    if (['play', 'musica'].includes(command)) {
+        if (!text) return conn.reply(m.chat, `*Ingresa el nombre de la canción* .play name`);
         const yt_play = await search(args.join(' '));
-        const ytplay2 = await yts(text);
-        const texto1 = `*🎵 Canción: ${yt_play[0].title} 🎵*\n` +
-            `*⏱ Duración: ${secondString(yt_play[0].duration.seconds)}*\n` +
-            `*🔗 Enlace: ${yt_play[0].url}*`.trim();
-
-
+        const texto1 = generateSongText(yt_play[0]);
 
         await conn.sendFile(m.chat, imagen7, 'error.jpg', texto1, m, null);
         try {
-            const apiUrl = `https://deliriussapi-oficial.vercel.app/download/ytmp3?url=${encodeURIComponent(yt_play[0].url)}`;
-            const apiResponse = await fetch(apiUrl);
-            const delius = await apiResponse.json();
-            if (!delius.status) return m.react("❌");
-            const downloadUrl = delius.data.download.url;
-            const fileSize = await getFileSize(downloadUrl);
-            await conn.sendMessage(m.chat, { audio: { url: downloadUrl }, mimetype: 'audio/mpeg' }, { quoted: m });
-            if (fileSize > LimitAud) return await conn.sendMessage(m.chat, { document: { url: downloadUrl }, mimetype: 'audio/mpeg', fileName: `${yt_play[0].title}.mp3` }, { quoted: m });
-        } catch (e1) {
-            try {
-                const res = await fetch(`https://api.zenkey.my.id/api/download/ytmp3?apikey=zenkey&url=${yt_play[0].url}`)
-                const audioData = await res.json()
+            await downloadAndSendAudio(yt_play[0].url, yt_play[0].title, m, conn);
+        } catch (e) {
+            await m.react('❌');
+            console.error(e);
+        }
+    }
 
-                if (audioData.status && audioData.result?.downloadUrl) {
-                    await conn.sendMessage(m.chat, { audio: { url: audioData.result.downloadUrl }, mimetype: 'audio/mpeg' }, { quoted: m });
-                }
-            } catch (e2) {
-                try {
-                    let d2 = await fetch(`https://exonity.tech/api/ytdlp2-faster?apikey=adminsepuh&url=${yt_play[0].url}`);
-                    let dp = await d2.json();
-                    const audiop = await getBuffer(dp.result.media.mp3);
-                    const fileSize = await getFileSize(dp.result.media.mp3);
-                    await conn.sendMessage(m.chat, { audio: { url: audiop }, mimetype: 'audio/mpeg' }, { quoted: m });
-                    if (fileSize > LimitAud) return await conn.sendMessage(m.chat, { document: { url: audiop }, mimetype: 'audio/mpeg', fileName: `${yt_play[0].title}.mp3` }, { quoted: m });
-                } catch (e3) {
-                    await m.react('❌');
-                    console.log(e3);
-                }}}}
-
-    if (command == 'play2' || command == 'video') {
-        if (!text) return conn.reply(m.chat, `*🤔Que está buscando? 🤔*\n*Ingrese el nombre del video*\n\n*Ejemplo:*\n#play emilia 420`, m, {contextInfo: {externalAdReply :{ mediaUrl: null, mediaType: 1, description: null, title: wm, body: '', previewType: 0, thumbnail: img.getRandom(), sourceUrl: redes.getRandom()}}});
+    // Comando de video
+    if (['play2', 'video'].includes(command)) {
+        if (!text) return conn.reply(m.chat, `*🤔Que está buscando? 🤔*\n*Ingrese el nombre del video*\n\n*Ejemplo:*\n#play emilia 420`, m);
         const yt_play = await search(args.join(' '));
-        const ytplay2 = await yts(text);
-        const texto1 = `📌 *Título* : ${yt_play[0].title}\n📆 *Publicado:* ${yt_play[0].ago}\n⌚ *Duración:* ${secondString(yt_play[0].duration.seconds)}
-
-_*Descargado sus video, aguarden un momento....*_
-
-> _*Si este comando falla usar de la seguirte manera:*_ #ytmp4 ${yt_play[0].url}`.trim();
+        const texto1 = generateVideoText(yt_play[0]);
 
         await conn.sendFile(m.chat, yt_play[0].thumbnail, 'error.jpg', texto1, m, null, fake);
         try {
-            const apiUrl = `https://deliriussapi-oficial.vercel.app/download/ytmp4?url=${encodeURIComponent(yt_play[0].url)}`;
-            const apiResponse = await fetch(apiUrl);
-            const delius = await apiResponse.json();
-            if (!delius.status) return m.react("❌");
-            const downloadUrl = delius.data.download.url;
-            const fileSize = await getFileSize(downloadUrl);
-            if (fileSize > LimitVid) {
-                await conn.sendMessage(m.chat, { document: { url: downloadUrl }, fileName: `${yt_play[0].title}.mp4`, caption: `🔰 Aquí está tu video \n🔥 Título: ${yt_play[0].title}` }, { quoted: m });
-            } else {
-                await conn.sendMessage(m.chat, { video: { url: downloadUrl }, fileName: `${yt_play[0].title}.mp4`, caption: `🔰 Aquí está tu video \n🔥 Título: ${yt_play[0].title}`, thumbnail: yt_play[0].thumbnail, mimetype: 'video/mp4' }, { quoted: m });
-            }} catch (e1) {
-            try {
-                let d2 = await fetch(`https://exonity.tech/api/ytdlp2-faster?apikey=adminsepuh&url=${yt_play[0].url}`);
-                let dp = await d2.json();
-                const audiop = await getBuffer(dp.result.media.mp4);
-                const fileSize = await getFileSize(dp.result.media.mp4);
-                if (fileSize > LimitVid) {
-                    await conn.sendMessage(m.chat, { document: { url: audiop }, fileName: `${yt_play[0].title}.mp4`, caption: `🔰 Aquí está tu video \n🔥 Título: ${yt_play[0].title}` }, { quoted: m });
-                } else {
-                    await conn.sendMessage(m.chat, { video: { url: audiop }, fileName: `${yt_play[0].title}.mp4`, caption: `🔰 Aquí está tu video \n🔥 Título: ${yt_play[0].title}`, thumbnail: yt_play[0].thumbnail, mimetype: 'video/mp4' }, { quoted: m });
-                }} catch (e2) {
-                await m.react('❌');
-                console.log(e2);
-            }}}
+            await downloadAndSendVideo(yt_play[0].url, yt_play[0].title, yt_play[0].thumbnail, m, conn);
+        } catch (e) {
+            await m.react('❌');
+            console.error(e);
+        }
+    }
 
-    if (command == 'play3' || command == 'play4') {
-        if (!text) return conn.reply(m.chat, `*🤔Que esta buscado? 🤔*\n*Ingrese el nombre del la canción*\n\n*Ejemplo:*\n#play emilia 420`, m, {contextInfo: {externalAdReply :{ mediaUrl: null, mediaType: 1, description: null, title: wm, body: '', previewType: 0, thumbnail: img.getRandom(), sourceUrl: redes.getRandom()}}})
-        const yt_play = await search(args.join(' '))
-        const texto1 = `📌 *Título* : ${yt_play[0].title}\n📆 *Publicado:* ${yt_play[0].ago}\n⌚ *Duración:* ${secondString(yt_play[0].duration.seconds)}\n👀 *Vistas:* ${MilesNumber(yt_play[0].views)}`.trim()
+    // Comando de opciones de play
+    if (['play3', 'play4'].includes(command)) {
+        if (!text) return conn.reply(m.chat, `*🤔Que esta buscando? 🤔*\n*Ingrese el nombre de la canción*\n\n*Ejemplo:*\n#play emilia 420`, m);
+        const yt_play = await search(args.join(' '));
+        const texto1 = generateSongText(yt_play[0]);
 
-        await conn.sendButton(m.chat, texto1, botname, yt_play[0].thumbnail, [['Audio', `${usedPrefix}ytmp3 ${yt_play[0].url}`], ['video', `${usedPrefix}ytmp4 ${yt_play[0].url}`], ['Mas resultados', `${usedPrefix}yts ${text}`]], null, null, m)
-    }}
+        await conn.sendButton(m.chat, texto1, botname, yt_play[0].thumbnail, [
+            ['Audio', `${usedPrefix}ytmp3 ${yt_play[0].url}`],
+            ['Video', `${usedPrefix}ytmp4 ${yt_play[0].url}`],
+            ['Más resultados', `${usedPrefix}yts ${text}`],
+        ], null, null, m);
+    }
+};
+
 handler.help = ['play', 'play2'];
 handler.tags = ['downloader'];
-handler.command = ['play', 'play2', 'play3', 'play4', 'audio', 'video']
-//handler.limit = 3
-handler.register = true
+handler.command = ['play', 'play2', 'play3', 'play4', 'audio', 'video'];
+handler.register = true;
+
 export default handler;
 
+// Funciones de utilidad
+
 async function search(query, options = {}) {
-    const search = await yts.search({query, hl: 'es', gl: 'ES', ...options});
-    return search.videos;
+    const result = await yts.search({ query, hl: 'es', gl: 'ES', ...options });
+    return result.videos;
 }
 
-function MilesNumber(number) {
-    const exp = /(\d)(?=(\d{3})+(?!\d))/g;
-    const rep = '$1.';
-    const arr = number.toString().split('.');
-    arr[0] = arr[0].replace(exp, rep);
-    return arr[1] ? arr.join('.') : arr[0];
+function generateSongText(song) {
+    return `*🎵 Canción: ${song.title} 🎵*\n*⏱ Duración: ${secondString(song.duration.seconds)}*\n*🔗 Enlace: ${song.url}`.trim();
+}
+
+function generateVideoText(video) {
+    return `📌 *Título*: ${video.title}\n📆 *Publicado*: ${video.ago}\n⌚ *Duración*: ${secondString(video.duration.seconds)}\n_*Descargado su video, aguarde un momento...*_`.trim();
 }
 
 function secondString(seconds) {
@@ -118,14 +78,15 @@ function secondString(seconds) {
     const h = Math.floor((seconds % (3600 * 24)) / 3600);
     const m = Math.floor((seconds % 3600) / 60);
     const s = Math.floor(seconds % 60);
-    const dDisplay = d > 0 ? d + (d == 1 ? ' día, ' : ' días, ') : '';
-    const hDisplay = h > 0 ? h + (h == 1 ? ' hora, ' : ' horas, ') : '';
-    const mDisplay = m > 0 ? m + (m == 1 ? ' minuto, ' : ' minutos, ') : '';
-    const sDisplay = s > 0 ? s + (s == 1 ? ' segundo' : ' segundos') : '';
-    return dDisplay + hDisplay + mDisplay + sDisplay;
+    return [
+        d > 0 ? `${d} día(s), ` : '',
+        h > 0 ? `${h} hora(s), ` : '',
+        m > 0 ? `${m} minuto(s), ` : '',
+        s > 0 ? `${s} segundo(s)` : ''
+    ].join('');
 }
 
-const getBuffer = async (url) => {
+async function getBuffer(url) {
     try {
         const response = await fetch(url);
         const buffer = await response.arrayBuffer();
@@ -146,4 +107,39 @@ async function getFileSize(url) {
         return 0;
     }
 }
+
+// Maneja la descarga de audio
+async function downloadAndSendAudio(url, title, m, conn) {
+    const apiUrl = `https://deliriussapi-oficial.vercel.app/download/ytmp3?url=${encodeURIComponent(url)}`;
+    const apiResponse = await fetch(apiUrl);
+    const delius = await apiResponse.json();
+    if (!delius.status) throw new Error("Error al descargar el audio");
+
+    const downloadUrl = delius.data.download.url;
+    const fileSize = await getFileSize(downloadUrl);
+
+    if (fileSize > LimitAud) {
+        await conn.sendMessage(m.chat, { document: { url: downloadUrl }, mimetype: 'audio/mpeg', fileName: `${title}.mp3` }, { quoted: m });
+    } else {
+        await conn.sendMessage(m.chat, { audio: { url: downloadUrl }, mimetype: 'audio/mpeg' }, { quoted: m });
+    }
+}
+
+// Maneja la descarga de video
+async function downloadAndSendVideo(url, title, thumbnail, m, conn) {
+    const apiUrl = `https://deliriussapi-oficial.vercel.app/download/ytmp4?url=${encodeURIComponent(url)}`;
+    const apiResponse = await fetch(apiUrl);
+    const delius = await apiResponse.json();
+    if (!delius.status) throw new Error("Error al descargar el video");
+
+    const downloadUrl = delius.data.download.url;
+    const fileSize = await getFileSize(downloadUrl);
+
+    if (fileSize > LimitVid) {
+        await conn.sendMessage(m.chat, { document: { url: downloadUrl }, fileName: `${title}.mp4`, caption: `🔰 Aquí está tu video \n🔥 Título: ${title}` }, { quoted: m });
+    } else {
+        await conn.sendMessage(m.chat, { video: { url: downloadUrl }, fileName: `${title}.mp4`, caption: `🔰 Aquí está tu video \n🔥 Título: ${title}`, thumbnail, mimetype: 'video/mp4' }, { quoted: m });
+    }
+}
+
 
