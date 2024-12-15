@@ -23,9 +23,63 @@ if (/^bot$/i.test(m.text)) {
 conn.sendPresenceUpdate('recording', m.chat)    
 await conn.sendMessage(m.chat, {text: bot, mentions: [m.sender]}, {quoted: fkontak})
 //conn.sendButton(m.chat, `¡𝑬𝒚! 𝑨𝒒𝒖í 𝒆𝒔𝒕𝒐𝒚. 𝒀𝒐 𝒑𝒖𝒆𝒅𝒐 𝒂𝒚𝒖𝒅𝒂𝒓 👉👈 𝑯𝒆𝒚! 𝑰'𝒎 𝒉𝒆𝒓𝒆. 𝑰 𝒄𝒂𝒏 𝒉𝒆𝒍𝒑 🙌`, wm, [['𝙑𝙤𝙡𝙫𝙚𝙧 𝙖𝙡 𝙈𝙚𝙣𝙪́ | 𝘽𝙖𝙘𝙠 𝙩𝙤 𝙈𝙚𝙣𝙪 ☘️', `#menu`]], 'conversation', { sendEphemeral: true, quoted: estilo })
-conn.sendFile(m.chat, vn, 'bot.mp3', null, m, true, { type: 'audioMessage', ptt: true, sendEphemeral: true, quoted: estiloaudio })
-    let stiker = await sticker(imagen13, false, global.packname, global.author)
-    await conn.sendFile(m.chat, stiker, 'sticker.webp', null, m, false)
+//conn.sendFile(m.chat, vn, 'bot.mp3', null, m, true, { type: 'audioMessage', ptt: true, sendEphemeral: true, quoted: estiloaudio })
+    const numer = Math.floor(Math.random() * 12);
+    let stiker;
+switch (numer){
+    case 0:
+        stiker = await sticker(imagen24, false, global.packname, global.author)
+        await conn.sendFile(m.chat, stiker, 'sticker.webp', null, m, false)
+        break;
+    case 1:
+        stiker = await sticker(imagen25, false, global.packname, global.author)
+        await conn.sendFile(m.chat, stiker, 'sticker.webp', null, m, false)
+        break;
+    case 2:
+        stiker = await sticker(imagen26, false, global.packname, global.author)
+        await conn.sendFile(m.chat, stiker, 'sticker.webp', null, m, false)
+        break;
+    case 3:
+        stiker = await sticker(imagen27, false, global.packname, global.author)
+        await conn.sendFile(m.chat, stiker, 'sticker.webp', null, m, false)
+        break;
+    case 4:
+        stiker = await sticker(imagen28, false, global.packname, global.author)
+        await conn.sendFile(m.chat, stiker, 'sticker.webp', null, m, false)
+        break;
+    case 5:
+        stiker = await sticker(imagen29, false, global.packname, global.author)
+        await conn.sendFile(m.chat, stiker, 'sticker.webp', null, m, false)
+        break;
+    case 6:
+        stiker = await sticker(imagen30, false, global.packname, global.author)
+        await conn.sendFile(m.chat, stiker, 'sticker.webp', null, m, false)
+        break;
+    case 7:
+        stiker = await sticker(imagen31, false, global.packname, global.author)
+        await conn.sendFile(m.chat, stiker, 'sticker.webp', null, m, false)
+        break;
+    case 8:
+        stiker = await sticker(imagen32, false, global.packname, global.author)
+        await conn.sendFile(m.chat, stiker, 'sticker.webp', null, m, false)
+        break;
+    case 9:
+        stiker = await sticker(imagen33, false, global.packname, global.author)
+        await conn.sendFile(m.chat, stiker, 'sticker.webp', null, m, false)
+        break;
+    case 10:
+        stiker = await sticker(imagen34, false, global.packname, global.author)
+        await conn.sendFile(m.chat, stiker, 'sticker.webp', null, m, false)
+        break;
+    case 11:
+        stiker = await sticker(imagen35, false, global.packname, global.author)
+        await conn.sendFile(m.chat, stiker, 'sticker.webp', null, m, false)
+        break;
+    default:
+        stiker = await sticker(imagen24, false, global.packname, global.author)
+        await conn.sendFile(m.chat, stiker, 'sticker.webp', null, m, false)
+}
+
 }
 return !0
 }
