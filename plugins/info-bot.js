@@ -1,5 +1,5 @@
 import fs from "fs"
-import {sticker} from "../lib/sticker";
+import { sticker } from '../lib/sticker.js'
 let handler = m => m
 
 handler.all = async function (m) {
