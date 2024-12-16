@@ -17,7 +17,7 @@ let bot = `${pickRandom([
     "¡Aquí estoy, listísima para lo que sea! (≧◡≦) 💫", 
     `Aqui estoy ‹𝟹 💞`, 
     `*🌸 Holis UwU 🌸*`,
-'¡Listísima para responder a todas tus preguntas!  🍓(≧◡≦)🍓 '])}
+'¡Listísima para responder a todos tus comandos!  🍓(≧◡≦)🍓 '])}
 `.trim()
 const estilo = { key: {  fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "5219992095479-1625305606@g.us" } : {}) },
 message: { 
