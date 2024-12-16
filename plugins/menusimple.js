@@ -39,6 +39,7 @@ let estado = `💗 *¡Hola!* ${name} ✨
 > *.set welcome / bye*
 > *.on welcome*
 > *.on antidelete*
+> *+|1|6|12|2| 1/24hrs*
 
 🛠️ 𝙐𝙩𝙞𝙡𝙨
 
