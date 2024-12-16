@@ -16,9 +16,9 @@ orderMessage: { itemCount : -999999, status: 1, surface : 1, message: 'Super Bot
 const estiloaudio = { key: {  fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "5219992095479-1625305606@g.us" } : {}) },
 message: { 
 "audioMessage": { "mimetype":"audio/ogg; codecs=opus", "seconds": "99569", "ptt": "true"   
-}}}  
+}}}
 
-if (/bot/i.test(m.text)) {
+    if (/\bbot\b/i.test(m.text)) {
     
 conn.sendPresenceUpdate('recording', m.chat)    
 
