@@ -7,7 +7,17 @@ let fkontak = { "key": { "participants":"0@s.whatsapp.net", "remoteJid": "status
 let chat = global.db.data.chats[m.chat]
 if (chat.isBanned) return
 let vn = 'https://qu.ax/Ocxm.mp3'
-let bot = `${pickRandom([`*Hi! ❤️*`, `Aqui estoy ‹𝟹`, `*🌸 Holis uwu 🌸*`])}
+let bot = `${pickRandom([  
+    "🌸 ¡Aquí estoy! (*≧ω≦)",
+    "¡Hola, hola! Aquí llegué~ (*≧ω≦) 💖",
+    "¡ya estoy aquí! 🍓",
+    "¡He llegado! Estaba esperando este momento 💞",
+    "¡No me fui, solo me tomé un pequeño descanso! Aquí estoy, uwu! 🌙",
+    "¡Aquí estoy para ti! 🍬",
+    "¡Aquí estoy, listísima para lo que sea! (≧◡≦) 💫", 
+    `Aqui estoy ‹𝟹 💞`, 
+    `*🌸 Holis UwU 🌸*`,
+'¡Listísima para responder a todas tus preguntas!  🍓(≧◡≦)🍓 '])}
 `.trim()
 const estilo = { key: {  fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "5219992095479-1625305606@g.us" } : {}) },
 message: { 
