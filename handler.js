@@ -1417,14 +1417,15 @@ export async function participantsUpdate({ id, participants, action }) {
                                 .replace('@desc', groupMetadata.desc?.toString() || '𝑺𝒖𝒑𝒆𝒓 𝑨𝒓𝒍𝒆𝒕𝒔𝒊𝒕𝒂 𝑩𝒐𝒕 ❤')
                                 .replace('@user', '@' + user.split('@')[0]);
 
-                            const numer = Math.floor(Math.random() * 3);
+                            const numer = Math.floor(Math.random() * 2);
                             if(numer === 0){
                                 imageToSend = imagen16;
                             }else if(numer === 1){
-                                imageToSend = imagen16;
-                            }else if (numer === 2){
-                                imageToSend = imagen16;
+                                imageToSend = imagen21;
                             }
+                            // else if (numer === 2){
+                            //     imageToSend = imagen16;
+                            // }
                               // Imagen 16 para cuando alguien se une
                         }
                         // Si la acción es 'remove' (usuario se elimina)
