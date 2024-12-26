@@ -9,27 +9,9 @@ const handler = async (m, {conn, command, args, text, usedPrefix}) => {
     if (!text) return conn.reply(m.chat, `${lenguajeGB['smsAvisoMG']()}${mid.smsMalused4}\n*${usedPrefix + command} Billie Eilish - Bellyache*`, m)
     const yt_play = await search(args.join(' '))
     const ytplay2 = await yts(text)
-    const texto1 = `⌘━─━─≪ *YOUTUBE* ≫─━─━⌘
-★ ${mid.smsYT1}
-★ ${yt_play[0].title}
-╴ ╴ ╴ ╴ ╴ ╴ ╴ ╴ ╴ ╴ ╴ ╴ ╴ ╴
-★ ${mid.smsYT15}
-★ ${yt_play[0].ago}
-╴ ╴ ╴ ╴ ╴ ╴ ╴ ╴ ╴ ╴ ╴ ╴ ╴ ╴
-★ ${mid.smsYT5}
-★ ${secondString(yt_play[0].duration.seconds)}
-╴ ╴ ╴ ╴ ╴ ╴ ╴ ╴ ╴ ╴ ╴ ╴ ╴ ╴
-★  ${mid.smsYT10}
-★ ${MilesNumber(yt_play[0].views)}
-╴ ╴ ╴ ╴ ╴ ╴ ╴ ╴ ╴ ╴ ╴ ╴ ╴ ╴
-★  ${mid.smsYT2}
-★ ${yt_play[0].author.name}
-╴ ╴ ╴ ╴ ╴ ╴ ╴ ╴ ╴ ╴ ╴ ╴ ╴ ╴
-★ ${mid.smsYT4}
-★ ${yt_play[0].url.replace(/^https?:\/\//, '')}
-⌘━━─≪ ${gt} ≫─━━⌘
-
-> _*Descargando... Aguarde un momento por favor*_`.trim()
+    const texto1 = `*🎶 ${yt_play[0].title} 🎶*
+👨‍🎤 Autor: ${yt_play[0].author.name}
+🔗 Enlace: ${yt_play[0].url}`.trim();
     await conn.sendFile(m.chat, yt_play[0].thumbnail, 'error.jpg', texto1, m, null)
 
     if (command == 'play' || command == 'audio') {
