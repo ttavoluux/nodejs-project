@@ -10,8 +10,8 @@ const handler = async (m, {conn, command, args, text, usedPrefix}) => {
     const yt_play = await search(args.join(' '))
     const ytplay2 = await yts(text)
     const texto1 = `*🎶 ${yt_play[0].title} 🎶*
-👨‍🎤 Autor: ${yt_play[0].author.name}
-🔗 Enlace: ${yt_play[0].url}`.trim();
+*-* ${yt_play[0].author.name}
+🔗 *Enlace:* ${yt_play[0].url}`.trim();
     await conn.sendFile(m.chat, yt_play[0].thumbnail, 'error.jpg', texto1, m, null)
 
     if (command == 'play' || command == 'audio') {
