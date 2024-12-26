@@ -19,8 +19,12 @@ let pesan = args.join` `
     if(numParticipantes > 100){
         teks += '❗ *El grupo supera los 100 participantes considere usar .aviso* ❗\n\n';
     }
+    if(text.length>1){
+
+        teks += ` *${texto}* ${texto3}${text.toUpperCase()}${texto4} \n\n`
+    }
 //let oi = `ღ ${lenguajeGB['smsAddB5']()} ${pesan}`
-teks += ` *${texto}* ${texto3}${text.toUpperCase()}${texto4} \n\n`
+
 for (let mem of participants) {
 teks += `*@${mem.id.split('@')[0]}* `}
 teks += `\n`
