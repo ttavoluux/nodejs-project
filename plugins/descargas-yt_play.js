@@ -1,3 +1,6 @@
+
+
+
 import fetch from 'node-fetch';
 import yts from 'yt-search';
 import ytdl from 'ytdl-core';
@@ -16,8 +19,9 @@ const handler = async (m, { conn, command, args, text, usedPrefix }) => {
         try {
             await downloadAndSendAudio(yt_play[0].url, yt_play[0].title, m, conn);
         } catch (e) {
-            await m.react('❌');
             console.error(e);
+            await m.react('❌');
+            await conn.reply(m.chat, `*Hubo un error al descargar el audio. Intenta con otro enlace.*`, m);
         }
     }
 
@@ -31,8 +35,9 @@ const handler = async (m, { conn, command, args, text, usedPrefix }) => {
         try {
             await downloadAndSendVideo(yt_play[0].url, yt_play[0].title, yt_play[0].thumbnail, m, conn);
         } catch (e) {
-            await m.react('❌');
             console.error(e);
+            await m.react('❌');
+            await conn.reply(m.chat, `*Hubo un error al descargar el video. Intenta con otro enlace.*`, m);
         }
     }
 
@@ -186,8 +191,6 @@ async function downloadAndSendVideo(url, title, thumbnail, m, conn) {
         }, { quoted: m });
     }
 }
-
-
 
 
 
