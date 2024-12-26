@@ -4,31 +4,27 @@ global.dfail('admin', m, conn)
 throw false
 }
 
-var texto = ''
-var texto2 = 'AVISO :'
+var texto = '🎄 Holis :3🎄'
+var texto2 = '🎄 AVISO :'
 var texto3 = ' '
 var texto4 = ' '
     let numParticipantes = participants.length;
 if(text.length>1){ 
 texto = texto2 
 texto3='*!'
-texto4='!*'
+texto4='🎄 !*'
 }
 let pesan = args.join` `
     let teks = ''
     if(numParticipantes > 100){
         teks += '❗ *El grupo supera los 100 participantes considere usar .aviso* ❗\n\n';
     }
-    if(text.length>1){
-
-        teks += ` *${texto}* ${texto3}${text.toUpperCase()}${texto4} \n\n`
-    }
 //let oi = `ღ ${lenguajeGB['smsAddB5']()} ${pesan}`
-
+teks += ` *${texto}* ${texto3}${text.toUpperCase()}${texto4} \n\n`
 for (let mem of participants) {
 teks += `*@${mem.id.split('@')[0]}* `}
 teks += `\n`
-teks += `\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`
+    teks += `\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`
 //teks += '\n *𝓑𝔂: 𝓐𝓻𝓵𝓮𝓽𝓼𝓲𝓽𝓪 𝓫𝓸𝓽 💕* '
 //teks += '\n\n*💜 Nuevos comandos ⚠️*\n     *.aviso*\n     *.todosprem*'
 conn.sendMessage(m.chat, { text: teks, mentions: participants.map(a => a.id) }, )  
