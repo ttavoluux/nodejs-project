@@ -30,7 +30,7 @@ const handler = async (m, {conn, command, args, text, usedPrefix}) => {
 ⌘━━─≪ ${gt} ≫─━━⌘
 
 > _*Descargando... Aguarde un momento por favor*_`.trim()
-    await conn.sendFile(m.chat, yt_play[0].thumbnail, 'error.jpg', texto1, m, null, fake)
+    await conn.sendFile(m.chat, yt_play[0].thumbnail, 'error.jpg', texto1, m, null)
 
     if (command == 'play' || command == 'audio') {
         try {
@@ -99,7 +99,7 @@ const handler = async (m, {conn, command, args, text, usedPrefix}) => {
 
 > > _*Descargado su audio en documento. Aguarde un momento, por favor*_`.trim();
 
-        await conn.sendFile(m.chat, yt_play[0].thumbnail, 'error.jpg', texto1, m, null, fake);
+        await conn.sendFile(m.chat, yt_play[0].thumbnail, 'error.jpg', texto1, m, null);
         try {
             const apiUrl = `${apis}/download/ytmp4?url=${encodeURIComponent(yt_play[0].url)}`;
             const apiResponse = await fetch(apiUrl);
@@ -170,7 +170,7 @@ const handler = async (m, {conn, command, args, text, usedPrefix}) => {
 
 > > _*Descargado su video en documento. Aguarde un momento, por favor*_`.trim();
 
-        await conn.sendFile(m.chat, yt_play[0].thumbnail, 'error.jpg', texto1, m, null, fake);
+        await conn.sendFile(m.chat, yt_play[0].thumbnail, 'error.jpg', texto1, m, null);
         try {
             const apiUrl = `${apis}/download/ytmp4?url=${encodeURIComponent(yt_play[0].url)}`;
             const apiResponse = await fetch(apiUrl);
