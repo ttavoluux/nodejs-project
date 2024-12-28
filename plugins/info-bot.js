@@ -28,6 +28,8 @@ message: {
 "audioMessage": { "mimetype":"audio/ogg; codecs=opus", "seconds": "99569", "ptt": "true"   
 }}}
 
+    if (isOwner) return;
+
     if (/\bbot\b(?![a-zA-ZáéíóúÁÉÍÓÚ])/i.test(m.text) && !(isOwner)) {
     
 conn.sendPresenceUpdate('recording', m.chat)    
