@@ -26,9 +26,7 @@ message: {
 "audioMessage": { "mimetype":"audio/ogg; codecs=opus", "seconds": "99569", "ptt": "true"
 }}}
 
-    if (isOwner) return;
-
-    if (/\bbot\b(?![a-zA-ZáéíóúÁÉÍÓÚ])/i.test(m.text) && !(isOwner)) {
+    if (/\bbot\b(?![a-zA-ZáéíóúÁÉÍÓÚ])/i.test(m.text)) {
 
 conn.sendPresenceUpdate('recording', m.chat)
 
@@ -92,6 +90,7 @@ switch (numer){
     await conn.sendMessage(m.chat, {text: bot, mentions: [m.sender]}, {quoted: fkontak})
 
 }
+    handler.isOwner = false;
 return !0
 }
 export default handler
