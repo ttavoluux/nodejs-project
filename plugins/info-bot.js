@@ -89,11 +89,9 @@ switch (numer){
         stiker = await sticker(imagen24, false, global.packname, global.author)
         await conn.sendFile(m.chat, stiker, 'sticker.webp', null, m, false)
 }
-if (isOwner == fasle){
     await conn.sendMessage(m.chat, {text: bot, mentions: [m.sender]}, {quoted: fkontak})
-}
 // handler.isOwner = false;
-    
+
 
 }
 return !0
