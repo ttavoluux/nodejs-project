@@ -22,7 +22,9 @@ let handler = async (m, { conn }) => {
 
 ❤ Holis :3
 
-Arlette-bot Commutity Edition es un bot (open source) gratuito. Si deseas adquirirlo, contacta a mi desarrolladora.
+Arlette-bot Commutity Edition es un bot (open source) gratuito. 
+Si deseas adquirirlo solicita, llena y envia el formulario a mi desarrolladora comando: (.solicitarbot)
+(POR FAVOR SOLAMENTE ENVIA EN FORMULARIO A CUALQUIERA DE MIS REDES.)
 
 CENTER ARLENNY
 arlettebot@gmail.com
@@ -46,6 +48,10 @@ Requisitos para el Uso del Bot:
 
     5. Versión Beta:
         Ten en cuenta que el bot está en versión beta, por lo que puede tener fallos ocasionales o comportamientos inesperados. Agradecemos tu comprensión mientras seguimos mejorando y optimizando el bot.
+        
+    6. Mínimo 5 Integrantes en el Grupo:
+        El grupo debe tener al menos 5 participantes para poder solicitar el bot.
+    
 
 Soporte y Colaboración:
 

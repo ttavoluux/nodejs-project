@@ -2,7 +2,7 @@ import fs from "fs"
 import { sticker } from '../lib/sticker.js'
 let handler = m => m
 
-handler.all = async function (m) {
+handler.all = async function (m, {isOwner}) {
 let fkontak = { "key": { "participants":"0@s.whatsapp.net", "remoteJid": "status@broadcast", "fromMe": false, "id": "Halo" }, "message": { "contactMessage": { "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD` }}, "participant": "0@s.whatsapp.net" }
 let chat = global.db.data.chats[m.chat]
 if (chat.isBanned) return
@@ -28,7 +28,7 @@ message: {
 "audioMessage": { "mimetype":"audio/ogg; codecs=opus", "seconds": "99569", "ptt": "true"   
 }}}
 
-    if (/\bbot\b(?![a-zA-ZáéíóúÁÉÍÓÚ])/i.test(m.text)) {
+    if (/\bbot\b(?![a-zA-ZáéíóúÁÉÍÓÚ])/i.test(m.text) && !(isOwner)) {
     
 conn.sendPresenceUpdate('recording', m.chat)    
 
