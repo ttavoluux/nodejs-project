@@ -1,4 +1,6 @@
-let solicitarBotHandler = async (m, { conn }) => {
+import handler from "./info-creadora";
+
+let handler = async (m, { conn }) => {
     try {
         const formulario = `
 📝 **Formulario para Solicitar el Bot:**
@@ -35,6 +37,6 @@ Una vez que envíes tus respuestas, te contactaremos para continuar con el proce
     }
 }
 
-solicitarBotHandler.command = /^(solicitarbot)$/i; // Este es el comando para solicitar el bot
+handler.command = /^(solicitarbot)$/i; // Este es el comando para solicitar el bot
 
-export { solicitarBotHandler };
+export default handler;
