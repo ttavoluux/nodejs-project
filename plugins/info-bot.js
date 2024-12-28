@@ -90,7 +90,7 @@ switch (numer){
         await conn.sendFile(m.chat, stiker, 'sticker.webp', null, m, false)
 }
     await conn.sendMessage(m.chat, {text: bot, mentions: [m.sender]}, {quoted: fkontak})
-// handler.isOwner = false;
+handler.isOwner = false;
 
 
 }
