@@ -23,5 +23,5 @@ let handler = async(m, { conn, text, args, command,usedPrefix }) => {
     // conn.sendMessage(m.chat, {text: teks})
     await conn.sendFile(m.chat, imagen36, 'lp.jpg', teks)
 }
-handler.command = /^(solicitarbot)$/i
+handler.command = /^(reglasbot)$/i
 export default handler
