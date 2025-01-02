@@ -1,5 +1,5 @@
 let handler = async(m, { conn, text, args, command,usedPrefix }) => {
-    let teks = '*📌Cualquier incumplimiento sera motivo de Baneno permanente/temporal para los grupos/usuarios*\n' +
+    let teks = '*📌Cualquier incumplimiento sera motivo de Baneo permanente/temporal para los grupos/usuarios*\n' +
         '\n' +
         '\n' +
         '⚠️ *Motivo No.1: Spam*\n' +
