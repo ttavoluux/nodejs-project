@@ -233,6 +233,8 @@ global.imagen32 = fs.readFileSync("./media/menus/resp9.jpg")
 global.imagen33 = fs.readFileSync("./media/menus/resp10.jpg")
 global.imagen34 = fs.readFileSync("./media/menus/resp11.jpg")
 global.imagen35 = fs.readFileSync("./media/menus/resp12.jpg")
+global.imagen36 = fs.readFileSync("./media/menus/imagenReglas.jpg")
+
 
 
 
