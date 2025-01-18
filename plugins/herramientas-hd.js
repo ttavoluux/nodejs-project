@@ -1,6 +1,6 @@
 import FormData from "form-data";
 import Jimp from "jimp";
-import {sticker} from "../lib/sticker";
+import { sticker } from '../lib/sticker.js'
 const handler = async (m, {conn, usedPrefix, command}) => {
  try {    
   let q = m.quoted ? m.quoted : m;
