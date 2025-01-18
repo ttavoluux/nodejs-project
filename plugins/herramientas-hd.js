@@ -1,5 +1,6 @@
 import FormData from "form-data";
 import Jimp from "jimp";
+import {sticker} from "../lib/sticker";
 const handler = async (m, {conn, usedPrefix, command}) => {
  try {    
   let q = m.quoted ? m.quoted : m;
@@ -8,7 +9,7 @@ const handler = async (m, {conn, usedPrefix, command}) => {
   if (!/image\/(jpe?g|png)/.test(mime)) throw `╰⊱⚠️⊱ *𝘼𝘿𝙑𝙀𝙍𝙏𝙀𝙉𝘾𝙄𝘼 | 𝙒𝘼𝙍𝙉𝙄𝙉𝙂* ⊱⚠️⊱╮\n\nEL FORMATO DEL ARCHIVO (${mime}) NO ES COMPATIBLE, ENVÍA O RESPONDE A UNA FOTO`;
   //m.reply("*✨ 𝙈𝙀𝙅𝙊𝙍𝘼𝙉𝘿𝙊 𝙇𝘼 𝘾𝘼𝙇𝙄𝘿𝘼𝘿...*");
      let stiker = await sticker(imagen28, false, global.packname, global.author);
-     await  m.reply(m.chat, stiker, 'sticker.webp', null, m, false);
+     await m.reply(conn.sendFile(m.chat, stiker, 'sticker.webp', null, m, false));
   let img = await q.download?.();
   let pr = await remini(img, "enhance");
   conn.sendMessage(m.chat, {image: pr}, {quoted: m});
