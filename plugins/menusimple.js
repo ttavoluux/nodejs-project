@@ -22,8 +22,7 @@ let estado = `💗 *¡Hola!* ${name} ✨
 
 🚀 𝑨𝒅𝒅 / 𝑼𝑷𝑫𝑨𝑻𝑬
 
-> *.play* (funcionando!)
-> *.ff*
+> *.changegroup | cambiargrupo
 
 💬 𝑮𝒓𝒖𝒑𝒐𝒔
 

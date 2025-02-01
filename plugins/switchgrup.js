@@ -39,7 +39,7 @@ let handler = async (m, { conn, command, usedPrefix, text }) => {
         await conn.sendFile(m.chat, imagen17, 'lp.jpg', solienviada);
 
         // Salir del grupo
-        // await conn.groupLeave(m.chat);
+        await conn.groupLeave(m.chat);
     }
 
     // Enviar la imagen si es necesario
