@@ -27,6 +27,7 @@ let handler = async (m, { conn, command, usedPrefix, text }) => {
                 text: solicitudMessage,  // El mensaje con el texto de la solicitud
                 quoted: m,  // Esta es la respuesta al mensaje original, si es necesario
             });
+        }
         // await conn.sendMessage(botNumber, `El grupo: ${await conn.getName(m.chat)} solicito un cambio a: ${text}`);
 
         // Enviar confirmación al grupo
