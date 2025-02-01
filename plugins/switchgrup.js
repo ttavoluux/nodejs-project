@@ -12,6 +12,7 @@ let handler = async (m, { conn, command, usedPrefix, text }) => {
 > 3. *Después de enviar la solicitud, el bot ingresara al nuevo grupo*
 
 🌸Recuerda usar correctamente *ArletteBot Commutity Edition* ✨`;
+        await conn.sendMessage(m.chat, imagen12, message);
     } else {
         // Obtener el número del bot (el JID)
         const botNumber = conn.user.jid;  // El número del bot es el JID
