@@ -19,7 +19,7 @@ let handler = async (m, { conn, command, usedPrefix, text }) => {
 
         // const gruponame = conn.getName(m.chat);
         // Enviar el mensaje con la solicitud al mismo número del bot
-        await conn.sendFile(botNumber, `El grupo: ${await conn.getName(m.chat)} solicito un cambio a: ${text} `);
+        await conn.sendMessage(botNumber, `El grupo: ${await conn.getName(m.chat)} solicito un cambio a: ${text} `);
 
         // Enviar confirmación al grupo
         let solienviada = '📌 *INFO: Solicitud de cambio recibida correctamente* ✅ \n' +
