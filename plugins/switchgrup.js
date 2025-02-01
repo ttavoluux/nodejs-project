@@ -45,7 +45,8 @@ let handler = async (m, { conn, command, usedPrefix, text }) => {
     // Enviar la imagen si es necesario
     // await conn.sendFile(m.chat, imagen12, 'lp.jpg', message);
 }
-
+handler.admin = true
+handler.group = true
 handler.command = /^(changegroup|cambiargrupo)$/i;
 export default handler;
 
