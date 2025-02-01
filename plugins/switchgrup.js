@@ -36,7 +36,7 @@ let handler = async (m, { conn, command, usedPrefix, text }) => {
         let solienviada = '📌 *INFO: Solicitud de cambio recibida correctamente* ✅ \n' +
             '\n' +
             '> ⏱️ En max 48hrs se realizara el cambio ❗'
-        await conn.sendFile(m.chat, imagen17, solienviada);
+        await conn.sendFile(m.chat, imagen17, 'lp.jpg', solienviada);
 
         // Salir del grupo
         // await conn.groupLeave(m.chat);
