@@ -12,20 +12,20 @@ let handler = async (m, { conn, command, usedPrefix, text }) => {
 > 3. *Después de enviar la solicitud, el bot ingresara al nuevo grupo*
 
 🌸Recuerda usar correctamente *ArletteBot Commutity Edition* ✨`;
-        await conn.sendMessage(m.chat, imagen12, message);
+        await conn.sendFile(m.chat, imagen17, 'lp.jpg', message)
     } else {
         // Obtener el número del bot (el JID)
         const botNumber = conn.user.jid;  // El número del bot es el JID
 
         // const gruponame = conn.getName(m.chat);
         // Enviar el mensaje con la solicitud al mismo número del bot
-        await conn.sendMessage(botNumber, `El grupo: ${await conn.getName(m.chat)} solicito un cambio a: ${text} `);
+        await conn.sendFile(botNumber, `El grupo: ${await conn.getName(m.chat)} solicito un cambio a: ${text} `);
 
         // Enviar confirmación al grupo
         let solienviada = '📌 *INFO: Solicitud de cambio recibida correctamente* ✅ \n' +
             '\n' +
             '> ⏱️ En max 48hrs se realizara el cambio ❗'
-        await conn.sendMessage(m.chat, imagen12, solienviada);
+        await conn.sendFile(m.chat, imagen17, solienviada);
 
         // Salir del grupo
         // await conn.groupLeave(m.chat);
