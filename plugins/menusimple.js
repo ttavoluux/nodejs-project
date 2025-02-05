@@ -22,7 +22,9 @@ let estado = `💗 *¡Hola!* ${name} ✨
 
 🚀 𝑨𝒅𝒅 / 𝑼𝑷𝑫𝑨𝑻𝑬
 
-> *.changegroup | cambiargrupo
+> *.changegroup | cambiargrupo*
+> *.n*
+
 
 💬 𝑮𝒓𝒖𝒑𝒐𝒔
 
@@ -100,7 +102,7 @@ await conn.sendFile(m.chat, imagen17, 'lp.jpg', estado)
 }
 handler.help = ['estado']
 handler.tags = ['main']
-handler.command = /^(menu|comandos)$/i
+handler.command = /^(menu|comandos|settings|ajustes)$/i
 export default handler
 
 function clockString(ms) {
