@@ -96,6 +96,8 @@ let estado = `💗 *¡Hola!* ${name} ✨
 📌
 > .menucompleto
 
+> Nodejs : 20 -> 22.13.1 (LTS) (+75% speed)
+
 *Versión:* ${vs}
 *Tiempo Activo:* ${uptime}`
 await conn.sendFile(m.chat, imagen17, 'lp.jpg', estado)
