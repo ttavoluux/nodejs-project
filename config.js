@@ -11,7 +11,7 @@ import { en, es, id, ar, pt } from "./lib/idiomas/total-idiomas.js"
 
 // • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • •
 // [ES] > Agrega el número que será Bot y los que serán propietarios.
-// [EN] > Add the number that will be Bot and those that will be owners.
+// [EN] > Add the number that will be Bot and those that will be owners.f
 global.owner = [
 ["7733424698", '𝙊𝙬𝙣𝙚𝙧 💖🐈', true]]
 
