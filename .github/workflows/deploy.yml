@@ -36,6 +36,6 @@ jobs:
         with:
           project: "juangustavo-nodejs-proj"
           entrypoint: "/nodejs-project"
-          root: ""
+          root: "/"
           
           
