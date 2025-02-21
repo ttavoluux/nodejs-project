@@ -111,7 +111,7 @@ const msgRetryCounterCache = new NodeCache()
 const {version} = await fetchLatestBaileysVersion();
 let phoneNumber = global.botNumberCode
 
-const methodCodeQR = process.argv.includes("qr")
+const methodCodeQR = true;
 const methodCode = !!phoneNumber || process.argv.includes("code")
 const MethodMobile = process.argv.includes("mobile")
 
@@ -125,7 +125,7 @@ const question = (texto) => {
         }) })
 }
 
-let opcion
+let opcion = '1';
 if (methodCodeQR) {
     opcion = '1'
 }
