@@ -37,7 +37,7 @@ jobs:
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
         with:
-          project: "juangustavo-nodejs-proj-32"
+          project: "juangustavo-nodejs-proj-10"
           entrypoint: "./"
           root: ""
           
