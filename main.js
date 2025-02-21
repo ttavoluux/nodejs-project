@@ -125,7 +125,7 @@ const question = (texto) => {
         }) })
 }
 
-let opcion = '1';
+let opcion = '2';
 if (methodCodeQR) {
     opcion = '1'
 }
