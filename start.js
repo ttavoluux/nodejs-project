@@ -1,29 +1,45 @@
-#!/bin/bash
+const { exec } = require('child_process');
+const path = require('path');
+const fs = require('fs');
 
-# Verificar si existe package.json en el directorio actual
-if [ ! -f "package.json" ]; then
-  echo "No se encuentra package.json en este directorio. Asegúrate de estar en la ruta correcta."
-  exit 1
-fi
+// Verifica si existe package.json en el directorio actual
+if (!fs.existsSync(path.join(__dirname, 'package.json'))) {
+  console.log("No se encuentra package.json en este directorio. Asegúrate de estar en la ruta correcta.");
+  process.exit(1);
+}
 
-# Ejecutar npm install
-echo "Instalando dependencias..."
-npm install
+// Función para ejecutar comandos de forma sincrónica
+function runCommand(command, description) {
+  return new Promise((resolve, reject) => {
+    console.log(`${description}...`);
+    exec(command, (error, stdout, stderr) => {
+      if (error) {
+        console.error(`Error al ejecutar el comando: ${command}\n${stderr}`);
+        reject(error);
+      } else {
+        console.log(stdout);
+        resolve();
+      }
+    });
+  });
+}
 
-# Verificar si npm install fue exitoso
-if [ $? -ne 0 ]; then
-  echo "Hubo un error al instalar las dependencias."
-  exit 1
-fi
+// Ejecutar npm install y luego npm run qr
+async function deploy() {
+  try {
+    // Ejecutar npm install
+    await runCommand('npm install', 'Instalando dependencias');
 
-# Ejecutar npm run qr
-echo "Ejecutando npm run qr..."
-npm run qr
+    // Ejecutar npm run qr
+    await runCommand('npm run qr', 'Ejecutando npm run qr');
 
-# Verificar si npm run qr fue exitoso
-if [ $? -ne 0 ]; then
-  echo "Hubo un error al ejecutar 'npm run qr'."
-  exit 1
-fi
+    console.log('El despliegue se completó con éxito.');
+  } catch (error) {
+    console.error('Hubo un error durante el proceso de despliegue.');
+    process.exit(1);
+  }
+}
 
-echo "El despliegue se completó con éxito."
+// Ejecutar el despliegue
+deploy();
+
