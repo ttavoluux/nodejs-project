@@ -30,12 +30,5 @@ jobs:
 
       - name: Install step
         run: "npm install; npm run qr"
-
-      - name: Upload to Deno Deploy
-        uses: denoland/deployctl@v1
-        with:
-          project: "juangustavo-nodejs-proj-10"
-          entrypoint: "/nodejs-project"
-          root: ""
           
           
