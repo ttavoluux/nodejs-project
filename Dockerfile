@@ -13,3 +13,4 @@ COPY package.json .
 RUN npm install && npm install qrcode-terminal
 
 COPY . .
+CMD ["npm", "start"]
