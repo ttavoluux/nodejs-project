@@ -1,6 +1,14 @@
 services:
   - type: web
-    name: gatabot-md
+    name: mi-aplicacion
     env: docker
-    region: Frankfurt
+    buildCommand: ''
+    startCommand: ''
+    dockerfilePath: ./Dockerfile
+    autoDeploy: true
     plan: free
+    branches: ["main"]
+    envVars:
+      - key: PORT
+        value: "10000"
+    exposePort: 10000
