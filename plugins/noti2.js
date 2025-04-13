@@ -23,7 +23,7 @@ const handler = async (m, { conn, text, participants, isOwner, isAdmin, args }) 
 
         // Enviamos el mensaje de texto con los usuarios mencionados
         await conn.sendMessage(m.chat, {
-            text: `${text}\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`,
+            text: `${text}\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ⁺`,
             mentions: users,
         }, { quoted: m });
 

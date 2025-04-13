@@ -13,7 +13,7 @@ let handler = async (m, { conn, command, usedPrefix,text}) => {
 > .ffscrims
 > .ffreglasfem | lideresfem
 > .ffreglasmasc | lideresmasc`
-        menuff += '\n\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ'
+        menuff += '\n\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ⁺'
         await conn.sendFile(m.chat, imagen23, 'lp.jpg', menuff)
     }
     if (command === 'ff12vs12') {

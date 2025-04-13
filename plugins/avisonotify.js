@@ -46,7 +46,7 @@ var mediax = await quoted.download?.();
 conn.sendMessage(m.chat, {sticker: mediax, mentions: users}, {quoted: m})
 return
 } else {
-await conn.sendMessage(m.chat, { text: text + '\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ', mentions: users }, { quoted: m }) 
+await conn.sendMessage(m.chat, { text: text + '\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ⁺', mentions: users }, { quoted: m })
 return
 }
 }

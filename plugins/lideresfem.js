@@ -74,7 +74,7 @@ si hay alguna prueba de que el equipo mete más PC de lo acordado, pueden abando
 *TUBOS DE TRANSPORTE QUEDAN PROHIBIDO SU USO AL RESTRINGIR ZONA/COMBATE*`;
 
     // Agregar pie de página
-    reglas += `\n\n\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ`;
+    reglas += `\n\n\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ⁺`;
 
     // URL de la imagen que deseas adjuntar
  // Imagen para la vista previa (puede ser la misma o diferente)

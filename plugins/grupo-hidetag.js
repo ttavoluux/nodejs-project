@@ -48,7 +48,7 @@ const more = String.fromCharCode(8206)
 const masss = more.repeat(850)
 const htextos = `${text ? text : '📣📣📣'}`
 
-await conn.sendMessage(m.chat, { text: text + '\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ', mentions: users }, { quoted: m })
+await conn.sendMessage(m.chat, { text: text + '\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ⁺', mentions: users }, { quoted: m })
 
 
 }else{
