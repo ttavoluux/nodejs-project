@@ -12,13 +12,13 @@ let isMedia = /image|video|sticker|audio/.test(mime)
 let more = String.fromCharCode(8206)
 let masss = more.repeat(850)
 let htextos = `${text ? text : " *🐈‍⬛ Holis :3* "}`
-    const numer = Math.floor(Math.random() * 2);
+    const numer = 0;
     if(numer === 1){
         let stiker = await sticker(imagen13, false, global.packname, global.author)
         await conn.sendFile(m.chat, stiker, 'sticker.webp', null, m, false, { mentions: users
         },{ quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
     }else if(numer === 0){
-        await conn.sendMessage(m.chat, { text : text ? text : `🎄noti :3 ❤️    @ *${await conn.getName(m.chat)}*❄️` , mentions: users}, { quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
+        await conn.sendMessage(m.chat, { text : text ? text : `@ *${await conn.getName(m.chat)}*\n                                                     ᴬʳˡᵉᵗᵗᴮᵒᵗ⁺` , mentions: users}, { quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
     }
 return
 } 
