@@ -22,15 +22,14 @@ let estado = `💗 *¡Hola!* ${name} ✨
 
 🚀 𝑨𝒅𝒅 / 𝑼𝑷𝑫𝑨𝑻𝑬
 
-> *.changegroup | cambiargrupo*
-> *.n*
-
+> *.hd2 [img]*
 
 💬 𝑮𝒓𝒖𝒑𝒐𝒔
 
 > *.on/.off (Activar y desactivar funciones)*
 > *.todos / .todas*
 > *.aviso / notify*
+> *.n*
 > *.spam*
 > *.ban / .kick [@]*
 > *.grupo abrir / cerrar*
@@ -42,12 +41,14 @@ let estado = `💗 *¡Hola!* ${name} ✨
 > *.on welcome*
 > *.on antidelete*
 > *+|1|6|12|2| 1/24hrs*
+> *.changegroup | cambiargrupo*
 
 🛠️ 𝙐𝙩𝙞𝙡𝙨
 
 > *.ia [text]*
 > *.sticker [img / vid]*
 > *.hd [img]*
+> *.hd2 [img]*
 > *.img [sticker]*
 > *.tts [audio]*
 > *.tovideo [sticker]*
@@ -88,6 +89,7 @@ let estado = `💗 *¡Hola!* ${name} ✨
 
 > *.estado*
 > *.owner*
+> *.ultimate*
 
 🎨 𝑨𝒅𝒅 𝑴𝒊𝒏𝒊𝒎𝒂𝒍𝒊𝒔𝒕 𝑫𝒆𝒔𝒊𝒈𝒏 🎨
 

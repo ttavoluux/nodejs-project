@@ -439,49 +439,49 @@ ${m.isGroup ? `` : `${lenguajeGB.smsConfi9()}`}
 
 𝐀𝐝𝐦𝐢𝐧𝐬 
 
-*${usedPrefix + command} welcome ${m.isGroup ? chat.welcome ? '✅' : '❌' : lenguajeGB.smsNoGg()}*
-*${usedPrefix + command} detect ${m.isGroup ? chat.detect ? '✅' : '❌' : lenguajeGB.smsNoGg()}*
-*${usedPrefix + command} juegos ${m.isGroup ? chat.game ? '✅' : '❌' : lenguajeGB.smsNoGg()}*
-*${usedPrefix + command} game2 ${m.isGroup ? chat.ruleta ? '✅' : '❌' : lenguajeGB.smsNoGg()}*
-*${usedPrefix + command} modoadmin ${m.isGroup ? chat.modoadmin ? '✅' : '❌' : lenguajeGB.smsNoGg()}*
-*${usedPrefix + command} stickers ${m.isGroup ? chat.stickers ? '✅' : '❌' : lenguajeGB.smsNoGg()}*
-*${usedPrefix + command} autosticker ${m.isGroup ? chat.autosticker ? '✅' : '❌' : lenguajeGB.smsNoGg()}*
-*${usedPrefix + command} reaction ${m.isGroup ? chat.reaction ? '✅' : '❌' : lenguajeGB.smsNoGg()}*
-*${usedPrefix + command} audios ${m.isGroup ? chat.audios ? '✅' : '❌' : lenguajeGB.smsNoGg()}*
-*${usedPrefix + command} chatgpt ${m.isGroup ? chat.modoia ? '✅' : '❌' : lenguajeGB.smsNoGg()}*
-*${usedPrefix + command} chatbot ${m.isGroup ? chat.simi ? '✅' : '❌' : lenguajeGB.smsNoGg()}*
-*${usedPrefix + command} antitoxic ${m.isGroup ? chat.antitoxic ? '✅' : '❌' : lenguajeGB.smsNoGg()}*
-*${usedPrefix + command} modocaliente ${m.isGroup ? chat.modohorny ? '✅' : '❌' : lenguajeGB.smsNoGg()}*
-*${usedPrefix + command} antiver ${m.isGroup ? chat.antiver ? '✅' : '❌' : lenguajeGB.smsNoGg()}*
-*${usedPrefix + command} antidelete ${m.isGroup ? chat.delete ? '✅' : '❌' : lenguajeGB.smsNoGg()}*
-*${usedPrefix + command} antifake ${m.isGroup ? chat.antifake ? '✅' : '❌' : lenguajeGB.smsNoGg()}*
-*${usedPrefix + command} antitraba ${m.isGroup ? chat.antiTraba ? '✅' : '❌' : lenguajeGB.smsNoGg()}*
-*${usedPrefix + command} antiLink ${m.isGroup ? chat.antiLink ? '✅' : '❌' : lenguajeGB.smsNoGg()}*
-*${usedPrefix + command} antiLink2 ${m.isGroup ? chat.antiLink2 ? '✅' : '❌' : lenguajeGB.smsNoGg()}*
-*${usedPrefix + command} antiTiktok ${m.isGroup ? chat.antiTiktok ? '✅' : '❌' : lenguajeGB.smsNoGg()}*
-*${usedPrefix + command} antiYoutube ${m.isGroup ? chat.antiYoutube ? '✅' : '❌' : lenguajeGB.smsNoGg()}*
-*${usedPrefix + command} antiTelegram ${m.isGroup ? chat.antiTelegram ? '✅' : '❌' : lenguajeGB.smsNoGg()}*
-*${usedPrefix + command} antiFacebook ${m.isGroup ? chat.antiFacebook ? '✅' : '❌' : lenguajeGB.smsNoGg()}*
-*${usedPrefix + command} antiInstagram ${m.isGroup ? chat.antiInstagram ? '✅' : '❌' : lenguajeGB.smsNoGg()}*
-*${usedPrefix + command} antiTwitter ${m.isGroup ? chat.antiTwitter ? '✅' : '❌' : lenguajeGB.smsNoGg()}*
+*${m.isGroup ? chat.welcome ? '✅' : '❌' : lenguajeGB.smsNoGg()}  ${usedPrefix + command} welcome*
+*${m.isGroup ? chat.detect ? '✅' : '❌' : lenguajeGB.smsNoGg()}  ${usedPrefix + command} detect*
+*${m.isGroup ? chat.game ? '✅' : '❌' : lenguajeGB.smsNoGg()}  ${usedPrefix + command} juegos*
+*${m.isGroup ? chat.ruleta ? '✅' : '❌' : lenguajeGB.smsNoGg()}  ${usedPrefix + command} game2*
+*${m.isGroup ? chat.modoadmin ? '✅' : '❌' : lenguajeGB.smsNoGg()}  ${usedPrefix + command} modoadmin*
+*${m.isGroup ? chat.stickers ? '✅' : '❌' : lenguajeGB.smsNoGg()}  ${usedPrefix + command} stickers*
+*${m.isGroup ? chat.autosticker ? '✅' : '❌' : lenguajeGB.smsNoGg()}  ${usedPrefix + command} autosticker*
+*${m.isGroup ? chat.reaction ? '✅' : '❌' : lenguajeGB.smsNoGg()}  ${usedPrefix + command} reaction*
+*${m.isGroup ? chat.audios ? '✅' : '❌' : lenguajeGB.smsNoGg()}  ${usedPrefix + command} audios*
+*${m.isGroup ? chat.modoia ? '✅' : '❌' : lenguajeGB.smsNoGg()}  ${usedPrefix + command} chatgpt*
+*${m.isGroup ? chat.simi ? '✅' : '❌' : lenguajeGB.smsNoGg()}  ${usedPrefix + command} chatbot*
+*${m.isGroup ? chat.antitoxic ? '✅' : '❌' : lenguajeGB.smsNoGg()}  ${usedPrefix + command} antitoxic*
+*${m.isGroup ? chat.modohorny ? '✅' : '❌' : lenguajeGB.smsNoGg()}  ${usedPrefix + command} modocaliente*
+*${m.isGroup ? chat.antiver ? '✅' : '❌' : lenguajeGB.smsNoGg()}  ${usedPrefix + command} antiver*
+*${m.isGroup ? chat.delete ? '✅' : '❌' : lenguajeGB.smsNoGg()}  ${usedPrefix + command} antidelete*
+*${m.isGroup ? chat.antifake ? '✅' : '❌' : lenguajeGB.smsNoGg()}  ${usedPrefix + command} antifake*
+*${m.isGroup ? chat.antiTraba ? '✅' : '❌' : lenguajeGB.smsNoGg()}  ${usedPrefix + command} antitraba*
+*${m.isGroup ? chat.antiLink ? '✅' : '❌' : lenguajeGB.smsNoGg()}  ${usedPrefix + command} antiLink*
+*${m.isGroup ? chat.antiLink2 ? '✅' : '❌' : lenguajeGB.smsNoGg()}  ${usedPrefix + command} antiLink2*
+*${m.isGroup ? chat.antiTiktok ? '✅' : '❌' : lenguajeGB.smsNoGg()}  ${usedPrefix + command} antiTiktok*
+*${m.isGroup ? chat.antiYoutube ? '✅' : '❌' : lenguajeGB.smsNoGg()}  ${usedPrefix + command} antiYoutube*
+*${m.isGroup ? chat.antiTelegram ? '✅' : '❌' : lenguajeGB.smsNoGg()}  ${usedPrefix + command} antiTelegram*
+*${m.isGroup ? chat.antiFacebook ? '✅' : '❌' : lenguajeGB.smsNoGg()}  ${usedPrefix + command} antiFacebook*
+*${m.isGroup ? chat.antiInstagram ? '✅' : '❌' : lenguajeGB.smsNoGg()}  ${usedPrefix + command} antiInstagram*
+*${m.isGroup ? chat.antiTwitter ? '✅' : '❌' : lenguajeGB.smsNoGg()}  ${usedPrefix + command} antiTwitter*
 
 𝐂𝐫𝐞𝐚𝐝𝐨𝐫𝐚
 
-*${usedPrefix + command} autolevelup ${m.isGroup ? chat.autolevelup ? '✅' : '❌' : lenguajeGB.smsNoGg()}* 
-*${usedPrefix + command} restrict ${bot.restrict ? '✅' : '❌'}*
-*${usedPrefix + command} antiprivado ${bot.antiPrivate ? '✅' : '❌'}*
-*${usedPrefix + command} antiCall ${bot.antiCall ? '✅' : '❌'}*
-*${usedPrefix + command} antiSpam ${bot.antiSpam ? '✅' : '❌'}*
-*${usedPrefix + command} self ${global.opts['self'] ? '❌' : '✅'}*
-*${usedPrefix + command} autoread ${global.opts['autoread'] ? '✅' : '❌'}*
-*${usedPrefix + command} temporal ${bot.temporal ? '✅' : '❌'}*
-*${usedPrefix + command} pconly ${global.opts['pconly'] ? '✅' : '❌'}*
-*${usedPrefix + command} gconly ${global.opts['gconly'] ? '✅' : '❌'}*
+*${m.isGroup ? chat.autolevelup ? '✅' : '❌' : lenguajeGB.smsNoGg()}  ${usedPrefix + command} autolevelup* 
+*${bot.restrict ? '✅' : '❌'}  ${usedPrefix + command} restrict*
+*${bot.antiPrivate ? '✅' : '❌'}  ${usedPrefix + command} antiprivado*
+*${bot.antiCall ? '✅' : '❌'}  ${usedPrefix + command} antiCall*
+*${bot.antiSpam ? '✅' : '❌'}  ${usedPrefix + command} antiSpam*
+*${global.opts['self'] ? '❌' : '✅'}  ${usedPrefix + command} self*
+*${global.opts['autoread'] ? '✅' : '❌'}  ${usedPrefix + command} autoread*
+*${bot.temporal ? '✅' : '❌'}  ${usedPrefix + command} temporal*
+*${global.opts['pconly'] ? '✅' : '❌'}  ${usedPrefix + command} pconly*
+*${global.opts['gconly'] ? '✅' : '❌'}  ${usedPrefix + command} gconly*
 
 𝐀𝐫𝐥𝐞𝐭𝐭𝐞𝐁𝐨𝐭 𝐄𝐝𝐢𝐭𝐢𝐨𝐧
 
-    *Community* ✅
-    *Ultimate*  ❌
+    ❌ *Community*
+    ✅ *Ultimate*  
 
 ${wm}`, fkontak, { mentions: [aa,] })
 //conn.sendMessage(m.chat, { text: texto }, { quoted: fkontak })
