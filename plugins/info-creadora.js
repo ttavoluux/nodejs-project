@@ -22,7 +22,7 @@ let handler = async (m, { conn }) => {
 
 ❤ Holis :3
 
-Arlette-bot Commutity Edition es un bot (open source) gratuito.
+Arlette-bot Community Edition es un bot (open source) gratuito.
 
 
 Si deseas adquirirlo solicita, llena y envia el formulario a mi desarrolladora comando: (.solicitarbot)
@@ -69,8 +69,9 @@ Recuerda usar el comando .menu para ver todas las opciones disponibles del bot. 
 ¿Quieres Comandos personalizados de uso unico?
 ¡Me encantaría escuchar tus ideas! 😄
 Contáctame y sugiéreme comandos que te gustaría ver en el bot.
+Arlette-bot Ultimate (Version premium de ArletteBot) .ultimate
 
-⚠️ *Recuerda que actualmente es un bot gratuito y está prohibida su venta. Si alguien te ofrece el bot por un costo, no es oficial y podría ser una estafa.*`
+⚠️ *Recuerda que Arlette-bot Community es un bot gratuito y está prohibida su venta. Si alguien te ofrece el bot por un costo, no es oficial y podría ser una estafa.*`
 
         // Ruta de la imagen a adjuntar
         let imagePath = './media/menus/img1.jpg'; // Asegúrate de que esta ruta sea correcta en tu sistema

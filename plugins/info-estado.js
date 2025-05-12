@@ -18,7 +18,7 @@ let handler = async (m, { conn, command, usedPrefix }) => {
 *Tiempo Activo:* ${uptime}
 
 > Puedes activar las bienvenidas con (.enable welcome) !`
-    await conn.sendFile(m.chat, imagen12, 'lp.jpg', estado)
+    await conn.sendFile(m.chat, imagen39, 'lp.jpg', estado)
 }
 handler.help = ['estado']
 handler.tags = ['main']

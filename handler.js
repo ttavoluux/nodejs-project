@@ -1421,7 +1421,7 @@ export async function participantsUpdate({ id, participants, action }) {
                             if(numer === 0){
                                 imageToSend = imagen16;
                             }else if(numer === 1){
-                                imageToSend = imagen21;
+                                imageToSend = imagen16;
                             }
                             // else if (numer === 2){
                             //     imageToSend = imagen16;
@@ -1437,7 +1437,7 @@ export async function participantsUpdate({ id, participants, action }) {
                             if(numer === 0){
                                 imageToSend = imagen18;  // Imagen 15 para cuando alguien se sale
                             }else if(numer === 1){
-                                imageToSend = imagen19;
+                                imageToSend = imagen18;
                             }
 
                         }

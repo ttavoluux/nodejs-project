@@ -212,7 +212,7 @@ global.imagen12 = fs.readFileSync("./media/menus/img11.jpg")
 global.imagen13 = fs.readFileSync("./media/menus/img12.jpg")
 global.imagen14 = fs.readFileSync("./media/menus/img13.jpg")
 global.imagen15 = fs.readFileSync("./media/menus/img14.jpg")
-global.imagen16 = fs.readFileSync("./media/menus/imagenwelcome1.jpg")
+global.imagen16 = fs.readFileSync("./media/menus/imagenwelcome.jpg")
 global.imagen17 = fs.readFileSync("./media/menus/img15.jpg")
 global.imagen18 = fs.readFileSync("./media/menus/imagenbye.jpg")
 global.imagen19 = fs.readFileSync("./media/menus/imagenbye2.jpg")
@@ -233,6 +233,10 @@ global.imagen33 = fs.readFileSync("./media/menus/resp10.jpg")
 global.imagen34 = fs.readFileSync("./media/menus/resp11.jpg")
 global.imagen35 = fs.readFileSync("./media/menus/resp12.jpg")
 global.imagen36 = fs.readFileSync("./media/menus/imagenReglas.jpg")
+global.imagen37 = fs.readFileSync("./media/menus/onoff.jpg")
+global.imagen38 = fs.readFileSync("./media/menus/menusimple.jpg")
+global.imagen39 = fs.readFileSync("./media/menus/estado.jpg")
+
 
 
 

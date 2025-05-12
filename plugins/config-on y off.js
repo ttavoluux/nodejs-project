@@ -430,7 +430,7 @@ throw false
 global.opts['swonly'] = isEnable
 break
 default:
-if (!/[01]/.test(command)) return await conn.reply(m.chat, `❤️ ${lenguajeGB.smsConfi2()} *@${toUser}*
+if (!/[01]/.test(command)) return await conn.sendFile(m.chat, imagen37, 'lp.jpg',`💗 *¡Hola!* ${name} ✨
 
 ${lenguajeGB.smsConfi6()}
 ${lenguajeGB.smsConfi7()}

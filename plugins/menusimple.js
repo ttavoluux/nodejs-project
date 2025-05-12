@@ -102,7 +102,7 @@ let estado = `💗 *¡Hola!* ${name} ✨
 
 *Versión:* ${vs}
 *Tiempo Activo:* ${uptime}`
-await conn.sendFile(m.chat, imagen17, 'lp.jpg', estado)
+await conn.sendFile(m.chat, imagen38, 'lp.jpg', estado)
 }
 handler.help = ['estado']
 handler.tags = ['main']
